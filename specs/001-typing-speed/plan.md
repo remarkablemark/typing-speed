@@ -45,11 +45,11 @@ _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### Validation Checklist
 
-- [x] Tests written first and validated to fail before implementation
-- [x] Components follow functional pattern with proper TypeScript interfaces
-- [x] Styling uses only Tailwind utility classes
-- [x] Code passes ESLint, TypeScript, and Prettier checks
-- [x] 100% test coverage achieved (except barrel exports)
+- [ ] Tests written first and validated to fail before implementation
+- [ ] Components follow functional pattern with proper TypeScript interfaces
+- [ ] Styling uses only Tailwind utility classes
+- [ ] Code passes ESLint, TypeScript, and Prettier checks
+- [ ] 100% test coverage achieved (except barrel exports)
 
 ## Project Structure
 

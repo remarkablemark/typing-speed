@@ -89,8 +89,8 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 - **FR-005**: System MUST highlight typing errors as they occur
 - **FR-006**: System MUST store test results locally during the current browser session
 - **FR-007**: System MUST offer 3 difficulty levels (easy, medium, hard) with appropriate text complexity
-- **FR-008**: System MUST display final results with WPM, accuracy, and time taken
-- **FR-009**: System MUST provide a history view of past typing tests
+- **FR-008**: System MUST display final results with WPM, accuracy, and time taken via ResultsDisplay component
+- **FR-009**: System MUST provide a history view of past typing tests via TestHistory component
 - **FR-010**: System MUST handle user input validation and prevent cheating
 
 ### Key Entities _(include if feature involves data)_
