@@ -29,6 +29,7 @@ Build a single-page React typing speed test application that measures user WPM a
 **Key Algorithms**: WPM calculation (5 chars = 1 word), accuracy percentage, real-time validation
 **UI Framework**: React with semantic HTML, mobile-first responsive design
 **State Management**: React hooks and component state
+**Custom Hooks**: useTypingTest (typing test logic), useTimer (timer functionality)
 **Data Persistence**: Session storage for test history
 
 ## Constitution Check
@@ -47,7 +48,7 @@ _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 - [ ] Run `npm run lint:tsc` to verify TypeScript strict mode compliance
 - [ ] Run `npm run lint` to verify ESLint rules pass with no errors
-- [ ] Run `npm test` after writing tests to confirm they FAIL (exit code 1)
+- [ ] Run `npm test` after writing tests to confirm they FAIL (exit code 1) - TDD requirement
 - [ ] Run `npm run test:ci` after implementation to verify 100% coverage
 - [ ] Verify component files follow pattern: Component.tsx, Component.types.ts, Component.test.tsx, index.ts
 - [ ] Check styling uses only Tailwind utility classes (no custom CSS imports)
@@ -127,6 +128,16 @@ index.html                           # Main HTML entry point
 ```
 
 **Structure Decision**: React single-page application with component-based architecture. Components organized in feature folders with co-located tests and types. All styling via Tailwind CSS utilities.
+
+## Component Architecture
+
+**Core Components**:
+
+- **TypingTest**: Main typing interface with real-time WPM/accuracy feedback
+- **ResultsDisplay**: Shows final test results (WPM, accuracy, time)
+- **TestHistory**: Displays past test results from session storage
+- **DifficultySelector**: Allows selection of easy/medium/hard text samples
+- **App**: Main application container integrating all components
 
 ## Implementation Dependencies
 

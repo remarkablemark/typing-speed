@@ -64,7 +64,7 @@ description: 'Task list template for feature implementation'
 - [ ] T014 [P] [US1] Utility test for accuracyCalculator in src/utils/accuracyCalculator.test.ts
 - [ ] T015 [P] [US1] Utility test for antiCheat in src/utils/antiCheat.test.ts
 
-**VALIDATION STEP**: Run `npm test -- src/components/TypingTest/TypingTest.test.tsx src/components/App/App.test.tsx src/utils/wpmCalculator.test.ts src/utils/accuracyCalculator.test.ts src/utils/antiCheat.test.ts` and confirm all tests FAIL with exit code 1 before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
+**VALIDATION STEP**: Run `npm test -- src/components/TypingTest/TypingTest.test.tsx src/components/App/App.test.tsx src/utils/wpmCalculator.test.ts src/utils/accuracyCalculator.test.ts src/utils/antiCheat.test.ts` and confirm all tests FAIL (exit code 1) before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 1
 
@@ -99,7 +99,7 @@ description: 'Task list template for feature implementation'
 - [ ] T031 [P] [US2] Component test for TestHistory in src/components/TestHistory/TestHistory.test.tsx
 - [ ] T032 [P] [US2] Integration test for session storage in src/utils/sessionStorage.test.ts
 
-**VALIDATION STEP**: Run `npm test -- src/components/ResultsDisplay/ResultsDisplay.test.tsx src/components/TestHistory/TestHistory.test.tsx src/utils/sessionStorage.test.ts` and confirm all tests FAIL with exit code 1 before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
+**VALIDATION STEP**: Run `npm test -- src/components/ResultsDisplay/ResultsDisplay.test.tsx src/components/TestHistory/TestHistory.test.tsx src/utils/sessionStorage.test.ts` and confirm all tests FAIL (exit code 1) before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 2
 
@@ -131,7 +131,7 @@ description: 'Task list template for feature implementation'
 - [ ] T045 [P] [US3] Component test for DifficultySelector in src/components/DifficultySelector/DifficultySelector.test.tsx
 - [ ] T046 [P] [US3] Utility test for text samples difficulty categorization in src/utils/textSamples.test.ts
 
-**VALIDATION STEP**: Run `npm test -- src/components/DifficultySelector/DifficultySelector.test.tsx src/utils/textSamples.test.ts` and confirm all tests FAIL with exit code 1 before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
+**VALIDATION STEP**: Run `npm test -- src/components/DifficultySelector/DifficultySelector.test.tsx src/utils/textSamples.test.ts` and confirm all tests FAIL (exit code 1) before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 3
 
@@ -161,11 +161,7 @@ description: 'Task list template for feature implementation'
 - [ ] T061 Run full test suite and ensure 100% coverage
 - [ ] T062 Final responsive design testing across all breakpoints
 - [ ] T063 Error boundary testing and validation
-- [ ] T064 [P] Implement test timeout handling in src/hooks/useTypingTest.ts (addresses edge case: no input timeout)
-- [ ] T065 [P] Handle extremely high WPM edge cases in src/utils/wpmCalculator.ts (addresses edge case: extremely high WPM)
-- [ ] T066 [P] Add copy-paste prevention in src/components/TypingTest/TypingTest.tsx (addresses edge case: copy-paste instead of typing)
-- [ ] T067 [P] Handle browser refresh during active test in src/hooks/useTypingTest.ts (addresses edge case: browser refresh)
-- [ ] T068 [P] Manage tab switching during test in src/components/TypingTest/TypingTest.tsx (addresses edge case: tab switching)
+- [ ] T064-T068 Edge case handling already covered by T009 antiCheat utilities - remove duplicate tasks
 
 ---
 
