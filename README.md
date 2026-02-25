@@ -1,10 +1,12 @@
-# typing-speed
+# Typing Speed
 
 [![build](https://github.com/remarkablemark/typing-speed/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/typing-speed/actions/workflows/build.yml)
 [![test](https://github.com/remarkablemark/typing-speed/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/typing-speed/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/remarkablemark/typing-speed/graph/badge.svg?token=DEr2eVeqdz)](https://codecov.io/gh/remarkablemark/typing-speed)
+[![codecov](https://codecov.io/gh/remarkablemark/typing-speed/graph/badge.svg?token=dqHHDzMAHx)](https://codecov.io/gh/remarkablemark/typing-speed)
 
-Vite React Tailwind Template
+⌨️ Test your typing speed:
+
+- [Typing Speed](https://remarkablemark.org/typing-speed/)
 
 ## Install
 
