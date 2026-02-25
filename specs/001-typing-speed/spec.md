@@ -9,7 +9,7 @@
 
 ### Session 2026-02-24
 
-- Q: Where do the text samples come from? → A: Pre-written curated texts by difficulty level
+- Q: Where do the text samples come from? → A: Public domain texts (classic literature, educational, historical documents)
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -73,7 +73,7 @@ User wants to choose different difficulty levels for typing tests based on text 
 
 ### Functional Requirements
 
-- **FR-001**: System MUST display pre-written curated text samples organized by difficulty level
+- **FR-001**: System MUST display public domain text samples organized by difficulty level
 - **FR-002**: System MUST measure typing speed in words per minute (WPM)
 - **FR-003**: System MUST calculate typing accuracy percentage
 - **FR-004**: System MUST provide real-time feedback during typing
@@ -88,7 +88,7 @@ User wants to choose different difficulty levels for typing tests based on text 
 
 - **Typing Test**: Represents a single typing session with text sample, user input, timing, and results
 - **Test Result**: Stores WPM, accuracy, timestamp, and difficulty level for completed tests
-- **Text Sample**: Pre-written curated text content organized by difficulty level for typing tests
+- **Text Sample**: Public domain text content (classic literature, educational, historical documents) organized by difficulty level for typing tests
 
 ## Success Criteria _(mandatory)_
 
