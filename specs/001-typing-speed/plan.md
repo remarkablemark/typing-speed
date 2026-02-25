@@ -30,6 +30,7 @@ Build a single-page React typing speed test application that measures user WPM a
 **UI Framework**: React with semantic HTML, mobile-first responsive design
 **State Management**: React hooks and component state
 **Custom Hooks**: useTypingTest (typing test logic), useTimer (timer functionality)
+**Hook Testing**: Custom hooks require dedicated test files with @testing-library/react hooks testing utilities
 **Data Persistence**: Session storage for test history
 
 ## Constitution Check

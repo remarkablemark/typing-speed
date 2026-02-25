@@ -72,7 +72,7 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 
 ### Edge Cases
 
-**Given** the user starts a test but types nothing and the test times out, **When** the timeout occurs, **Then** the system displays a "test incomplete" message with option to retry
+**Given** the user starts a test but types nothing and the test times out after 60 seconds, **When** the timeout occurs, **Then** the system displays a "test incomplete" message with option to retry
 
 **Given** the user types at extremely high speed (>200 WPM), **When** this speed is detected, **Then** the system flags it as potentially invalid and requires validation
 
