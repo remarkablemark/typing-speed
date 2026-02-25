@@ -72,7 +72,7 @@ User wants to choose different difficulty levels for typing tests based on text 
 - **FR-003**: System MUST calculate typing accuracy percentage
 - **FR-004**: System MUST provide real-time feedback during typing
 - **FR-005**: System MUST highlight typing errors as they occur
-- **FR-006**: System MUST store test results locally [NEEDS CLARIFICATION: should results persist across browser sessions?]
+- **FR-006**: System MUST store test results locally during the current browser session
 - **FR-007**: System MUST offer multiple difficulty levels with appropriate text complexity
 - **FR-008**: System MUST display final results with WPM, accuracy, and time taken
 - **FR-009**: System MUST provide a history view of past typing tests
