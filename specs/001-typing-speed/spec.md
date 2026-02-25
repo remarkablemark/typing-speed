@@ -13,6 +13,11 @@
 - Q: How many difficulty levels? → A: 3 difficulty levels (easy, medium, hard)
 - Q: How is the UI? → A: Single page application with all features on one page
 - Q: Responsiveness? → A: Mobile-first responsive design for all screen sizes
+- Q: Test duration/length? → A: Depends on difficulty level
+- Q: WPM calculation method? → A: Standard 5 characters per word
+- Q: Cheating prevention? → A: Keypress validation only
+- Q: Timer behavior? → A: Starts on first keystroke, ends on last character
+- Q: Error handling? → A: Display error message
 
 ## User Scenarios & Testing _(mandatory)_
 
