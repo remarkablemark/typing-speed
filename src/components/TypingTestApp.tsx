@@ -1,6 +1,13 @@
 import { useState } from 'react';
+import { ResultsDisplay } from 'src/components/ResultsDisplay';
+import { TestHistory } from 'src/components/TestHistory';
 import { TypingTest } from 'src/components/TypingTest';
 import type { DifficultyLevel, TestResult } from 'src/types/typing.types';
+import {
+  clearTestHistory,
+  getTestHistory,
+  saveTestResult,
+} from 'src/utils/sessionStorage';
 import { getRandomTextSample } from 'src/utils/textSamples';
 
 export function TypingTestApp(): React.ReactNode {
@@ -8,6 +15,10 @@ export function TypingTestApp(): React.ReactNode {
     useState<DifficultyLevel>('easy');
   const [isTestActive, setIsTestActive] = useState(false);
   const [currentResult, setCurrentResult] = useState<TestResult | undefined>();
+  const [showHistory, setShowHistory] = useState(false);
+  const [testHistory, setTestHistory] = useState<TestResult[]>(() =>
+    getTestHistory(),
+  );
 
   const handleStartTest = () => {
     setIsTestActive(true);
@@ -17,11 +28,28 @@ export function TypingTestApp(): React.ReactNode {
   const handleTestComplete = (result: TestResult) => {
     setCurrentResult(result);
     setIsTestActive(false);
+    // Save result to session storage
+    saveTestResult(result);
+    setTestHistory(getTestHistory());
   };
 
   const handleRestart = () => {
     setCurrentResult(undefined);
     setIsTestActive(false);
+  };
+
+  const handleViewHistory = () => {
+    setShowHistory(true);
+  };
+
+  const handleClearHistory = () => {
+    clearTestHistory();
+    setTestHistory([]);
+  };
+
+  const handleSelectHistoryResult = (result: TestResult) => {
+    setCurrentResult(result);
+    setShowHistory(false);
   };
 
   const handleDifficultyChange = (difficulty: DifficultyLevel) => {
@@ -32,55 +60,25 @@ export function TypingTestApp(): React.ReactNode {
 
   const textSample = getRandomTextSample(currentDifficulty);
 
+  // Show history view
+  if (showHistory) {
+    return (
+      <TestHistory
+        results={testHistory}
+        onSelectResult={handleSelectHistoryResult}
+        onClearHistory={handleClearHistory}
+      />
+    );
+  }
+
+  // Show results view
   if (currentResult) {
     return (
-      <div className="mx-auto max-w-4xl p-6">
-        <div className="rounded-lg bg-white p-8 shadow-lg">
-          <h2 className="mb-6 text-center text-3xl font-bold">
-            Test Complete!
-          </h2>
-
-          <div className="mb-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-            <div className="text-center">
-              <div className="text-4xl font-bold text-blue-600">
-                {currentResult.wpm}
-              </div>
-              <div className="text-gray-600">Words Per Minute</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-green-600">
-                {currentResult.accuracy}%
-              </div>
-              <div className="text-gray-600">Accuracy</div>
-            </div>
-            <div className="text-center">
-              <div className="text-4xl font-bold text-purple-600">
-                {Math.round(currentResult.timeElapsed)}s
-              </div>
-              <div className="text-gray-600">Time</div>
-            </div>
-          </div>
-
-          <div className="flex justify-center space-x-4">
-            <button
-              type="button"
-              onClick={handleRestart}
-              className="rounded-md bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700"
-            >
-              Try Again
-            </button>
-            <button
-              type="button"
-              onClick={() => {
-                handleDifficultyChange(currentDifficulty);
-              }}
-              className="rounded-md bg-gray-200 px-6 py-3 font-medium text-gray-800 transition-colors hover:bg-gray-300"
-            >
-              New Test
-            </button>
-          </div>
-        </div>
-      </div>
+      <ResultsDisplay
+        result={currentResult}
+        onRestart={handleRestart}
+        onViewHistory={handleViewHistory}
+      />
     );
   }
 

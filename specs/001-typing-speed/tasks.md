@@ -99,26 +99,26 @@ description: 'Task list template for feature implementation'
 
 ### Tests for User Story 2 (TDD - Write FIRST, ensure they FAIL) ⚠️
 
-- [ ] T033 [P] [US2] Component test for ResultsDisplay in src/components/ResultsDisplay/ResultsDisplay.test.tsx
-- [ ] T034 [P] [US2] Component test for TestHistory in src/components/TestHistory/TestHistory.test.tsx
-- [ ] T035 [P] [US2] Integration test for session storage in src/utils/sessionStorage.test.ts
+- [x] T033 [P] [US2] Component test for ResultsDisplay in src/components/ResultsDisplay/ResultsDisplay.test.tsx
+- [x] T034 [P] [US2] Component test for TestHistory in src/components/TestHistory/TestHistory.test.tsx
+- [x] T035 [P] [US2] Integration test for session storage in src/utils/sessionStorage.test.ts
 
 **VALIDATION STEP**: Run `npm test -- src/components/ResultsDisplay/ResultsDisplay.test.tsx src/components/TestHistory/TestHistory.test.tsx src/utils/sessionStorage.test.ts` and confirm exit code 1 (tests FAIL) before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 2
 
-- [ ] T036 [P] [US2] Create ResultsDisplay types in src/components/ResultsDisplay/ResultsDisplay.types.ts
-- [ ] T037 [P] [US2] Create TestHistory types in src/components/TestHistory/TestHistory.types.ts
-- [ ] T038 [P] [US2] Implement session storage utility in src/utils/sessionStorage.ts
-- [ ] T039 [P] [US2] Implement ResultsDisplay component in src/components/ResultsDisplay/ResultsDisplay.tsx (depends on T036)
-- [ ] T040 [P] [US2] Implement TestHistory component in src/components/TestHistory/TestHistory.tsx (depends on T037, T038)
-- [ ] T041 [P] [US2] Create barrel export for ResultsDisplay in src/components/ResultsDisplay/index.ts
-- [ ] T042 [P] [US2] Create barrel export for TestHistory in src/components/TestHistory/index.ts
-- [ ] T043 [P] [US2] Update barrel export for utils in src/utils/index.ts (include sessionStorage)
-- [ ] T044 [US2] Integrate ResultsDisplay with App component
-- [ ] T045 [US2] Integrate TestHistory with App component
-- [ ] T046 [US2] Add accessibility attributes to ResultsDisplay and TestHistory
-- [ ] T047 [US2] Add responsive design to ResultsDisplay and TestHistory
+- [x] T036 [P] [US2] Create ResultsDisplay types in src/components/ResultsDisplay/ResultsDisplay.types.ts
+- [x] T037 [P] [US2] Create TestHistory types in src/components/TestHistory/TestHistory.types.ts
+- [x] T038 [P] [US2] Implement session storage utility in src/utils/sessionStorage.ts
+- [x] T039 [P] [US2] Implement ResultsDisplay component in src/components/ResultsDisplay/ResultsDisplay.tsx (depends on T036)
+- [x] T040 [P] [US2] Implement TestHistory component in src/components/TestHistory/TestHistory.tsx (depends on T037, T038)
+- [x] T041 [P] [US2] Create barrel export for ResultsDisplay in src/components/ResultsDisplay/index.ts
+- [x] T042 [P] [US2] Create barrel export for TestHistory in src/components/TestHistory/index.ts
+- [x] T043 [P] [US2] Update barrel export for utils in src/utils/index.ts (include sessionStorage)
+- [x] T044 [US2] Integrate ResultsDisplay with App component
+- [x] T045 [US2] Integrate TestHistory with App component
+- [x] T046 [US2] Add accessibility attributes to ResultsDisplay and TestHistory
+- [x] T047 [US2] Add responsive design to ResultsDisplay and TestHistory
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 

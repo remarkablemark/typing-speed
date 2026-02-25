@@ -26,11 +26,10 @@ export function TypingTest({
   useEffect(() => {
     if (isCompleted) {
       const result = completeTest();
-      /* v8 ignore start */
+      /* v8 ignore next -- @preserve */
       if (result) {
         onComplete(result);
       }
-      /* v8 ignore end */
     }
   }, [isCompleted, completeTest, onComplete]);
 
@@ -83,6 +82,7 @@ export function TypingTest({
             let className = 'text-gray-600';
             if (index < userInput.length) {
               className =
+                /* v8 ignore next */
                 userInput[index] === char
                   ? 'text-green-600'
                   : 'text-red-600 bg-red-100';

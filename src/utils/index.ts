@@ -49,3 +49,13 @@ export {
   setupAntiCheatListeners,
   validateInputSequence,
 } from './antiCheat';
+
+// Session storage utilities
+export {
+  clearCurrentTest,
+  clearTestHistory,
+  getCurrentTest,
+  getTestHistory,
+  saveCurrentTest,
+  saveTestResult,
+} from './sessionStorage';

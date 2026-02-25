@@ -27,7 +27,7 @@ export interface TestResult {
   wpm: number;
   accuracy: number;
   timeElapsed: number;
-  timestamp: Date;
+  timestamp: Date | string;
   difficulty: DifficultyLevel;
   textSampleId: string;
 }
