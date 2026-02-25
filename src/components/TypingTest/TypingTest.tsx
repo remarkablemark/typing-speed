@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect } from 'react';
 import { useTypingTest } from 'src/hooks/useTypingTest';
 
 import type { TypingTestProps } from './TypingTest.types';
@@ -8,8 +8,6 @@ export function TypingTest({
   onComplete,
   difficulty,
 }: TypingTestProps) {
-  const inputRef = useRef<HTMLInputElement>(null);
-
   const typingTest = useTypingTest(textSample, difficulty);
 
   const {
@@ -118,12 +116,12 @@ export function TypingTest({
 
         {/* Input Field */}
         <input
-          ref={inputRef}
           type="text"
           value={userInput}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
+          autoFocus
           className="w-full rounded-lg border-2 border-gray-300 p-3 focus:border-blue-500 focus:outline-none"
           placeholder="Start typing here..."
           disabled={isCompleted}
