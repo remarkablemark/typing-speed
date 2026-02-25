@@ -65,4 +65,4 @@ Each component follows the standard pattern:
 
 This constitution supersedes all other development practices. Amendments require documentation, approval, and migration plan. All pull requests and reviews must verify compliance. Complexity must be justified with clear rationale. Use AGENTS.md for runtime development guidance.
 
-**Version**: 1.0.0 | **Ratified**: 2025-02-24 | **Last Amended**: 2025-02-24
+**Version**: 1.0.0 | **Ratified**: 2026-02-24 | **Last Amended**: 2026-02-24
