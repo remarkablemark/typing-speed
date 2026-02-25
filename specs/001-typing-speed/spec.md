@@ -12,6 +12,7 @@
 - Q: Where do the text samples come from? → A: Public domain texts (classic literature, educational, historical documents)
 - Q: How many difficulty levels? → A: 3 difficulty levels (easy, medium, hard)
 - Q: How is the UI? → A: Single page application with all features on one page
+- Q: Responsiveness? → A: Mobile-first responsive design for all screen sizes
 
 ## User Scenarios & Testing _(mandatory)_
 
