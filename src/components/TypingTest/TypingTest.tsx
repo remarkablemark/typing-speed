@@ -60,14 +60,14 @@ export function TypingTest({
         <h2 className="mb-4 text-2xl font-bold">Typing Test</h2>
 
         {/* Stats Display */}
-        <div className="mx-auto mb-4 grid w-full max-w-2xl grid-cols-4 gap-4">
-          <div className="flex w-32 rounded bg-gray-100 p-3">
+        <div className="mx-auto mb-4 grid w-full max-w-3xl grid-cols-4 gap-4">
+          <div className="flex w-40 rounded bg-gray-100 p-3">
             <span className="font-semibold">WPM:</span>
             <div className="flex-1 text-right">
               <span className="inline-block min-w-[3ch]">{currentWPM}</span>
             </div>
           </div>
-          <div className="flex w-32 rounded bg-gray-100 p-3">
+          <div className="flex w-40 rounded bg-gray-100 p-3">
             <span className="font-semibold">Accuracy:</span>
             <div className="flex-1 text-right">
               <span className="inline-block min-w-[3ch]">
@@ -75,7 +75,7 @@ export function TypingTest({
               </span>
             </div>
           </div>
-          <div className="flex w-32 rounded bg-gray-100 p-3">
+          <div className="flex w-40 rounded bg-gray-100 p-3">
             <span className="font-semibold">Time:</span>
             <div className="flex-1 text-right">
               <span className="inline-block min-w-[3ch]">
@@ -83,7 +83,7 @@ export function TypingTest({
               </span>
             </div>
           </div>
-          <div className="flex w-32 rounded bg-gray-100 p-3">
+          <div className="flex w-40 rounded bg-gray-100 p-3">
             <span className="font-semibold">Progress:</span>
             <div className="flex-1 text-right">
               <span
