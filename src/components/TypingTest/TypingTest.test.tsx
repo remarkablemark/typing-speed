@@ -423,4 +423,17 @@ describe('TypingTest', () => {
     const spans = textDisplay?.querySelectorAll('span');
     expect(spans?.[0]).toHaveClass('bg-blue-200', 'animate-pulse');
   });
+
+  it('does not show completion guidance when no input is provided', () => {
+    render(
+      <TypingTest
+        textSample={mockTextSample}
+        onComplete={mockOnComplete}
+        difficulty="easy"
+      />,
+    );
+
+    // Should not show completion guidance when no input
+    expect(screen.queryByText(/Keep typing!/)).not.toBeInTheDocument();
+  });
 });

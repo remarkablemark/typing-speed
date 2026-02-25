@@ -53,6 +53,9 @@ export function TypingTest({
     (userInput.length / textSample.content.length) * 100,
   );
 
+  // Calculate actual completion based on exact match
+  const isActuallyComplete = userInput === textSample.content;
+
   return (
     <div className="mx-auto max-w-4xl p-6">
       <div className="mb-6">
@@ -71,9 +74,25 @@ export function TypingTest({
             {Math.round(timeElapsed)}s
           </div>
           <div className="rounded bg-gray-100 p-3">
-            <span className="font-semibold">Progress:</span> {progress}%
+            <span className="font-semibold">Progress:</span>{' '}
+            <span
+              className={isActuallyComplete ? 'font-bold text-green-600' : ''}
+            >
+              {progress}%
+            </span>
+            {isActuallyComplete && ' ✓'}
           </div>
         </div>
+
+        {/* Completion Guidance */}
+        {!isActuallyComplete && userInput.length > 0 && (
+          <div className="mb-4 rounded bg-blue-50 p-3 text-sm text-blue-800">
+            Keep typing! You need {textSample.content.length - userInput.length}{' '}
+            more character
+            {textSample.content.length - userInput.length === 1 ? '' : 's'} to
+            finish.
+          </div>
+        )}
 
         {/* Text Display */}
         <div className="mb-4 rounded-lg border-2 border-gray-300 bg-white p-4 font-mono text-lg">
