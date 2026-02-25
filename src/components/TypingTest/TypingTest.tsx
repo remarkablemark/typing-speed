@@ -55,54 +55,68 @@ export function TypingTest({
   const isActuallyComplete = userInput === textSample.content;
 
   return (
-    <div className="mx-auto max-w-4xl p-6">
+    <div className="mx-auto w-full max-w-4xl p-6">
       <div className="mb-6">
         <h2 className="mb-4 text-2xl font-bold">Typing Test</h2>
 
         {/* Stats Display */}
-        <div className="mb-6 grid grid-cols-4 gap-4">
-          <div className="rounded bg-gray-100 p-3">
-            <span className="font-semibold">WPM:</span> {currentWPM}
+        <div className="mx-auto mb-4 grid w-full max-w-2xl grid-cols-4 gap-4">
+          <div className="flex w-32 rounded bg-gray-100 p-3">
+            <span className="font-semibold">WPM:</span>
+            <div className="flex-1 text-right">
+              <span className="inline-block min-w-[3ch]">{currentWPM}</span>
+            </div>
           </div>
-          <div className="rounded bg-gray-100 p-3">
-            <span className="font-semibold">Accuracy:</span> {currentAccuracy}%
+          <div className="flex w-32 rounded bg-gray-100 p-3">
+            <span className="font-semibold">Accuracy:</span>
+            <div className="flex-1 text-right">
+              <span className="inline-block min-w-[3ch]">
+                {currentAccuracy}%
+              </span>
+            </div>
           </div>
-          <div className="rounded bg-gray-100 p-3">
-            <span className="font-semibold">Time:</span>{' '}
-            {Math.round(timeElapsed)}s
+          <div className="flex w-32 rounded bg-gray-100 p-3">
+            <span className="font-semibold">Time:</span>
+            <div className="flex-1 text-right">
+              <span className="inline-block min-w-[3ch]">
+                {Math.round(timeElapsed)}s
+              </span>
+            </div>
           </div>
-          <div className="rounded bg-gray-100 p-3">
-            <span className="font-semibold">Progress:</span>{' '}
-            <span
-              className={isActuallyComplete ? 'font-bold text-green-600' : ''}
-            >
-              {progress}%
-            </span>
-            {isActuallyComplete && ' ✓'}
+          <div className="flex w-32 rounded bg-gray-100 p-3">
+            <span className="font-semibold">Progress:</span>
+            <div className="flex-1 text-right">
+              <span
+                className={isActuallyComplete ? 'font-bold text-green-600' : ''}
+              >
+                <span className="inline-block min-w-[3ch]">{progress}%</span>
+              </span>
+              {isActuallyComplete && <span className="ml-1">✓</span>}
+            </div>
           </div>
         </div>
 
         {/* Completion Guidance */}
-        {!isActuallyComplete && userInput.length > 0 && (
-          <div className="mb-4 rounded bg-blue-50 p-3 text-sm text-blue-800">
-            Keep typing! You need {textSample.content.length - userInput.length}{' '}
-            more character
-            {textSample.content.length - userInput.length === 1 ? '' : 's'} to
-            finish.
-          </div>
-        )}
+        <div className="mb-4 h-[40px]">
+          {!isActuallyComplete && userInput.length > 0 && (
+            <div className="rounded bg-blue-50 p-3 text-sm text-blue-800">
+              Keep typing! You need{' '}
+              {textSample.content.length - userInput.length} more character
+              {textSample.content.length - userInput.length === 1 ? '' : 's'} to
+              finish.
+            </div>
+          )}
+        </div>
 
         {/* Text Display */}
-        <div className="mb-4 rounded-lg border-2 border-gray-300 bg-white p-4 font-mono text-lg">
+        <div className="mb-4 rounded-lg border-2 border-gray-300 bg-white p-4 font-mono text-lg leading-relaxed">
           {textSample.content.split('').map((char, index) => {
             const key = `${textSample.id}-${String(index)}`;
             let className = 'text-gray-600';
             if (index < userInput.length) {
               className =
                 /* v8 ignore next */
-                userInput[index] === char
-                  ? 'text-green-600'
-                  : 'text-red-600 bg-red-100';
+                userInput[index] === char ? 'text-green-600' : 'text-red-600';
             } else if (index === userInput.length) {
               className = 'bg-blue-200 animate-pulse';
             }
