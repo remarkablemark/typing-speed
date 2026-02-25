@@ -106,4 +106,4 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 - **SC-001**: Users can complete a typing test and see their WPM within 5 seconds of finishing
 - **SC-002**: System accurately calculates WPM within ±2 words per minute of manual calculation
 - **SC-003**: System accurately calculates typing accuracy within ±1 percentage point
-- **SC-004**: 95% of users successfully complete at least one typing test on their first visit
+- **SC-004**: 95% of users successfully complete at least one typing test on their first visit (measured via session storage completion tracking)

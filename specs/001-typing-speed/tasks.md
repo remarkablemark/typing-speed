@@ -38,7 +38,8 @@ description: 'Task list template for feature implementation'
 - [ ] T005 [P] Create text samples data in src/utils/textSamples.ts
 - [ ] T006 [P] Create barrel exports for utils in src/utils/index.ts
 - [ ] T007 [P] Create barrel exports for types in src/types/index.ts
-- [ ] T008 Configure error boundary setup in src/components/App/App.tsx
+- [ ] T008 [P] Configure input validation utilities in src/utils/inputValidator.ts
+- [ ] T009 Configure error boundary setup in src/components/App/App.tsx
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
@@ -52,25 +53,29 @@ description: 'Task list template for feature implementation'
 
 ### Tests for User Story 1 (TDD - Write FIRST, ensure they FAIL) ⚠️
 
-- [ ] T009 [P] [US1] Component test for TypingTest in src/components/TypingTest/TypingTest.test.tsx
-- [ ] T010 [P] [US1] Component test for App in src/components/App/App.test.tsx
-- [ ] T011 [P] [US1] Utility test for wpmCalculator in src/utils/wpmCalculator.test.ts
-- [ ] T012 [P] [US1] Utility test for accuracyCalculator in src/utils/accuracyCalculator.test.ts
+- [ ] T010 [P] [US1] Component test for TypingTest in src/components/TypingTest/TypingTest.test.tsx
+- [ ] T011 [P] [US1] Component test for App in src/components/App/App.test.tsx
+- [ ] T012 [P] [US1] Utility test for wpmCalculator in src/utils/wpmCalculator.test.ts
+- [ ] T013 [P] [US1] Utility test for accuracyCalculator in src/utils/accuracyCalculator.test.ts
+
+**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks
 
 ### Implementation for User Story 1
 
-- [ ] T013 [P] [US1] Create TypingTest types in src/components/TypingTest/TypingTest.types.ts
-- [ ] T014 [P] [US1] Create App types in src/components/App/App.types.ts
-- [ ] T015 [P] [US1] Create useTypingTest hook in src/hooks/useTypingTest.ts
-- [ ] T016 [P] [US1] Create useTimer hook in src/hooks/useTimer.ts
-- [ ] T017 [P] [US1] Create barrel exports for hooks in src/hooks/index.ts
-- [ ] T018 [US1] Implement TypingTest component in src/components/TypingTest/TypingTest.tsx (depends on T013, T015, T016)
-- [ ] T019 [US1] Implement App component in src/components/App/App.tsx (depends on T014, T018)
-- [ ] T020 [P] [US1] Create barrel export for TypingTest in src/components/TypingTest/index.ts
-- [ ] T021 [P] [US1] Create barrel export for App in src/components/App/index.ts
-- [ ] T022 [US1] Add accessibility attributes and ARIA labels to TypingTest
-- [ ] T023 [US1] Add error handling and loading states to TypingTest
-- [ ] T024 [US1] Add responsive design with Tailwind classes to TypingTest
+- [ ] T014 [P] [US1] Create TypingTest types in src/components/TypingTest/TypingTest.types.ts
+- [ ] T015 [P] [US1] Implement comprehensive input validation in src/utils/inputValidator.ts
+- [ ] T016 [US1] Integrate input validation with TypingTest component
+- [ ] T017 [P] [US1] Create App types in src/components/App/App.types.ts
+- [ ] T018 [P] [US1] Create useTypingTest hook in src/hooks/useTypingTest.ts
+- [ ] T019 [P] [US1] Create useTimer hook in src/hooks/useTimer.ts
+- [ ] T020 [P] [US1] Create barrel exports for hooks in src/hooks/index.ts
+- [ ] T021 [US1] Implement TypingTest component in src/components/TypingTest/TypingTest.tsx (depends on T014, T016, T019)
+- [ ] T022 [US1] Implement App component in src/components/App/App.tsx (depends on T017, T021)
+- [ ] T023 [P] [US1] Create barrel export for TypingTest in src/components/TypingTest/index.ts
+- [ ] T024 [P] [US1] Create barrel export for App in src/components/App/index.ts
+- [ ] T025 [US1] Add accessibility attributes and ARIA labels to TypingTest
+- [ ] T026 [US1] Add error handling and loading states to TypingTest
+- [ ] T027 [US1] Add responsive design with Tailwind classes to TypingTest
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
@@ -84,24 +89,26 @@ description: 'Task list template for feature implementation'
 
 ### Tests for User Story 2 (TDD - Write FIRST, ensure they FAIL) ⚠️
 
-- [ ] T025 [P] [US2] Component test for ResultsDisplay in src/components/ResultsDisplay/ResultsDisplay.test.tsx
-- [ ] T026 [P] [US2] Component test for TestHistory in src/components/TestHistory/TestHistory.test.tsx
-- [ ] T027 [P] [US2] Integration test for session storage in src/utils/sessionStorage.test.ts
+- [ ] T028 [P] [US2] Component test for ResultsDisplay in src/components/ResultsDisplay/ResultsDisplay.test.tsx
+- [ ] T029 [P] [US2] Component test for TestHistory in src/components/TestHistory/TestHistory.test.tsx
+- [ ] T030 [P] [US2] Integration test for session storage in src/utils/sessionStorage.test.ts
+
+**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks
 
 ### Implementation for User Story 2
 
-- [ ] T028 [P] [US2] Create ResultsDisplay types in src/components/ResultsDisplay/ResultsDisplay.types.ts
-- [ ] T029 [P] [US2] Create TestHistory types in src/components/TestHistory/TestHistory.types.ts
-- [ ] T030 [P] [US2] Implement session storage utility in src/utils/sessionStorage.ts
-- [ ] T031 [P] [US2] Implement ResultsDisplay component in src/components/ResultsDisplay/ResultsDisplay.tsx (depends on T028)
-- [ ] T032 [P] [US2] Implement TestHistory component in src/components/TestHistory/TestHistory.tsx (depends on T029, T030)
-- [ ] T033 [P] [US2] Create barrel export for ResultsDisplay in src/components/ResultsDisplay/index.ts
-- [ ] T034 [P] [US2] Create barrel export for TestHistory in src/components/TestHistory/index.ts
-- [ ] T035 [P] [US2] Update barrel export for utils in src/utils/index.ts (include sessionStorage)
-- [ ] T036 [US2] Integrate ResultsDisplay with App component
-- [ ] T037 [US2] Integrate TestHistory with App component
-- [ ] T038 [US2] Add accessibility attributes to ResultsDisplay and TestHistory
-- [ ] T039 [US2] Add responsive design to ResultsDisplay and TestHistory
+- [ ] T031 [P] [US2] Create ResultsDisplay types in src/components/ResultsDisplay/ResultsDisplay.types.ts
+- [ ] T032 [P] [US2] Create TestHistory types in src/components/TestHistory/TestHistory.types.ts
+- [ ] T033 [P] [US2] Implement session storage utility in src/utils/sessionStorage.ts
+- [ ] T034 [P] [US2] Implement ResultsDisplay component in src/components/ResultsDisplay/ResultsDisplay.tsx (depends on T031)
+- [ ] T035 [P] [US2] Implement TestHistory component in src/components/TestHistory/TestHistory.tsx (depends on T032, T033)
+- [ ] T036 [P] [US2] Create barrel export for ResultsDisplay in src/components/ResultsDisplay/index.ts
+- [ ] T037 [P] [US2] Create barrel export for TestHistory in src/components/TestHistory/index.ts
+- [ ] T038 [P] [US2] Update barrel export for utils in src/utils/index.ts (include sessionStorage)
+- [ ] T039 [US2] Integrate ResultsDisplay with App component
+- [ ] T040 [US2] Integrate TestHistory with App component
+- [ ] T041 [US2] Add accessibility attributes to ResultsDisplay and TestHistory
+- [ ] T042 [US2] Add responsive design to ResultsDisplay and TestHistory
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
@@ -115,18 +122,20 @@ description: 'Task list template for feature implementation'
 
 ### Tests for User Story 3 (TDD - Write FIRST, ensure they FAIL) ⚠️
 
-- [ ] T040 [P] [US3] Component test for DifficultySelector in src/components/DifficultySelector/DifficultySelector.test.tsx
-- [ ] T041 [P] [US3] Utility test for text samples difficulty categorization in src/utils/textSamples.test.ts
+- [ ] T043 [P] [US3] Component test for DifficultySelector in src/components/DifficultySelector/DifficultySelector.test.tsx
+- [ ] T044 [P] [US3] Utility test for text samples difficulty categorization in src/utils/textSamples.test.ts
+
+**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks
 
 ### Implementation for User Story 3
 
-- [ ] T042 [P] [US3] Create DifficultySelector types in src/components/DifficultySelector/DifficultySelector.types.ts
-- [ ] T043 [P] [US3] Implement DifficultySelector component in src/components/DifficultySelector/DifficultySelector.tsx (depends on T042)
-- [ ] T044 [P] [US3] Create barrel export for DifficultySelector in src/components/DifficultySelector/index.ts
-- [ ] T045 [US3] Integrate DifficultySelector with App component
-- [ ] T046 [US3] Update TypingTest to handle difficulty-based text samples
-- [ ] T047 [US3] Add accessibility attributes to DifficultySelector
-- [ ] T048 [US3] Add responsive design to DifficultySelector
+- [ ] T045 [P] [US3] Create DifficultySelector types in src/components/DifficultySelector/DifficultySelector.types.ts
+- [ ] T046 [P] [US3] Implement DifficultySelector component in src/components/DifficultySelector/DifficultySelector.tsx (depends on T045)
+- [ ] T047 [P] [US3] Create barrel export for DifficultySelector in src/components/DifficultySelector/index.ts
+- [ ] T048 [US3] Integrate DifficultySelector with App component
+- [ ] T049 [US3] Update TypingTest to handle difficulty-based text samples
+- [ ] T050 [US3] Add accessibility attributes to DifficultySelector
+- [ ] T051 [US3] Add responsive design to DifficultySelector
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -136,16 +145,21 @@ description: 'Task list template for feature implementation'
 
 **Purpose**: Improvements that affect multiple user stories
 
-- [ ] T049 [P] Update main.tsx entry point with App component
-- [ ] T050 [P] Update index.html with proper meta tags and accessibility
-- [ ] T051 [P] Documentation updates in README.md
-- [ ] T052 Code cleanup and refactoring across all components
-- [ ] T053 Performance optimization for real-time WPM updates
-- [ ] T054 [P] Additional unit tests for edge cases in all utilities
-- [ ] T055 Accessibility audit and improvements across all components
-- [ ] T056 Run full test suite and ensure 100% coverage
-- [ ] T057 Final responsive design testing across all breakpoints
-- [ ] T058 Error boundary testing and validation
+- [ ] T052 [P] Update main.tsx entry point with App component
+- [ ] T053 [P] Update index.html with proper meta tags and accessibility
+- [ ] T054 [P] Documentation updates in README.md
+- [ ] T055 Code cleanup and refactoring across all components
+- [ ] T056 Performance optimization for real-time WPM updates
+- [ ] T057 [P] Additional unit tests for edge cases in all utilities
+- [ ] T058 Accessibility audit and improvements across all components
+- [ ] T059 Run full test suite and ensure 100% coverage
+- [ ] T060 Final responsive design testing across all breakpoints
+- [ ] T061 Error boundary testing and validation
+- [ ] T062 [P] Implement test timeout handling in src/hooks/useTypingTest.ts
+- [ ] T063 [P] Handle extremely high WPM edge cases in src/utils/wpmCalculator.ts
+- [ ] T064 [P] Add copy-paste prevention in src/components/TypingTest/TypingTest.tsx
+- [ ] T065 [P] Handle browser refresh during active test in src/hooks/useTypingTest.ts
+- [ ] T066 [P] Manage tab switching during test in src/components/TypingTest/TypingTest.tsx
 
 ---
 
