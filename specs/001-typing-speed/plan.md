@@ -23,7 +23,7 @@ Build a single-page React typing speed test application that measures user WPM a
 **Testing**: Vitest 4 with @testing-library/react, 100% coverage required
 **Target Platform**: Web browser (static site)
 **Project Type**: React web application
-**Performance Goals**: 60fps UI, sub-100ms interactions, real-time WPM calculation
+**Performance Goals**: 60fps UI, sub-100ms interactions, real-time WPM calculation. Measured via browser DevTools Performance tab and React Profiler during typing sessions.
 **Constraints**: Must follow TDD, TypeScript strict mode, Tailwind CSS only
 **Scale/Scope**: Single-page typing speed test application
 **Key Algorithms**: WPM calculation (5 chars = 1 word), accuracy percentage, real-time validation
@@ -139,6 +139,12 @@ index.html                           # Main HTML entry point
 - **TestHistory**: Displays past test results from session storage
 - **DifficultySelector**: Allows selection of easy/medium/hard text samples
 - **App**: Main application container integrating all components
+
+**Data Entities**:
+
+- **TypingTest**: Single typing session with text sample, user input, timing, and results
+- **TestResult**: Stores WPM, accuracy, timestamp, and difficulty level for completed tests
+- **TextSample**: Public domain text content organized by difficulty level
 
 ## Implementation Dependencies
 

@@ -95,7 +95,7 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 - **FR-007**: System MUST offer 3 difficulty levels (easy, medium, hard) with appropriate text complexity
 - **FR-008**: System MUST display final results with WPM, accuracy, and time taken via ResultsDisplay component
 - **FR-009**: System MUST provide a history view of past typing tests via TestHistory component
-- **FR-010**: System MUST handle user input validation and prevent cheating
+- **FR-010**: System MUST handle user input validation and prevent cheating with specific thresholds: prevent copy-paste operations, flag speeds >200 WPM as invalid, pause timer on tab switching, and validate character sequences
 
 ### Key Entities _(include if feature involves data)_
 
