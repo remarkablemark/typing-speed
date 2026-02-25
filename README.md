@@ -1,8 +1,8 @@
-# vite-react-tailwind-template
+# typing-speed
 
-[![build](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/build.yml)
-[![test](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/vite-react-tailwind-template/actions/workflows/test.yml)
-[![codecov](https://codecov.io/gh/remarkablemark/vite-react-tailwind-template/graph/badge.svg?token=DEr2eVeqdz)](https://codecov.io/gh/remarkablemark/vite-react-tailwind-template)
+[![build](https://github.com/remarkablemark/typing-speed/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/typing-speed/actions/workflows/build.yml)
+[![test](https://github.com/remarkablemark/typing-speed/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/typing-speed/actions/workflows/test.yml)
+[![codecov](https://codecov.io/gh/remarkablemark/typing-speed/graph/badge.svg?token=DEr2eVeqdz)](https://codecov.io/gh/remarkablemark/typing-speed)
 
 Vite React Tailwind Template
 
@@ -11,8 +11,8 @@ Vite React Tailwind Template
 Clone the repository:
 
 ```sh
-git clone https://github.com/remarkablemark/vite-react-tailwind-template.git
-cd vite-react-tailwind-template
+git clone https://github.com/remarkablemark/typing-speed.git
+cd typing-speed
 ```
 
 Install the dependencies:
