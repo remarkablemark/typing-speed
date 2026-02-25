@@ -56,24 +56,13 @@ describe('App', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('renders footer with copyright', () => {
-    render(<App />);
-
-    expect(screen.getByText(/© 2026 Typing Speed Test/)).toBeInTheDocument();
-    expect(
-      screen.getByText((content) =>
-        content.includes('Built with React and TypeScript'),
-      ),
-    ).toBeInTheDocument();
-  });
-
   it('has proper semantic structure', () => {
     render(<App />);
 
     // Check for semantic elements
     expect(screen.getByRole('banner')).toBeInTheDocument(); // header
     expect(screen.getByRole('main')).toBeInTheDocument(); // main
-    expect(screen.getByRole('contentinfo')).toBeInTheDocument(); // footer
+    // Note: footer was removed, so we don't check for contentinfo role
   });
 
   it('has responsive design classes', () => {

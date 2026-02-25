@@ -111,14 +111,6 @@ export default function App({ children }: AppProps): React.ReactNode {
             )}
           </div>
         </main>
-
-        <footer className="mt-auto bg-white shadow-sm dark:bg-gray-800">
-          <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-            <div className="py-4 text-center text-sm text-gray-500 dark:text-gray-400">
-              © 2026 Typing Speed Test. Built with React and TypeScript.
-            </div>
-          </div>
-        </footer>
       </div>
     </ErrorBoundary>
   );
