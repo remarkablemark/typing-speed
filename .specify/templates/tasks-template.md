@@ -44,17 +44,7 @@ description: 'Task list template for feature implementation'
   ============================================================================
 -->
 
-## Phase 1: Setup (Shared Infrastructure)
-
-**Purpose**: Project initialization and basic structure
-
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize React project with Vite, TypeScript, and Tailwind dependencies
-- [ ] T003 [P] Configure ESLint, Prettier, and Vitest with React Testing Library
-
----
-
-## Phase 2: Foundational (Blocking Prerequisites)
+## Phase 1: Foundational (Blocking Prerequisites)
 
 **Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
 
@@ -62,18 +52,18 @@ description: 'Task list template for feature implementation'
 
 Examples of foundational tasks (adjust based on your project):
 
-- [ ] T004 Setup component structure and barrel exports
-- [ ] T005 [P] Implement test utilities and mock setup
-- [ ] T006 [P] Configure React Testing Library and custom render methods
-- [ ] T007 Create base TypeScript interfaces and types
-- [ ] T008 Configure error boundaries and error handling
-- [ ] T009 Setup environment configuration for development/production
+- [ ] T001 Setup component structure and barrel exports
+- [ ] T002 [P] Implement test utilities and mock setup
+- [ ] T003 [P] Configure React Testing Library and custom render methods
+- [ ] T004 Create base TypeScript interfaces and types
+- [ ] T005 Configure error boundaries and error handling
+- [ ] T006 Setup environment configuration for development/production
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
 
 ---
 
-## Phase 3: User Story 1 - [Title] (Priority: P1) 🎯 MVP
+## Phase 2: User Story 1 - [Title] (Priority: P1) 🎯 MVP
 
 **Goal**: [Brief description of what this story delivers]
 
@@ -83,23 +73,23 @@ Examples of foundational tasks (adjust based on your project):
 
 > **NOTE: Write these tests FIRST, ensure they FAIL before implementation**
 
-- [ ] T010 [P] [US1] Component test for [ComponentName] in src/components/[ComponentName]/[ComponentName].test.tsx
-- [ ] T011 [P] [US1] Integration test for [user journey] in src/components/[ComponentName]/[ComponentName].integration.test.tsx
+- [ ] T007 [P] [US1] Component test for [ComponentName] in src/components/[ComponentName]/[ComponentName].test.tsx
+- [ ] T008 [P] [US1] Integration test for [user journey] in src/components/[ComponentName]/[ComponentName].integration.test.tsx
 
 ### Implementation for User Story 1
 
-- [ ] T012 [P] [US1] Create [Interface] types in src/components/[ComponentName]/[ComponentName].types.ts
-- [ ] T013 [P] [US1] Create [Utility] in src/utils/[utility].ts
-- [ ] T014 [US1] Implement [Component] in src/components/[ComponentName]/[ComponentName].tsx (depends on T012, T013)
-- [ ] T015 [US1] Implement [hook/custom logic] in src/hooks/[hook].ts
-- [ ] T016 [US1] Add accessibility attributes and ARIA labels
-- [ ] T017 [US1] Add error handling and loading states
+- [ ] T009 [P] [US1] Create [Interface] types in src/components/[ComponentName]/[ComponentName].types.ts
+- [ ] T010 [P] [US1] Create [Utility] in src/utils/[utility].ts
+- [ ] T011 [US1] Implement [Component] in src/components/[ComponentName]/[ComponentName].tsx (depends on T009, T010)
+- [ ] T012 [US1] Implement [hook/custom logic] in src/hooks/[hook].ts
+- [ ] T013 [US1] Add accessibility attributes and ARIA labels
+- [ ] T014 [US1] Add error handling and loading states
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 
 ---
 
-## Phase 4: User Story 2 - [Title] (Priority: P2)
+## Phase 3: User Story 2 - [Title] (Priority: P2)
 
 **Goal**: [Brief description of what this story delivers]
 
@@ -107,21 +97,21 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T018 [P] [US2] Component test for [ComponentName] in src/components/[ComponentName]/[ComponentName].test.tsx
-- [ ] T019 [P] [US2] Integration test for [user journey] in src/components/[ComponentName]/[ComponentName].integration.test.tsx
+- [ ] T015 [P] [US2] Component test for [ComponentName] in src/components/[ComponentName]/[ComponentName].test.tsx
+- [ ] T016 [P] [US2] Integration test for [user journey] in src/components/[ComponentName]/[ComponentName].integration.test.tsx
 
 ### Implementation for User Story 2
 
-- [ ] T020 [P] [US2] Create [Interface] types in src/components/[ComponentName]/[ComponentName].types.ts
-- [ ] T021 [US2] Implement [Utility] in src/utils/[utility].ts
-- [ ] T022 [US2] Implement [Component] in src/components/[ComponentName]/[ComponentName].tsx
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
+- [ ] T017 [P] [US2] Create [Interface] types in src/components/[ComponentName]/[ComponentName].types.ts
+- [ ] T018 [US2] Implement [Utility] in src/utils/[utility].ts
+- [ ] T019 [US2] Implement [Component] in src/components/[ComponentName]/[ComponentName].tsx
+- [ ] T020 [US2] Integrate with User Story 1 components (if needed)
 
 **Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
 
 ---
 
-## Phase 5: User Story 3 - [Title] (Priority: P3)
+## Phase 4: User Story 3 - [Title] (Priority: P3)
 
 **Goal**: [Brief description of what this story delivers]
 
@@ -129,14 +119,14 @@ Examples of foundational tasks (adjust based on your project):
 
 ### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
 
-- [ ] T024 [P] [US3] Component test for [ComponentName] in src/components/[ComponentName]/[ComponentName].test.tsx
-- [ ] T025 [P] [US3] Integration test for [user journey] in src/components/[ComponentName]/[ComponentName].integration.test.tsx
+- [ ] T021 [P] [US3] Component test for [ComponentName] in src/components/[ComponentName]/[ComponentName].test.tsx
+- [ ] T022 [P] [US3] Integration test for [user journey] in src/components/[ComponentName]/[ComponentName].integration.test.tsx
 
 ### Implementation for User Story 3
 
-- [ ] T026 [P] [US3] Create [Interface] types in src/components/[ComponentName]/[ComponentName].types.ts
-- [ ] T027 [US3] Implement [Utility] in src/utils/[utility].ts
-- [ ] T028 [US3] Implement [Component] in src/components/[ComponentName]/[ComponentName].tsx
+- [ ] T023 [P] [US3] Create [Interface] types in src/components/[ComponentName]/[ComponentName].types.ts
+- [ ] T024 [US3] Implement [Utility] in src/utils/[utility].ts
+- [ ] T025 [US3] Implement [Component] in src/components/[ComponentName]/[ComponentName].tsx
 
 **Checkpoint**: All user stories should now be independently functional
 
@@ -146,7 +136,7 @@ Examples of foundational tasks (adjust based on your project):
 
 ---
 
-## Phase N: Polish & Cross-Cutting Concerns
+## Phase 5: Polish & Cross-Cutting Concerns
 
 **Purpose**: Improvements that affect multiple user stories
 
@@ -215,15 +205,14 @@ Task: "Create [Utility] in src/utils/[utility].ts"
 
 ### MVP First (User Story 1 Only)
 
-1. Complete Phase 1: Setup
-2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
-3. Complete Phase 3: User Story 1
-4. **STOP and VALIDATE**: Test User Story 1 independently
-5. Deploy/demo if ready
+1. Complete Phase 1: Foundational (CRITICAL - blocks all stories)
+2. Complete Phase 2: User Story 1
+3. **STOP and VALIDATE**: Test User Story 1 independently
+4. Deploy/demo if ready
 
 ### Incremental Delivery
 
-1. Complete Setup + Foundational → Foundation ready
+1. Complete Foundational → Foundation ready
 2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
 3. Add User Story 2 → Test independently → Deploy/Demo
 4. Add User Story 3 → Test independently → Deploy/Demo
@@ -233,11 +222,11 @@ Task: "Create [Utility] in src/utils/[utility].ts"
 
 With multiple developers:
 
-1. Team completes Setup + Foundational together
+1. Team completes Phase 1: Foundational together
 2. Once Foundational is done:
-   - Developer A: User Story 1
-   - Developer B: User Story 2
-   - Developer C: User Story 3
+   - Developer A: User Story 1 (Phase 2)
+   - Developer B: User Story 2 (Phase 3)
+   - Developer C: User Story 3 (Phase 4)
 3. Stories complete and integrate independently
 
 ---
