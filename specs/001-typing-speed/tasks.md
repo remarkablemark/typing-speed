@@ -42,7 +42,6 @@ description: 'Task list template for feature implementation'
 - [ ] T009 [P] Implement comprehensive cheating prevention in src/utils/antiCheat.ts (covers FR-010)
   - Prevent copy-paste operations during test
   - Detect unrealistic typing speeds (>200 WPM)
-  - Validate keystroke timing patterns
   - Prevent tab switching during active test
   - Handle browser refresh detection
 - [ ] T010 Configure error boundary setup in src/components/App/App.tsx
