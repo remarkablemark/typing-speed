@@ -26,11 +26,18 @@
     ></script>
     <style>
       .github-corner > svg {
+        width: 64px;
+        height: 64px;
         opacity: 0.5;
         transition: opacity 0.4s;
       }
       .github-corner:hover > svg {
         opacity: 1;
+      }
+      @media (max-width: 1000px) {
+        .github-corner {
+          display: none;
+        }
       }
     </style>
   </head>
