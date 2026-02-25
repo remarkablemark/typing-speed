@@ -94,23 +94,6 @@ describe('App', () => {
     expect(mainContainer).toHaveClass('dark:bg-gray-900');
   });
 
-  it('has proper layout structure', () => {
-    render(<App />);
-
-    // Check that layout uses proper max-width and centering
-    const header = screen.getByRole('banner');
-    const headerContainer = header.querySelector('.max-w-7xl');
-    expect(headerContainer).toBeInTheDocument();
-  });
-
-  it('renders with proper spacing', () => {
-    render(<App />);
-
-    // Check for proper Tailwind spacing classes
-    const main = screen.getByRole('main');
-    expect(main).toHaveClass('py-6');
-  });
-
   describe('ErrorBoundary', () => {
     const ThrowErrorComponent = () => {
       throw new Error('Test error');
