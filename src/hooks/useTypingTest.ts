@@ -89,12 +89,12 @@ export function useTypingTest(
 
   const handleInput = useCallback(
     (input: string) => {
-      setState((prev) => {
-        // Start test on first character input if not already started
-        if (!prev.isActive && input.length > 0 && !prev.startTime) {
-          return prev; // Let startTest handle the initialization
-        }
+      // Auto-start test on first character
+      if (!state.isActive && input.length > 0 && !state.startTime) {
+        startTest();
+      }
 
+      setState((prev) => {
         const newState = { ...prev, userInput: input };
 
         // Check if test is complete
@@ -141,11 +141,6 @@ export function useTypingTest(
 
         return newState;
       });
-
-      // Auto-start test on first character
-      if (!state.isActive && input.length > 0 && !state.startTime) {
-        startTest();
-      }
     },
     [textSample.content, state.isActive, state.startTime, startTest],
   );
