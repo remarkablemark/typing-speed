@@ -72,11 +72,15 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 
 ### Edge Cases
 
-- What happens when the user types nothing and the test times out?
-- How does system handle when user types faster than expected (extremely high WPM)?
-- What happens when user copies and pastes text instead of typing?
-- How does system handle browser refresh during an active test?
-- What happens when user switches tabs during a test?
+**Given** the user starts a test but types nothing and the test times out, **When** the timeout occurs, **Then** the system displays a "test incomplete" message with option to retry
+
+**Given** the user types at extremely high speed (>200 WPM), **When** this speed is detected, **Then** the system flags it as potentially invalid and requires validation
+
+**Given** the user attempts to copy and paste text instead of typing, **When** paste operation is detected, **Then** the system prevents the paste and shows an error message
+
+**Given** the user refreshes the browser during an active test, **When** the page reloads, **Then** the system detects the interruption and offers to resume or restart the test
+
+**Given** the user switches tabs during an active test, **When** the tab loses focus, **Then** the system pauses the timer and shows a warning when the user returns
 
 ## Requirements _(mandatory)_
 
@@ -106,4 +110,4 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 - **SC-001**: Users can complete a typing test and see their WPM within 5 seconds of finishing
 - **SC-002**: System accurately calculates WPM within ±2 words per minute of manual calculation
 - **SC-003**: System accurately calculates typing accuracy within ±1 percentage point
-- **SC-004**: 95% of users successfully complete at least one typing test on their first visit (measured via session storage completion tracking)
+- **SC-004**: 95% of users successfully complete at least one typing test on their first visit (measured via session storage completion tracking with unique session ID and completion flag)

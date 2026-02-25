@@ -40,6 +40,11 @@ description: 'Task list template for feature implementation'
 - [ ] T007 [P] Create barrel exports for types in src/types/index.ts
 - [ ] T008 [P] Configure input validation utilities in src/utils/inputValidator.ts
 - [ ] T009 [P] Implement comprehensive cheating prevention in src/utils/antiCheat.ts (covers FR-010)
+  - Prevent copy-paste operations during test
+  - Detect unrealistic typing speeds (>200 WPM)
+  - Validate keystroke timing patterns
+  - Prevent tab switching during active test
+  - Handle browser refresh detection
 - [ ] T010 Configure error boundary setup in src/components/App/App.tsx
 
 **Checkpoint**: Foundation ready - user story implementation can now begin in parallel
@@ -60,7 +65,7 @@ description: 'Task list template for feature implementation'
 - [ ] T014 [P] [US1] Utility test for accuracyCalculator in src/utils/accuracyCalculator.test.ts
 - [ ] T015 [P] [US1] Utility test for antiCheat in src/utils/antiCheat.test.ts
 
-**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks
+**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 1
 
@@ -95,7 +100,7 @@ description: 'Task list template for feature implementation'
 - [ ] T031 [P] [US2] Component test for TestHistory in src/components/TestHistory/TestHistory.test.tsx
 - [ ] T032 [P] [US2] Integration test for session storage in src/utils/sessionStorage.test.ts
 
-**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks
+**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 2
 
@@ -127,7 +132,7 @@ description: 'Task list template for feature implementation'
 - [ ] T045 [P] [US3] Component test for DifficultySelector in src/components/DifficultySelector/DifficultySelector.test.tsx
 - [ ] T046 [P] [US3] Utility test for text samples difficulty categorization in src/utils/textSamples.test.ts
 
-**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks
+**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 3
 

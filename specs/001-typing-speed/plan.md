@@ -126,6 +126,22 @@ index.html                           # Main HTML entry point
 
 **Structure Decision**: React single-page application with component-based architecture. Components organized in feature folders with co-located tests and types. All styling via Tailwind CSS utilities.
 
+## Implementation Dependencies
+
+### User Story Dependencies
+
+- **User Story 1 (P1)**: Foundation - can be implemented independently
+- **User Story 2 (P2)**: Depends on User Story 1 completion (uses App component integration)
+- **User Story 3 (P3)**: Depends on User Story 1 completion (uses App component integration)
+
+### Phase Execution Order
+
+1. **Phase 1**: Foundational infrastructure (blocks all other work)
+2. **Phase 2**: User Story 1 implementation (enables Stories 2 & 3)
+3. **Phase 3**: User Story 2 implementation (parallel with Story 3 after Phase 2)
+4. **Phase 4**: User Story 3 implementation (parallel with Story 2 after Phase 2)
+5. **Phase 5**: Polish and cross-cutting concerns
+
 ## Complexity Tracking
 
 > **Fill ONLY if Constitution Check has violations that must be justified**
