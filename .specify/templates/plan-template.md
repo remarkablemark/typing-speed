@@ -82,15 +82,14 @@ src/
 ├── types/                              # Shared TypeScript types
 ├── utils/                              # Utility functions
 ├── hooks/                              # Custom React hooks
-└── main.tsx                            # Application entry point
+├── setupTests.ts                       # Test setup configuration
+├── index.css                           # Global styles
+├── main.tsx                            # Application entry point
+└── vite-env.d.ts                       # Vite type definitions
 
-tests/
-├── __mocks__/                          # Test mocks
-└── setup/                              # Test configuration
+public/                                 # Static assets (SVGs, images, etc.)
 
-public/
-├── index.html
-└── assets/                             # Static assets
+index.html                              # Main HTML entry point
 ```
 
 **Structure Decision**: React single-page application with component-based architecture. Components organized in feature folders with co-located tests and types. All styling via Tailwind CSS utilities.
