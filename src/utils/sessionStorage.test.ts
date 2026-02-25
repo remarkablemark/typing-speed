@@ -61,7 +61,7 @@ describe('sessionStorage', () => {
         wpm: 60,
         accuracy: 95,
         timeElapsed: 120,
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
         difficulty: 'medium' as DifficultyLevel,
         textSampleId: 'sample-1',
       };
@@ -88,7 +88,7 @@ describe('sessionStorage', () => {
         wpm: 50,
         accuracy: 90,
         timeElapsed: 100,
-        timestamp: new Date('2026-02-24T11:00:00Z'),
+        timestamp: new Date('2026-02-24T11:00:00Z').getTime(),
         difficulty: 'easy' as DifficultyLevel,
         textSampleId: 'sample-1',
       };
@@ -98,7 +98,7 @@ describe('sessionStorage', () => {
         wpm: 60,
         accuracy: 95,
         timeElapsed: 120,
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
         difficulty: 'medium' as DifficultyLevel,
         textSampleId: 'sample-2',
       };
@@ -124,10 +124,9 @@ describe('sessionStorage', () => {
         existingResult.timeElapsed,
       );
       expect(savedData.testHistory[0].timestamp).toEqual(
-        (typeof existingResult.timestamp === 'string'
-          ? new Date(existingResult.timestamp)
-          : existingResult.timestamp
-        ).toISOString(),
+        typeof existingResult.timestamp === 'string'
+          ? new Date(existingResult.timestamp).getTime()
+          : existingResult.timestamp,
       );
       expect(savedData.testHistory[0].difficulty).toEqual(
         existingResult.difficulty,
@@ -142,12 +141,7 @@ describe('sessionStorage', () => {
       expect(savedData.testHistory[1].timeElapsed).toEqual(
         newResult.timeElapsed,
       );
-      expect(savedData.testHistory[1].timestamp).toEqual(
-        (typeof newResult.timestamp === 'string'
-          ? new Date(newResult.timestamp)
-          : newResult.timestamp
-        ).toISOString(),
-      );
+      expect(savedData.testHistory[1].timestamp).toEqual(newResult.timestamp);
       expect(savedData.testHistory[1].difficulty).toEqual(newResult.difficulty);
       expect(savedData.testHistory[1].textSampleId).toEqual(
         newResult.textSampleId,
@@ -160,7 +154,7 @@ describe('sessionStorage', () => {
         wpm: 60,
         accuracy: 95,
         timeElapsed: 120,
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
         difficulty: 'medium' as DifficultyLevel,
         textSampleId: 'sample-1',
       };
@@ -181,12 +175,7 @@ describe('sessionStorage', () => {
       expect(savedData.testHistory[0].timeElapsed).toEqual(
         mockResult.timeElapsed,
       );
-      expect(savedData.testHistory[0].timestamp).toEqual(
-        (typeof mockResult.timestamp === 'string'
-          ? new Date(mockResult.timestamp)
-          : mockResult.timestamp
-        ).toISOString(),
-      );
+      expect(savedData.testHistory[0].timestamp).toEqual(mockResult.timestamp);
       expect(savedData.testHistory[0].difficulty).toEqual(
         mockResult.difficulty,
       );
@@ -201,7 +190,7 @@ describe('sessionStorage', () => {
         wpm: 60,
         accuracy: 95,
         timeElapsed: 120,
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
         difficulty: 'medium' as DifficultyLevel,
         textSampleId: 'sample-1',
       };
@@ -225,12 +214,7 @@ describe('sessionStorage', () => {
       expect(savedData.testHistory[0].timeElapsed).toEqual(
         mockResult.timeElapsed,
       );
-      expect(savedData.testHistory[0].timestamp).toEqual(
-        (typeof mockResult.timestamp === 'string'
-          ? new Date(mockResult.timestamp)
-          : mockResult.timestamp
-        ).toISOString(),
-      );
+      expect(savedData.testHistory[0].timestamp).toEqual(mockResult.timestamp);
       expect(savedData.testHistory[0].difficulty).toEqual(
         mockResult.difficulty,
       );
@@ -245,7 +229,7 @@ describe('sessionStorage', () => {
         wpm: 60,
         accuracy: 95,
         timeElapsed: 120,
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
         difficulty: 'medium' as DifficultyLevel,
         textSampleId: 'sample-1',
       };
@@ -270,7 +254,7 @@ describe('sessionStorage', () => {
           wpm: 60,
           accuracy: 95,
           timeElapsed: 120,
-          timestamp: new Date('2026-02-24T12:00:00Z'),
+          timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
           difficulty: 'medium' as DifficultyLevel,
           textSampleId: 'sample-1',
         },
@@ -329,7 +313,7 @@ describe('sessionStorage', () => {
           wpm: 60,
           accuracy: 95,
           timeElapsed: 120,
-          timestamp: new Date('2026-02-24T12:00:00Z'),
+          timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
           difficulty: 'medium' as DifficultyLevel,
           textSampleId: 'sample-1',
         },

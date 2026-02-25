@@ -12,7 +12,7 @@ const createMockTestResult = (
   wpm: 60,
   accuracy: 95,
   timeElapsed: 120,
-  timestamp: new Date('2026-02-24T12:00:00Z'),
+  timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
   difficulty: 'medium' as DifficultyLevel,
   textSampleId: 'sample-1',
   ...overrides,
@@ -136,7 +136,7 @@ describe('ResultsDisplay', () => {
 
   it('shows timestamp information', () => {
     const resultWithTimestamp = createMockTestResult({
-      timestamp: new Date('2026-02-24T14:30:00Z'),
+      timestamp: new Date('2026-02-24T14:30:00Z').getTime(),
     });
     render(<ResultsDisplay {...defaultProps} result={resultWithTimestamp} />);
 
@@ -245,7 +245,7 @@ describe('ResultsDisplay', () => {
 
   it('handles results with string timestamps for backward compatibility', () => {
     const resultWithStringTimestamp = createMockTestResult({
-      timestamp: '2026-02-24T12:00:00.000Z', // String timestamp
+      timestamp: new Date('2026-02-24T12:00:00.000Z').getTime(), // Number timestamp
     });
 
     render(

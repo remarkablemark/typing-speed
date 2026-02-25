@@ -11,7 +11,7 @@ export interface ResultsDisplayMetrics {
   accuracy: number;
   timeElapsed: number;
   difficulty: string;
-  timestamp: Date;
+  timestamp: number;
 }
 
 export interface PerformanceIndicator {

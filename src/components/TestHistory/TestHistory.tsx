@@ -17,8 +17,8 @@ export const TestHistory = ({
     return `${String(minutes)}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-  const formatTimestamp = (date: Date | string): string => {
-    const dateObj = typeof date === 'string' ? new Date(date) : date;
+  const formatTimestamp = (timestamp: number): string => {
+    const dateObj = new Date(timestamp);
     return dateObj.toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: '2-digit',
@@ -26,8 +26,8 @@ export const TestHistory = ({
     });
   };
 
-  const formatDate = (date: Date | string): string => {
-    const dateObj = typeof date === 'string' ? new Date(date) : date;
+  const formatDate = (timestamp: number): string => {
+    const dateObj = new Date(timestamp);
     return dateObj.toLocaleDateString('en-US', {
       month: 'short',
       day: 'numeric',
@@ -96,9 +96,7 @@ export const TestHistory = ({
     return 'text-red-600';
   };
 
-  const sortedResults = [...results].sort(
-    (a, b) => new Date(b.timestamp).getTime() - new Date(a.timestamp).getTime(),
-  );
+  const sortedResults = [...results].sort((a, b) => b.timestamp - a.timestamp);
 
   const stats = calculateStats();
 

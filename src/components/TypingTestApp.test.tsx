@@ -18,7 +18,7 @@ vi.mock('src/components/TypingTest', () => ({
           wpm: 45,
           accuracy: 95,
           timeElapsed: 60,
-          timestamp: new Date(),
+          timestamp: new Date().getTime(),
           difficulty: 'easy',
           textSampleId: 'sample-1',
         });

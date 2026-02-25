@@ -12,7 +12,7 @@ const createMockTestResult = (
   wpm: 60,
   accuracy: 95,
   timeElapsed: 120,
-  timestamp: new Date('2026-02-24T12:00:00Z'),
+  timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
   difficulty: 'medium' as DifficultyLevel,
   textSampleId: 'sample-1',
   ...overrides,
@@ -46,12 +46,12 @@ describe('TestHistory', () => {
       createMockTestResult({
         id: 'test-1',
         wpm: 60,
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
       }),
       createMockTestResult({
         id: 'test-2',
         wpm: 75,
-        timestamp: new Date('2026-02-24T13:00:00Z'),
+        timestamp: new Date('2026-02-24T13:00:00Z').getTime(),
       }),
     ];
 
@@ -101,15 +101,15 @@ describe('TestHistory', () => {
     const results = [
       createMockTestResult({
         id: 'test-1',
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
       }),
       createMockTestResult({
         id: 'test-2',
-        timestamp: new Date('2026-02-24T13:00:00Z'),
+        timestamp: new Date('2026-02-24T13:00:00Z').getTime(),
       }),
       createMockTestResult({
         id: 'test-3',
-        timestamp: new Date('2026-02-24T11:00:00Z'),
+        timestamp: new Date('2026-02-24T11:00:00Z').getTime(),
       }),
     ];
 
@@ -167,11 +167,11 @@ describe('TestHistory', () => {
     const results = [
       createMockTestResult({
         id: 'test-1',
-        timestamp: new Date('2026-02-24T12:00:00Z'),
+        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
       }),
       createMockTestResult({
         id: 'test-2',
-        timestamp: new Date('2026-02-24T14:30:00Z'),
+        timestamp: new Date('2026-02-24T14:30:00Z').getTime(),
       }),
     ];
 
@@ -435,7 +435,7 @@ describe('TestHistory', () => {
       createMockTestResult({
         id: `test-${String(i)}`,
         wpm: 40 + i,
-        timestamp: new Date(Date.now() - i * 60000), // 1 minute apart
+        timestamp: new Date(Date.now() - i * 60000).getTime(), // 1 minute apart
       }),
     );
 
@@ -623,7 +623,7 @@ describe('TestHistory', () => {
       createMockTestResult({
         id: `test-${String(i)}`,
         wpm: 40 + i,
-        timestamp: new Date(Date.now() - i * 60000), // 1 minute apart
+        timestamp: new Date(Date.now() - i * 60000).getTime(), // 1 minute apart
       }),
     );
 
@@ -638,23 +638,7 @@ describe('TestHistory', () => {
     const results = [
       {
         ...createMockTestResult(),
-        timestamp: new Date('2026-02-24T12:00:00.000Z'), // Convert to Date object
-      },
-    ];
-
-    render(<TestHistory {...defaultProps} results={results} />);
-
-    expect(screen.getByTestId('result-test-1')).toBeInTheDocument();
-    expect(
-      screen.getByText(/Feb 24, 2026 at \d{1,2}:\d{2} [AP]M/),
-    ).toBeInTheDocument();
-  });
-
-  it('handles results with string timestamps for formatTimestamp function', () => {
-    const results = [
-      {
-        ...createMockTestResult(),
-        timestamp: '2026-02-24T12:00:00.000Z', // String timestamp
+        timestamp: new Date('2026-02-24T12:00:00.000Z').getTime(), // Convert to number
       },
     ];
 

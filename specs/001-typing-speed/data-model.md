@@ -34,7 +34,7 @@ Represents a completed typing test with metrics.
 - `wpm`: number - Words per minute (5 chars = 1 word)
 - `accuracy`: number - Percentage accuracy (0-100)
 - `timeElapsed`: number - Time in seconds
-- `timestamp`: Date - When test was completed
+- `timestamp`: number - Unix timestamp when test was completed
 - `difficulty`: DifficultyLevel - Test difficulty
 - `textSampleId`: string - Reference to text sample used
 
@@ -92,7 +92,7 @@ interface TestResult {
   wpm: number;
   accuracy: number;
   timeElapsed: number;
-  timestamp: Date;
+  timestamp: number;
   difficulty: DifficultyLevel;
   textSampleId: string;
 }

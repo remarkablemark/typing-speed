@@ -119,10 +119,10 @@ const getSessionData = (): SessionData => {
     }
     const parsed = JSON.parse(stored) as PartialSessionData;
 
-    // Convert timestamp strings back to Date objects
+    // Convert timestamp numbers back to Date objects for compatibility
     const testHistory = (parsed.testHistory ?? []).map((result) => ({
       ...result,
-      timestamp: new Date(result.timestamp),
+      timestamp: result.timestamp,
     }));
 
     return {

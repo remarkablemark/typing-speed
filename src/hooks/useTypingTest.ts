@@ -164,7 +164,7 @@ export function useTypingTest(
       wpm: state.currentWPM,
       accuracy: state.currentAccuracy,
       timeElapsed,
-      timestamp: state.endTime ?? new Date(),
+      timestamp: state.endTime ? state.endTime.getTime() : Date.now(),
       difficulty,
       textSampleId: textSample.id,
     };

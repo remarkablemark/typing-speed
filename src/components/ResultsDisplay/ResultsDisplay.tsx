@@ -15,8 +15,8 @@ export const ResultsDisplay = ({
     return `${String(minutes)}:${remainingSeconds.toString().padStart(2, '0')}`;
   };
 
-  const formatTimestamp = (date: Date | string): string => {
-    const dateObj = typeof date === 'string' ? new Date(date) : date;
+  const formatTimestamp = (timestamp: number): string => {
+    const dateObj = new Date(timestamp);
     return dateObj.toLocaleTimeString('en-US', {
       hour: 'numeric',
       minute: '2-digit',
@@ -193,10 +193,7 @@ export const ResultsDisplay = ({
                   Completion Date:
                 </dt>
                 <dd className="text-gray-800 dark:text-gray-200">
-                  {(typeof result.timestamp === 'string'
-                    ? new Date(result.timestamp)
-                    : result.timestamp
-                  ).toLocaleDateString()}
+                  {new Date(result.timestamp).toLocaleDateString()}
                 </dd>
               </div>
             </dl>
