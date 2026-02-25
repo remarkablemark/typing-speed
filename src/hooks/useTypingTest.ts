@@ -69,7 +69,7 @@ export function useTypingTest(
       setState((prev) => {
         if (!prev.startTime || !prev.isActive) return prev;
 
-        const timeElapsedMs = currentTime - prev.startTime.getTime();
+        const timeElapsedMs = Date.now() - prev.startTime.getTime();
 
         const wpm = calculateWPMFromMs(prev.userInput.length, timeElapsedMs);
         const accuracy = calculateAccuracyFromText(
@@ -85,7 +85,7 @@ export function useTypingTest(
       });
       /* v8 ignore end */
     }, 100); // Update every 100ms for smooth real-time feedback
-  }, [textSample.content, currentTime]);
+  }, [textSample.content]);
 
   const handleInput = useCallback(
     (input: string) => {
