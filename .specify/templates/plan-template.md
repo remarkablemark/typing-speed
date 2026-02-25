@@ -17,21 +17,35 @@
   the iteration process.
 -->
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [e.g., library/cli/web-service/mobile-app/compiler/desktop-app or NEEDS CLARIFICATION]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+**Language/Version**: TypeScript 5 with React 19
+**Primary Dependencies**: React 19, React DOM, Vite 7, Vitest 4, Tailwind CSS 4
+**Storage**: N/A (client-side application)
+**Testing**: Vitest 4 with @testing-library/react, 100% coverage required
+**Target Platform**: Web browser (static site)
+**Project Type**: React web application
+**Performance Goals**: 60fps UI, sub-100ms interactions
+**Constraints**: Must follow TDD, TypeScript strict mode, Tailwind CSS only
+**Scale/Scope**: Single-page typing speed test application
 
 ## Constitution Check
 
 _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
-[Gates determined based on constitution file]
+### Required Compliance
+
+- **Test-First Development**: Tests MUST be written before implementation (TDD mandatory)
+- **React Component Standards**: Functional components only, semantic HTML, accessibility-first
+- **TypeScript Excellence**: Strict mode, explicit types, no implicit any
+- **Tailwind CSS Only**: No custom CSS files, use utility classes exclusively
+- **Code Quality & Automation**: No console.log, ESLint + Prettier enforced, conventional commits
+
+### Validation Checklist
+
+- [ ] Tests written first and validated to fail before implementation
+- [ ] Components follow functional pattern with proper TypeScript interfaces
+- [ ] Styling uses only Tailwind utility classes
+- [ ] Code passes ESLint, TypeScript, and Prettier checks
+- [ ] 100% test coverage achieved (except barrel exports)
 
 ## Project Structure
 
@@ -57,43 +71,29 @@ specs/[###-feature]/
 -->
 
 ```text
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
 src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+├── components/
+│   ├── ComponentName/
+│   │   ├── ComponentName.tsx          # Main component
+│   │   ├── ComponentName.types.ts     # TypeScript interfaces
+│   │   ├── ComponentName.test.tsx     # Unit tests
+│   │   └── index.ts                   # Barrel export
+│   └── ...
+├── types/                              # Shared TypeScript types
+├── utils/                              # Utility functions
+├── hooks/                              # Custom React hooks
+└── main.tsx                            # Application entry point
 
 tests/
-├── contract/
-├── integration/
-└── unit/
+├── __mocks__/                          # Test mocks
+└── setup/                              # Test configuration
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
-
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
-
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
-
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
+public/
+├── index.html
+└── assets/                             # Static assets
 ```
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+**Structure Decision**: React single-page application with component-based architecture. Components organized in feature folders with co-located tests and types. All styling via Tailwind CSS utilities.
 
 ## Complexity Tracking
 
