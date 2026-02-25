@@ -7,7 +7,7 @@
 ### Prerequisites
 
 - Node.js 24+
-- npm or yarn package manager
+- npm package manager
 - Git repository initialized
 
 ### Installation
@@ -117,10 +117,15 @@ useEffect(() => {
 ```typescript
 // Store results for current session only
 const saveResult = (result: TestResult) => {
-  const sessionData = sessionStorage.getItem('typing-speed-test-data');
-  const data = sessionData ? JSON.parse(sessionData) : { testHistory: [] };
-  data.testHistory.push(result);
-  sessionStorage.setItem('typing-speed-test-data', JSON.stringify(data));
+  try {
+    const sessionData = sessionStorage.getItem('typing-speed.data');
+    const data = sessionData ? JSON.parse(sessionData) : { testHistory: [] };
+    data.testHistory.push(result);
+    sessionStorage.setItem('typing-speed.data', JSON.stringify(data));
+  } catch (error) {
+    console.warn('Failed to save test result:', error);
+    // Could implement fallback or user notification
+  }
 };
 ```
 
@@ -153,7 +158,7 @@ const colors = {
 import { render, screen, fireEvent } from '@testing-library/react';
 import { TypingTest } from './TypingTest';
 
-test('starts timer on first keystroke', () => {
+it('starts timer on first keystroke', () => {
   const mockOnComplete = vi.fn();
   render(<TypingTest textSample={sample} onComplete={mockOnComplete} difficulty="easy" />);
 
@@ -170,7 +175,7 @@ test('starts timer on first keystroke', () => {
 ```typescript
 import { calculateWPM, calculateAccuracy } from '../utils';
 
-test('calculates WPM correctly', () => {
+it('calculates WPM correctly', () => {
   expect(calculateWPM(250, 1)).toBe(50); // 250 chars / 5 = 50 words / 1 minute
 });
 ```

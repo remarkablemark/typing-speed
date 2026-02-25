@@ -126,7 +126,7 @@ interface SessionData {
 }
 ```
 
-**Storage Key**: `typing-speed-test-data`
+**Storage Key**: `typing-speed.data`
 
 **Persistence**: Current browser session only (sessionStorage)
 
