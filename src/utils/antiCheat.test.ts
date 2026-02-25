@@ -82,10 +82,14 @@ describe('antiCheat', () => {
       expect(result.reason).toContain('Unrealistic typing speed');
     });
 
-    it('detects unrealistic character rate', () => {
-      const result = checkUnrealisticSpeed(100, 1000); // 100 chars in 1 second
-      expect(result.isCheating).toBe(true);
-      expect(result.reason).toContain('Unrealistic typing speed');
+    it('handles edge cases for WPM calculation', () => {
+      // Test boundary conditions around the 200 WPM limit
+      const result1 = checkUnrealisticSpeed(500, 30000); // 500 chars in 30 seconds = 200 WPM (exactly at limit)
+      expect(result1.isCheating).toBe(false);
+
+      const result2 = checkUnrealisticSpeed(501, 30000); // 501 chars in 30 seconds = ~200.2 WPM (over limit)
+      expect(result2.isCheating).toBe(true);
+      expect(result2.reason).toContain('Unrealistic typing speed');
     });
 
     it('handles zero or negative time', () => {
@@ -102,6 +106,23 @@ describe('antiCheat', () => {
 
       const result2 = checkUnrealisticSpeed(250, 60000); // 250 chars in 1 minute = 50 WPM
       expect(result2.isCheating).toBe(false);
+    });
+
+    it('detects exact boundary conditions', () => {
+      // Test exactly at the limit - should pass
+      const result1 = checkUnrealisticSpeed(1000, 60000); // 1000 chars in 1 minute = 200 WPM (exactly at limit)
+      expect(result1.isCheating).toBe(false);
+
+      // Test just over the limit - should fail
+      const result2 = checkUnrealisticSpeed(1001, 60000); // 1001 chars in 1 minute = ~200.2 WPM (over limit)
+      expect(result2.isCheating).toBe(true);
+      expect(result2.reason).toContain('Unrealistic typing speed');
+    });
+
+    it('validates timestamp in result', () => {
+      const result = checkUnrealisticSpeed(100, 5000);
+      expect(result.detectedAt).toBeInstanceOf(Date);
+      expect(result.detectedAt.getTime()).toBeLessThanOrEqual(Date.now());
     });
   });
 

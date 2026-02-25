@@ -59,33 +59,33 @@ description: 'Task list template for feature implementation'
 
 ### Tests for User Story 1 (TDD - Write FIRST, ensure they FAIL) ⚠️
 
-- [ ] T011 [P] [US1] Component test for TypingTest in src/components/TypingTest/TypingTest.test.tsx
-- [ ] T012 [P] [US1] Component test for App in src/components/App/App.test.tsx
-- [ ] T013 [P] [US1] Utility test for wpmCalculator in src/utils/wpmCalculator.test.ts
-- [ ] T014 [P] [US1] Utility test for accuracyCalculator in src/utils/accuracyCalculator.test.ts
-- [ ] T015 [P] [US1] Utility test for antiCheat in src/utils/antiCheat.test.ts
-- [ ] T016 [P] [US1] Hook test for useTypingTest in src/hooks/useTypingTest.test.ts
-- [ ] T017 [P] [US1] Hook test for useTimer in src/hooks/useTimer.test.ts
-- [ ] T018 [P] [US1] Utility test for inputValidator in src/utils/inputValidator.test.ts
+- [x] T011 [P] [US1] Component test for TypingTest in src/components/TypingTest/TypingTest.test.tsx
+- [x] T012 [P] [US1] Component test for App in src/components/App/App.test.tsx
+- [x] T013 [P] [US1] Utility test for wpmCalculator in src/utils/wpmCalculator.test.ts
+- [x] T014 [P] [US1] Utility test for accuracyCalculator in src/utils/accuracyCalculator.test.ts
+- [x] T015 [P] [US1] Utility test for antiCheat in src/utils/antiCheat.test.ts
+- [x] T016 [P] [US1] Hook test for useTypingTest in src/hooks/useTypingTest.test.ts
+- [x] T017 [P] [US1] Hook test for useTimer in src/hooks/useTimer.test.ts
+- [x] T018 [P] [US1] Utility test for inputValidator in src/utils/inputValidator.test.ts
 
 **VALIDATION STEP**: Run `npm test -- src/components/TypingTest/TypingTest.test.tsx src/components/App/App.test.tsx src/utils/wpmCalculator.test.ts src/utils/accuracyCalculator.test.ts src/utils/antiCheat.test.ts src/hooks/useTypingTest.test.ts src/hooks/useTimer.test.ts src/utils/inputValidator.test.ts` and confirm exit code 1 (tests FAIL) before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 1
 
-- [ ] T019 [P] [US1] Create TypingTest types in src/components/TypingTest/TypingTest.types.ts
-- [ ] T020 [P] [US1] Create comprehensive input validation in src/utils/inputValidator.ts
-- [ ] T021 [US1] Integrate input validation with TypingTest component
-- [ ] T022 [P] [US1] Create App types in src/components/App/App.types.ts
-- [ ] T023 [P] [US1] Create useTypingTest hook in src/hooks/useTypingTest.ts
-- [ ] T024 [P] [US1] Create useTimer hook in src/hooks/useTimer.ts
-- [ ] T025 [P] [US1] Create barrel exports for hooks in src/hooks/index.ts
-- [ ] T026 [US1] Implement TypingTest component in src/components/TypingTest/TypingTest.tsx (depends on T019, T021, T024)
-- [ ] T027 [US1] Implement App component in src/components/App/App.tsx (depends on T022, T026)
-- [ ] T028 [P] [US1] Create barrel export for TypingTest in src/components/TypingTest/index.ts
-- [ ] T029 [P] [US1] Create barrel export for App in src/components/App/index.ts
-- [ ] T030 [US1] Add accessibility attributes and ARIA labels to TypingTest
-- [ ] T031 [US1] Add error handling and loading states to TypingTest
-- [ ] T032 [US1] Add responsive design with Tailwind classes to TypingTest
+- [x] T019 [P] [US1] Create TypingTest types in src/components/TypingTest/TypingTest.types.ts
+- [x] T020 [P] [US1] Create comprehensive input validation in src/utils/inputValidator.ts
+- [x] T021 [US1] Integrate input validation with TypingTest component
+- [x] T022 [P] [US1] Create App types in src/components/App/App.types.ts
+- [x] T023 [P] [US1] Create useTypingTest hook in src/hooks/useTypingTest.ts
+- [x] T024 [P] [US1] Create useTimer hook in src/hooks/useTimer.ts
+- [x] T025 [P] [US1] Create barrel exports for hooks in src/hooks/index.ts
+- [x] T026 [US1] Implement TypingTest component in src/components/TypingTest/TypingTest.tsx (depends on T019, T021, T024)
+- [x] T027 [US1] Implement App component in src/components/App/App.tsx (depends on T022, T026)
+- [x] T028 [P] [US1] Create barrel export for TypingTest in src/components/TypingTest/index.ts
+- [x] T029 [P] [US1] Create barrel export for App in src/components/App/index.ts
+- [x] T030 [US1] Add accessibility attributes and ARIA labels to TypingTest
+- [x] T031 [US1] Add error handling and loading states to TypingTest
+- [x] T032 [US1] Add responsive design with Tailwind classes to TypingTest
 
 **Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
 

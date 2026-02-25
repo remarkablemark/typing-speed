@@ -1,6 +1,5 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { expect, vi } from 'vitest';
 
 import App from './App';
 
@@ -203,17 +202,21 @@ describe('App', () => {
         throw testError;
       };
 
+      // Mock import.meta.env.DEV to be true for this test
+      vi.stubEnv('DEV', true);
+
       render(
         <App>
           <ThrowComponentWithStack />
         </App>,
       );
 
-      // Check if error details are shown (depending on environment)
-      const errorDetails = screen.queryByText(/Error Details/);
-      if (errorDetails) {
-        expect(errorDetails).toBeInTheDocument();
-      }
+      // Check if error details are shown when DEV is true
+      const errorDetails = screen.getByText(/Error Details/);
+      expect(errorDetails).toBeInTheDocument();
+
+      // Restore original value
+      vi.unstubAllEnvs();
     });
 
     it('logs error to console', () => {

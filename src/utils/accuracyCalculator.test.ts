@@ -22,6 +22,10 @@ describe('accuracyCalculator', () => {
     it('handles zero total correctly', () => {
       expect(calculateAccuracy(0, 0)).toBe(100); // Perfect accuracy when no characters expected
       expect(calculateAccuracy(5, 0)).toBe(100); // Still perfect when no characters expected
+
+      // Test the specific branch for total === 0
+      const result = calculateAccuracy(10, 0);
+      expect(result).toBe(100);
     });
 
     it('rounds correctly', () => {
@@ -40,6 +44,30 @@ describe('accuracyCalculator', () => {
     it('clamps values between 0 and 100', () => {
       expect(calculateAccuracy(150, 100)).toBe(100); // More correct than total
       expect(calculateAccuracy(-10, 10)).toBe(0); // Negative correct (shouldn't happen but handled)
+    });
+
+    it('covers all Math.min and Math.max branches', () => {
+      // Test the Math.max(0, accuracy) branch - when accuracy < 0
+      expect(calculateAccuracy(-5, 10)).toBe(0); // accuracy = -50%, clamped to 0
+
+      // Test the Math.min(100, accuracy) branch - when accuracy > 100
+      expect(calculateAccuracy(150, 100)).toBe(100); // accuracy = 150%, clamped to 100
+
+      // Test the normal case where 0 <= accuracy <= 100
+      expect(calculateAccuracy(75, 100)).toBe(75); // accuracy = 75%, no clamping needed
+
+      // Test exact boundary values
+      expect(calculateAccuracy(0, 100)).toBe(0); // exactly 0%
+      expect(calculateAccuracy(100, 100)).toBe(100); // exactly 100%
+
+      // Test edge case where accuracy calculation results in exactly 0
+      expect(calculateAccuracy(0, 1)).toBe(0); // 0/1 = 0%, should trigger Math.max branch
+
+      // Test edge case where accuracy calculation results in exactly 100
+      expect(calculateAccuracy(1, 1)).toBe(100); // 1/1 = 100%, should not trigger clamping
+
+      // Test case that would result in accuracy > 100 to ensure Math.min branch is hit
+      expect(calculateAccuracy(101, 100)).toBe(100); // 101/100 = 101%, clamped to 100
     });
   });
 
@@ -177,22 +205,44 @@ describe('accuracyCalculator', () => {
       });
     });
 
-    it('handles empty strings', () => {
+    it('handles empty strings and covers all logical operator branches', () => {
       const details1 = getAccuracyDetails('', 'hello');
       expect(details1).toHaveLength(5);
       expect(details1[0]).toEqual({
-        char: '',
+        char: '', // This covers the userChar || '' branch when userChar is undefined
         expected: 'h',
-        isCorrect: false,
-        isTyped: false,
+        isCorrect: false, // This covers the userChar === expectedChar false branch
+        isTyped: false, // This covers the i < userInput.length false branch
       });
 
       const details2 = getAccuracyDetails('hello', '');
       expect(details2).toHaveLength(5);
       expect(details2[0]).toEqual({
         char: 'h',
-        expected: '',
-        isCorrect: false,
+        expected: '', // This covers the expectedChar || '' branch when expectedChar is undefined
+        isCorrect: false, // This covers the userChar === expectedChar false branch
+        isTyped: true, // This covers the i < userInput.length true branch
+      });
+
+      // Test case where both are empty strings
+      const details3 = getAccuracyDetails('', '');
+      expect(details3).toHaveLength(0);
+
+      // Test case where characters match to cover the true branch of isCorrect
+      const details4 = getAccuracyDetails('a', 'a');
+      expect(details4[0]).toEqual({
+        char: 'a',
+        expected: 'a',
+        isCorrect: true, // This covers the userChar === expectedChar true branch
+        isTyped: true,
+      });
+
+      // Test case where characters don't match to cover the false branch of isCorrect
+      const details5 = getAccuracyDetails('a', 'b');
+      expect(details5[0]).toEqual({
+        char: 'a',
+        expected: 'b',
+        isCorrect: false, // This covers the userChar === expectedChar false branch
         isTyped: true,
       });
     });

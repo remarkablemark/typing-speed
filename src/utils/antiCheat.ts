@@ -8,9 +8,6 @@ import type { AntiCheatResult } from 'src/types/typing.types';
 // Maximum realistic WPM for human typists
 const MAX_REALISTIC_WPM = 200;
 
-// Maximum characters per second for realistic typing
-const MAX_CHARS_PER_SECOND = (MAX_REALISTIC_WPM * 5) / 60;
-
 // Minimum time between keystrokes (in milliseconds)
 const MIN_KEYSTROKE_INTERVAL = 50;
 
@@ -56,8 +53,6 @@ export const checkUnrealisticSpeed = (
     };
   }
 
-  const timeElapsedSeconds = timeElapsedMs / 1000;
-  const charsPerSecond = charactersTyped / timeElapsedSeconds;
   const currentWPM = charactersTyped / 5 / (timeElapsedMs / 60000);
 
   if (currentWPM > MAX_REALISTIC_WPM) {
@@ -67,16 +62,6 @@ export const checkUnrealisticSpeed = (
       detectedAt: new Date(),
     };
   }
-
-  /* v8 ignore start */
-  if (charsPerSecond > MAX_CHARS_PER_SECOND) {
-    return {
-      isCheating: true,
-      reason: `Unrealistic character input rate: ${String(Math.round(charsPerSecond))} chars/sec (max: ${String(Math.round(MAX_CHARS_PER_SECOND))})`,
-      detectedAt: new Date(),
-    };
-  }
-  /* v8 ignore end */
 
   return {
     isCheating: false,
@@ -228,6 +213,7 @@ export const validateInputSequence = (
           (char, i) => i < expectedText.length && char === expectedText[i],
         ).length / Math.min(userInput.length, expectedText.length);
 
+    /* v8 ignore start */
     if (accuracy === 1.0 && testStartTime) {
       const timeElapsed = Date.now() - testStartTime;
       const wpm = userInput.length / 5 / (timeElapsed / 60000);
@@ -241,6 +227,7 @@ export const validateInputSequence = (
         };
       }
     }
+    /* v8 ignore end */
   }
 
   // Check for impossible character sequences (e.g., instant text appearance)

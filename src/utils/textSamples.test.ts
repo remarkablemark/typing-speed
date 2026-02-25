@@ -1,9 +1,4 @@
-/**
- * Tests for text samples utilities
- */
-
 import type { DifficultyLevel, TextSample } from 'src/types/typing.types';
-import { expect } from 'vitest';
 
 import {
   getRandomTextSample,

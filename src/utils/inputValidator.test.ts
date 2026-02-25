@@ -1,9 +1,3 @@
-/**
- * Tests for input validation utilities
- */
-
-import { expect } from 'vitest';
-
 import {
   isValidKeyboardEvent,
   isValidTypingChar,
@@ -88,6 +82,25 @@ describe('inputValidator', () => {
 
     it('should return false for invalid characters', () => {
       expect(isValidKeyboardEvent(createMockEvent('\x00'))).toBe(false);
+    });
+
+    it('should test navigation keys array coverage', () => {
+      // This test specifically ensures the navigationKeys array is fully covered
+      const navKeys = [
+        'Tab',
+        'Enter',
+        'Backspace',
+        'Delete',
+        'Home',
+        'End',
+        'ArrowLeft',
+        'ArrowRight',
+        'ArrowUp',
+        'ArrowDown',
+      ];
+      navKeys.forEach((key) => {
+        expect(isValidKeyboardEvent(createMockEvent(key))).toBe(true);
+      });
     });
 
     it('should handle edge case characters', () => {
@@ -277,6 +290,16 @@ describe('inputValidator', () => {
       expect(result.isValid).toBe(false);
       expect(result.error).toBe('WPM exceeds realistic maximum of 500');
     });
+
+    it('should return invalid for WPM exactly at maximum boundary', () => {
+      // Test the exact boundary condition to ensure line 216 is covered
+      const result = validateWPMResult(501);
+      expect(result.isValid).toBe(false);
+      expect(result.error).toBe('WPM exceeds realistic maximum of 500');
+
+      // Ensure 500 is still valid
+      expect(validateWPMResult(500).isValid).toBe(true);
+    });
   });
 
   describe('validateAccuracyResult', () => {
@@ -290,6 +313,11 @@ describe('inputValidator', () => {
       expect(validateAccuracyResult(Infinity).isValid).toBe(false);
       expect(validateAccuracyResult(-Infinity).isValid).toBe(false);
       expect(validateAccuracyResult(NaN).isValid).toBe(false);
+
+      // Specifically test the Infinity case to ensure line 231 is covered
+      const infinityResult = validateAccuracyResult(Infinity);
+      expect(infinityResult.isValid).toBe(false);
+      expect(infinityResult.error).toBe('Accuracy must be a finite number');
     });
 
     it('should return invalid for negative accuracy', () => {
