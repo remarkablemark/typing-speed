@@ -14,7 +14,7 @@ vi.mock('src/components/TypingTest', () => ({
     useEffect(() => {
       queueMicrotask(() => {
         onComplete({
-          id: 'result-123',
+          id: `result-${crypto.randomUUID()}`,
           wpm: 45,
           accuracy: 95,
           timeElapsed: 60,
@@ -315,7 +315,7 @@ describe('TypingTestApp', () => {
     expect(screen.getByText(/test history/i)).toBeInTheDocument();
 
     // Find and click the first history result to trigger handleSelectHistoryResult
-    const historyResults = screen.getAllByTestId('result-result-123');
+    const historyResults = screen.getAllByTestId(/result-result-/);
     fireEvent.click(historyResults[0]);
 
     // Should return to results view with the selected result
