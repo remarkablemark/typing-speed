@@ -64,7 +64,7 @@ description: 'Task list template for feature implementation'
 - [ ] T014 [P] [US1] Utility test for accuracyCalculator in src/utils/accuracyCalculator.test.ts
 - [ ] T015 [P] [US1] Utility test for antiCheat in src/utils/antiCheat.test.ts
 
-**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
+**VALIDATION STEP**: Run `npm test -- src/components/TypingTest/TypingTest.test.tsx src/components/App/App.test.tsx src/utils/wpmCalculator.test.ts src/utils/accuracyCalculator.test.ts src/utils/antiCheat.test.ts` and confirm all tests FAIL with exit code 1 before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 1
 
@@ -99,7 +99,7 @@ description: 'Task list template for feature implementation'
 - [ ] T031 [P] [US2] Component test for TestHistory in src/components/TestHistory/TestHistory.test.tsx
 - [ ] T032 [P] [US2] Integration test for session storage in src/utils/sessionStorage.test.ts
 
-**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
+**VALIDATION STEP**: Run `npm test -- src/components/ResultsDisplay/ResultsDisplay.test.tsx src/components/TestHistory/TestHistory.test.tsx src/utils/sessionStorage.test.ts` and confirm all tests FAIL with exit code 1 before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 2
 
@@ -131,7 +131,7 @@ description: 'Task list template for feature implementation'
 - [ ] T045 [P] [US3] Component test for DifficultySelector in src/components/DifficultySelector/DifficultySelector.test.tsx
 - [ ] T046 [P] [US3] Utility test for text samples difficulty categorization in src/utils/textSamples.test.ts
 
-**VALIDATION STEP**: Run all tests above and confirm they FAIL before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
+**VALIDATION STEP**: Run `npm test -- src/components/DifficultySelector/DifficultySelector.test.tsx src/utils/textSamples.test.ts` and confirm all tests FAIL with exit code 1 before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 3
 

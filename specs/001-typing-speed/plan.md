@@ -45,11 +45,13 @@ _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### Validation Checklist
 
-- [ ] Tests written first and validated to fail before implementation
-- [ ] Components follow functional pattern with proper TypeScript interfaces
-- [ ] Styling uses only Tailwind utility classes
-- [ ] Code passes ESLint, TypeScript, and Prettier checks
-- [ ] 100% test coverage achieved (except barrel exports)
+- [ ] Run `npm run lint:tsc` to verify TypeScript strict mode compliance
+- [ ] Run `npm run lint` to verify ESLint rules pass with no errors
+- [ ] Run `npm test` after writing tests to confirm they FAIL (exit code 1)
+- [ ] Run `npm run test:ci` after implementation to verify 100% coverage
+- [ ] Verify component files follow pattern: Component.tsx, Component.types.ts, Component.test.tsx, index.ts
+- [ ] Check styling uses only Tailwind utility classes (no custom CSS imports)
+- [ ] Confirm git pre-commit hooks run successfully with `npm install`
 
 ## Project Structure
 
