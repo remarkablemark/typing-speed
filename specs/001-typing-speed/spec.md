@@ -10,6 +10,7 @@
 ### Session 2026-02-24
 
 - Q: Where do the text samples come from? → A: Public domain texts (classic literature, educational, historical documents)
+- Q: How many difficulty levels? → A: 3 difficulty levels (easy, medium, hard)
 
 ## User Scenarios & Testing _(mandatory)_
 
@@ -47,7 +48,7 @@ User wants to see their typing test results and track their improvement over mul
 
 ### User Story 3 - Difficulty Levels (Priority: P3)
 
-User wants to choose different difficulty levels for typing tests based on text complexity and length.
+User wants to choose from 3 difficulty levels (easy, medium, hard) for typing tests based on text complexity and length.
 
 **Why this priority**: Allows users to progressively challenge themselves and accommodates different skill levels.
 
@@ -57,7 +58,8 @@ User wants to choose different difficulty levels for typing tests based on text 
 
 1. **Given** the user is on the typing test page, **When** they select a difficulty level, **Then** an appropriate text sample is displayed
 2. **Given** the user chooses "easy" difficulty, **When** the test starts, **Then** simple, common words are displayed
-3. **Given** the user chooses "hard" difficulty, **When** the test starts, **Then** complex words and punctuation are included
+3. **Given** the user chooses "medium" difficulty, **When** the test starts, **Then** moderate complexity words and some punctuation are displayed
+4. **Given** the user chooses "hard" difficulty, **When** the test starts, **Then** complex words and punctuation are included
 
 ---
 
@@ -79,7 +81,7 @@ User wants to choose different difficulty levels for typing tests based on text 
 - **FR-004**: System MUST provide real-time feedback during typing
 - **FR-005**: System MUST highlight typing errors as they occur
 - **FR-006**: System MUST store test results locally during the current browser session
-- **FR-007**: System MUST offer multiple difficulty levels with appropriate text complexity
+- **FR-007**: System MUST offer 3 difficulty levels (easy, medium, hard) with appropriate text complexity
 - **FR-008**: System MUST display final results with WPM, accuracy, and time taken
 - **FR-009**: System MUST provide a history view of past typing tests
 - **FR-010**: System MUST handle user input validation and prevent cheating
