@@ -1,0 +1,1 @@
+export { useTypingTest } from './useTypingTest';

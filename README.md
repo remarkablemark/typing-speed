@@ -1,12 +1,12 @@
-# Typing Speed
+# Typing Speed Test
 
 [![build](https://github.com/remarkablemark/typing-speed/actions/workflows/build.yml/badge.svg)](https://github.com/remarkablemark/typing-speed/actions/workflows/build.yml)
 [![test](https://github.com/remarkablemark/typing-speed/actions/workflows/test.yml/badge.svg)](https://github.com/remarkablemark/typing-speed/actions/workflows/test.yml)
 [![codecov](https://codecov.io/gh/remarkablemark/typing-speed/graph/badge.svg?token=dqHHDzMAHx)](https://codecov.io/gh/remarkablemark/typing-speed)
 
-⌨️ Test your typing speed:
+⌨️ Test and review your typing speed:
 
-- [Typing Speed](https://remarkablemark.org/typing-speed/)
+- [Typing Speed Test](https://remarkablemark.org/typing-speed/)
 
 ## Install
 

@@ -7,8 +7,8 @@
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⌨️ </text></svg>"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Test your typing speed" />
-    <title>Typing Speed</title>
+    <meta name="description" content="Test and review your typing speed." />
+    <title>Typing Speed Test</title>
     <script>
       document.documentElement.classList.toggle(
         'dark',
@@ -26,16 +26,23 @@
     ></script>
     <style>
       .github-corner > svg {
+        width: 64px;
+        height: 64px;
         opacity: 0.5;
         transition: opacity 0.4s;
       }
       .github-corner:hover > svg {
         opacity: 1;
       }
+      @media (max-width: 1000px) {
+        .github-corner {
+          display: none;
+        }
+      }
     </style>
   </head>
-  <body class="flex min-h-screen min-w-80 place-items-center">
-    <div class="mx-auto" id="root"></div>
+  <body>
+    <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

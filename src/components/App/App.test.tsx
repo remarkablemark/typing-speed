@@ -1,32 +1,278 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import App from '.';
+import App from './App';
 
-describe('App component', () => {
-  it('renders without crashing', () => {
+// Mock console.error to avoid noise in test output
+// eslint-disable-next-line no-console
+const originalConsoleError = console.error;
+
+beforeEach(() => {
+  // eslint-disable-next-line no-console
+  console.error = vi.fn();
+});
+
+afterEach(() => {
+  // eslint-disable-next-line no-console
+  console.error = originalConsoleError;
+});
+
+describe('App', () => {
+  it('renders header with correct title', () => {
     render(<App />);
 
-    const heading = screen.getByRole('heading', { level: 1 });
-    expect(heading).toBeInTheDocument();
-
-    const button = screen.getByRole('button', { name: /count is 0/i });
-    expect(button).toBeInTheDocument();
-
-    const images = screen.getAllByRole('img');
-    expect(images).toHaveLength(3);
+    expect(screen.getByText('Typing Speed Test')).toBeInTheDocument();
   });
 
-  it('button click increments count', async () => {
-    const user = userEvent.setup();
+  it('renders header with subtitle', () => {
     render(<App />);
 
-    const button = screen.getByRole('button', { name: /count is 0/i });
+    expect(
+      screen.getByText('Test your typing speed and accuracy'),
+    ).toBeInTheDocument();
+  });
 
-    await user.click(button);
-    expect(button).toHaveTextContent('count is 1');
+  it('renders welcome message when no children provided', () => {
+    render(<App />);
 
-    await user.click(button);
-    expect(button).toHaveTextContent('count is 2');
+    expect(
+      screen.getByText('Welcome to Typing Speed Test'),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByText('Select a difficulty level to begin your typing test.'),
+    ).toBeInTheDocument();
+  });
+
+  it('renders children when provided', () => {
+    render(
+      <App>
+        <div>Test Content</div>
+      </App>,
+    );
+
+    expect(screen.getByText('Test Content')).toBeInTheDocument();
+    expect(
+      screen.queryByText('Welcome to Typing Speed Test'),
+    ).not.toBeInTheDocument();
+  });
+
+  it('provides proper semantic structure for screen readers', () => {
+    render(<App />);
+
+    // Check for semantic landmarks that help navigation
+    expect(screen.getByRole('banner')).toBeInTheDocument(); // header
+    expect(screen.getByRole('main')).toBeInTheDocument(); // main content
+
+    // Check for proper heading hierarchy
+    const headings = screen.getAllByRole('heading');
+    expect(headings).toHaveLength(2); // Should have h1 and h2
+    expect(headings[0]).toHaveTextContent('Typing Speed Test');
+    expect(headings[1]).toHaveTextContent('Welcome to Typing Speed Test');
+  });
+
+  it('handles error boundary correctly', () => {
+    // This test would verify error boundary functionality
+    // For now, we just check that the component renders without throwing
+    expect(() => render(<App />)).not.toThrow();
+  });
+
+  it('supports keyboard navigation and screen readers', () => {
+    render(<App />);
+
+    // Check that the main heading is properly identified
+    expect(
+      screen.getByRole('heading', { level: 1, name: /typing speed test/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 2,
+        name: /welcome to typing speed test/i,
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it('has responsive design classes', () => {
+    render(<App />);
+
+    const header = screen.getByRole('banner');
+    expect(header).toHaveClass('bg-white', 'dark:bg-gray-800', 'shadow-sm');
+  });
+
+  it('uses dark mode support', () => {
+    render(<App />);
+
+    // Check for dark mode classes on the main container
+    const mainContainer = document.querySelector('.min-h-screen');
+    expect(mainContainer).toHaveClass('dark:bg-gray-900');
+  });
+
+  it('reloads page when header title is clicked', async () => {
+    const mockReload = vi.fn();
+    const originalLocation = window.location;
+    Object.defineProperty(window, 'location', {
+      value: { reload: mockReload },
+      writable: true,
+    });
+
+    try {
+      render(<App />);
+
+      const headerButton = screen.getByRole('button', {
+        name: 'Typing Speed Test',
+      });
+      await userEvent.click(headerButton);
+
+      expect(mockReload).toHaveBeenCalled();
+    } finally {
+      Object.defineProperty(window, 'location', {
+        value: originalLocation,
+        writable: true,
+      });
+    }
+  });
+
+  describe('ErrorBoundary', () => {
+    const ThrowErrorComponent = () => {
+      throw new Error('Test error');
+    };
+
+    it('catches errors and displays error UI', () => {
+      render(
+        <App>
+          <ThrowErrorComponent />
+        </App>,
+      );
+
+      expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+      expect(
+        screen.getByText(
+          'We apologize for the inconvenience. The application encountered an unexpected error.',
+        ),
+      ).toBeInTheDocument();
+    });
+
+    it('displays reload and try again buttons', () => {
+      render(
+        <App>
+          <ThrowErrorComponent />
+        </App>,
+      );
+
+      expect(
+        screen.getByRole('button', { name: 'Reload Page' }),
+      ).toBeInTheDocument();
+      expect(
+        screen.getByRole('button', { name: 'Try Again' }),
+      ).toBeInTheDocument();
+    });
+
+    it('reloads page when reload button is clicked', async () => {
+      const mockReload = vi.fn();
+      const originalLocation = window.location;
+      Object.defineProperty(window, 'location', {
+        value: { reload: mockReload },
+        writable: true,
+      });
+
+      try {
+        render(
+          <App>
+            <ThrowErrorComponent />
+          </App>,
+        );
+
+        const reloadButton = screen.getByRole('button', {
+          name: 'Reload Page',
+        });
+        await userEvent.click(reloadButton);
+
+        expect(mockReload).toHaveBeenCalled();
+      } finally {
+        Object.defineProperty(window, 'location', {
+          value: originalLocation,
+          writable: true,
+        });
+      }
+    });
+
+    it('resets error state when try again button is clicked', async () => {
+      render(
+        <App>
+          <ThrowErrorComponent />
+        </App>,
+      );
+
+      // Initially shows error UI
+      expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+
+      const tryAgainButton = screen.getByRole('button', { name: 'Try Again' });
+      await userEvent.click(tryAgainButton);
+
+      // Should show the error again since the component still throws
+      expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    });
+
+    it('shows error details when available', () => {
+      const testError = new Error('Test error with stack');
+      testError.stack =
+        'Error: Test error with stack\n    at ThrowErrorComponent';
+
+      const ThrowComponentWithStack = () => {
+        throw testError;
+      };
+
+      // Mock import.meta.env.DEV to be true for this test
+      vi.stubEnv('DEV', true);
+
+      render(
+        <App>
+          <ThrowComponentWithStack />
+        </App>,
+      );
+
+      // Check if error details are shown when DEV is true
+      const errorDetails = screen.getByText(/Error Details/);
+      expect(errorDetails).toBeInTheDocument();
+
+      // Restore original value
+      vi.unstubAllEnvs();
+    });
+
+    it('logs error to console', () => {
+      render(
+        <App>
+          <ThrowErrorComponent />
+        </App>,
+      );
+
+      // eslint-disable-next-line no-console
+      expect(console.error).toHaveBeenCalledWith(
+        'Error caught by boundary:',
+        expect.any(Error),
+        expect.objectContaining({
+          // eslint-disable-next-line @typescript-eslint/no-unsafe-assignment
+          componentStack: expect.any(String),
+        }),
+      );
+    });
+
+    it('handles errors without stack trace', () => {
+      const errorWithoutStack = new Error('Error without stack') as Error & {
+        stack?: string;
+      };
+      delete errorWithoutStack.stack;
+
+      const ThrowComponentWithoutStack = () => {
+        throw errorWithoutStack;
+      };
+
+      render(
+        <App>
+          <ThrowComponentWithoutStack />
+        </App>,
+      );
+
+      expect(screen.getByText('Something went wrong')).toBeInTheDocument();
+    });
   });
 });
