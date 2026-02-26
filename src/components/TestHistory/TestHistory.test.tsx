@@ -30,6 +30,16 @@ describe('TestHistory', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+
+    // Mock timezone to ensure consistent timestamp formatting across all environments
+    // Set timezone to Eastern Standard Time (UTC-5) to match original test expectations
+    Object.defineProperty(Intl.DateTimeFormat.prototype, 'resolvedOptions', {
+      value: () => ({
+        locale: 'en-US',
+        timeZone: 'America/New_York',
+      }),
+      writable: true,
+    });
   });
 
   it('renders empty state when no results', () => {
