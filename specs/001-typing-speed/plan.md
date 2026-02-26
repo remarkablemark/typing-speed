@@ -47,13 +47,13 @@ _GATE: Must pass before Phase 0 research. Re-check after Phase 1 design._
 
 ### Validation Checklist
 
-- [ ] Run `npm run lint:tsc` to verify TypeScript strict mode compliance
-- [ ] Run `npm run lint` to verify ESLint rules pass with no errors
-- [ ] Run `npm test` after writing tests to confirm they FAIL (exit code 1) - TDD requirement
-- [ ] Run `npm run test:ci` after implementation to verify 100% coverage
-- [ ] Verify component files follow pattern: Component.tsx, Component.types.ts, Component.test.tsx, index.ts
-- [ ] Check styling uses only Tailwind utility classes (no custom CSS imports)
-- [ ] Confirm git pre-commit hooks run successfully with `npm install`
+- [x] Run `npm run lint:tsc` to verify TypeScript strict mode compliance
+- [x] Run `npm run lint` to verify ESLint rules pass with no errors
+- [x] Run `npm test` after writing tests to confirm they FAIL (exit code 1) - TDD requirement
+- [x] Run `npm run test:ci` after implementation to verify 100% coverage
+- [x] Verify component files follow pattern: Component.tsx, Component.types.ts, Component.test.tsx, index.ts
+- [x] Check styling uses only Tailwind utility classes (no custom CSS imports)
+- [x] Confirm git pre-commit hooks run successfully with `npm install`
 
 ## Project Structure
 
