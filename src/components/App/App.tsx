@@ -44,7 +44,7 @@ class ErrorBoundary extends Component<AppProps, AppState> {
                   onClick={() => {
                     window.location.reload();
                   }}
-                  className="w-full rounded-md bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700"
+                  className="w-full cursor-pointer rounded-md bg-blue-600 px-4 py-2 font-medium text-white transition-colors hover:bg-blue-700"
                 >
                   Reload Page
                 </button>
@@ -53,7 +53,7 @@ class ErrorBoundary extends Component<AppProps, AppState> {
                   onClick={() => {
                     this.setState({ hasError: false, error: undefined });
                   }}
-                  className="w-full rounded-md bg-gray-200 px-4 py-2 font-medium text-gray-800 transition-colors hover:bg-gray-300"
+                  className="w-full cursor-pointer rounded-md bg-gray-200 px-4 py-2 font-medium text-gray-800 transition-colors hover:bg-gray-300"
                 >
                   Try Again
                 </button>
@@ -86,7 +86,15 @@ export default function App({ children }: AppProps): React.ReactNode {
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
               <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Typing Speed Test
+                <button
+                  type="button"
+                  onClick={() => {
+                    window.location.reload();
+                  }}
+                  className="cursor-pointer transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+                >
+                  Typing Speed Test
+                </button>
               </h1>
               <div className="flex items-center space-x-4">
                 <span className="text-sm text-gray-500 dark:text-gray-400">

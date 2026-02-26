@@ -94,6 +94,23 @@ describe('App', () => {
     expect(mainContainer).toHaveClass('dark:bg-gray-900');
   });
 
+  it('reloads page when header title is clicked', async () => {
+    const mockReload = vi.fn();
+    Object.defineProperty(window, 'location', {
+      value: { reload: mockReload },
+      writable: true,
+    });
+
+    render(<App />);
+
+    const headerButton = screen.getByRole('button', {
+      name: 'Typing Speed Test',
+    });
+    await userEvent.click(headerButton);
+
+    expect(mockReload).toHaveBeenCalled();
+  });
+
   describe('ErrorBoundary', () => {
     const ThrowErrorComponent = () => {
       throw new Error('Test error');
