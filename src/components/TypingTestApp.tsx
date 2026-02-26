@@ -2,7 +2,11 @@ import { useState } from 'react';
 import { ResultsDisplay } from 'src/components/ResultsDisplay';
 import { TestHistory } from 'src/components/TestHistory';
 import { TypingTest } from 'src/components/TypingTest';
-import type { DifficultyLevel, TestResult } from 'src/types/typing.types';
+import type {
+  DifficultyLevel,
+  TestResult,
+  TextSample,
+} from 'src/types/typing.types';
 import {
   clearTestHistory,
   getTestHistory,
@@ -19,6 +23,9 @@ export function TypingTestApp(): React.ReactNode {
   const [testHistory, setTestHistory] = useState<TestResult[]>(() =>
     getTestHistory(),
   );
+  const [currentTextSample, setCurrentTextSample] = useState<TextSample>(() =>
+    getRandomTextSample('easy'),
+  );
 
   const handleStartTest = () => {
     setIsTestActive(true);
@@ -34,6 +41,8 @@ export function TypingTestApp(): React.ReactNode {
   };
 
   const handleRestart = () => {
+    const newTextSample = getRandomTextSample(currentDifficulty);
+    setCurrentTextSample(newTextSample);
     setCurrentResult(undefined);
     setIsTestActive(false);
   };
@@ -54,11 +63,11 @@ export function TypingTestApp(): React.ReactNode {
 
   const handleDifficultyChange = (difficulty: DifficultyLevel) => {
     setCurrentDifficulty(difficulty);
+    const newTextSample = getRandomTextSample(difficulty);
+    setCurrentTextSample(newTextSample);
     setCurrentResult(undefined);
     setIsTestActive(false);
   };
-
-  const textSample = getRandomTextSample(currentDifficulty);
 
   // Show history view
   if (showHistory) {
@@ -85,7 +94,7 @@ export function TypingTestApp(): React.ReactNode {
   if (isTestActive) {
     return (
       <TypingTest
-        textSample={textSample}
+        textSample={currentTextSample}
         onComplete={handleTestComplete}
         difficulty={currentDifficulty}
       />
@@ -140,7 +149,7 @@ export function TypingTestApp(): React.ReactNode {
             className="truncate rounded-lg border-2 border-gray-300 bg-gray-50 p-4 font-mono text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
             data-testid="text-preview"
           >
-            {textSample.content}
+            {currentTextSample.content}
           </div>
         </div>
 
