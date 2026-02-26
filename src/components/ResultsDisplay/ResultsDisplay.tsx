@@ -183,12 +183,12 @@ export const ResultsDisplay = ({
               <div>
                 <dt className="text-gray-600 dark:text-gray-400">Errors:</dt>
                 <dd className="text-gray-800 dark:text-gray-200">
-                  {Math.round(
-                    ((100 - result.accuracy) / 100) *
-                      result.wpm *
-                      5 *
-                      Math.round(result.timeElapsed / 60),
-                  )}
+                  {textSample
+                    ? Math.round(
+                        textSample.characterCount -
+                          (result.accuracy / 100) * textSample.characterCount,
+                      )
+                    : 0}
                 </dd>
               </div>
               <div>

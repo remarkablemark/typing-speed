@@ -265,4 +265,113 @@ describe('ResultsDisplay', () => {
     expect(screen.getByText(/completion date/i)).toBeInTheDocument();
     expect(screen.getByText(/\d{1,2}\/\d{1,2}\/\d{4}/)).toBeInTheDocument();
   });
+
+  it('calculates errors correctly based on accuracy and character count', () => {
+    const resultWithErrors = createMockTestResult({
+      accuracy: 78, // 78% accuracy means 22% errors
+      textSampleId: 'easy-14', // This sample has 27 characters
+    });
+
+    render(<ResultsDisplay {...defaultProps} result={resultWithErrors} />);
+
+    // Expand details to see error count
+    const expandButton = screen.getByText(/[▶▼] show test details/i);
+    fireEvent.click(expandButton);
+
+    // 27 characters * (100 - 78)% = 27 * 0.22 = 5.94 ≈ 6 errors
+    // Look for the error count specifically by finding it near the "Errors:" label
+    const errorsLabel = screen.getByText(/errors/i);
+    const errorsValue = errorsLabel.nextElementSibling;
+    expect(errorsValue).toHaveTextContent('6');
+  });
+
+  it('shows zero errors for perfect accuracy', () => {
+    const perfectResult = createMockTestResult({
+      accuracy: 100, // Perfect accuracy
+      textSampleId: 'easy-1', // This sample has 43 characters
+    });
+
+    render(<ResultsDisplay {...defaultProps} result={perfectResult} />);
+
+    // Expand details to see error count
+    const expandButton = screen.getByText(/[▶▼] show test details/i);
+    fireEvent.click(expandButton);
+
+    // Look for the error count specifically by finding it near the "Errors:" label
+    const errorsLabel = screen.getByText(/errors/i);
+    const errorsValue = errorsLabel.nextElementSibling;
+    expect(errorsValue).toHaveTextContent('0');
+  });
+
+  it('calculates errors for low accuracy', () => {
+    const lowAccuracyResult = createMockTestResult({
+      accuracy: 50, // 50% accuracy means 50% errors
+      textSampleId: 'easy-1', // This sample has 43 characters
+    });
+
+    render(<ResultsDisplay {...defaultProps} result={lowAccuracyResult} />);
+
+    // Expand details to see error count
+    const expandButton = screen.getByText(/[▶▼] show test details/i);
+    fireEvent.click(expandButton);
+
+    // 43 characters * (100 - 50)% = 43 * 0.5 = 21.5 ≈ 22 errors
+    // Look for the error count specifically by finding it near the "Errors:" label
+    const errorsLabel = screen.getByText(/errors/i);
+    const errorsValue = errorsLabel.nextElementSibling;
+    expect(errorsValue).toHaveTextContent('22');
+  });
+
+  it('handles missing text sample gracefully for error calculation', () => {
+    const resultWithMissingSample = createMockTestResult({
+      accuracy: 75,
+      textSampleId: 'non-existent-id', // This sample doesn't exist
+    });
+
+    render(
+      <ResultsDisplay {...defaultProps} result={resultWithMissingSample} />,
+    );
+
+    // Expand details to see error count
+    const expandButton = screen.getByText(/[▶▼] show test details/i);
+    fireEvent.click(expandButton);
+
+    // Should show 0 errors when text sample is not found
+    // Look for the error count specifically by finding it near the "Errors:" label
+    const errorsLabel = screen.getByText(/errors/i);
+    const errorsValue = errorsLabel.nextElementSibling;
+    expect(errorsValue).toHaveTextContent('0');
+  });
+
+  it('displays consistent error and accuracy relationship', () => {
+    const testCases = [
+      { accuracy: 90, expectedErrors: 4 }, // 43 chars * 10% = 4.3 ≈ 4
+      { accuracy: 80, expectedErrors: 9 }, // 43 chars * 20% = 8.6 ≈ 9
+      { accuracy: 70, expectedErrors: 13 }, // 43 chars * 30% = 12.9 ≈ 13
+    ];
+
+    testCases.forEach(({ accuracy, expectedErrors }) => {
+      const { unmount } = render(
+        <ResultsDisplay
+          {...defaultProps}
+          result={createMockTestResult({
+            accuracy,
+            textSampleId: 'easy-1', // 43 characters
+          })}
+        />,
+      );
+
+      // Expand details to see error count
+      const expandButton = screen.getByText(/[▶▼] show test details/i);
+      fireEvent.click(expandButton);
+
+      // Look for the error count specifically by finding it near the "Errors:" label
+      const errorsLabel = screen.getByText(/errors/i);
+      const errorsValue = errorsLabel.nextElementSibling;
+      expect(errorsValue).toHaveTextContent(String(expectedErrors));
+
+      // Clean up for next test
+      unmount();
+    });
+  });
 });
