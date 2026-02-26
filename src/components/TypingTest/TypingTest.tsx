@@ -31,20 +31,20 @@ export function TypingTest({
     }
   }, [isCompleted, completeTest, onComplete]);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const newValue = e.target.value;
+  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    const newValue = event.target.value;
     handleInput(newValue);
   };
 
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
     // Prevent paste shortcuts
-    if (e.key === 'v' && (e.metaKey || e.ctrlKey)) {
-      e.preventDefault();
+    if (event.key === 'v' && (event.metaKey || event.ctrlKey)) {
+      event.preventDefault();
     }
   };
 
-  const handlePaste = (e: React.ClipboardEvent) => {
-    e.preventDefault();
+  const handlePaste = (event: React.ClipboardEvent) => {
+    event.preventDefault();
   };
 
   const progress = Math.round(
@@ -129,14 +129,14 @@ export function TypingTest({
         </div>
 
         {/* Input Field */}
-        <input
-          type="text"
+        <textarea
           value={userInput}
           onChange={handleChange}
           onKeyDown={handleKeyDown}
           onPaste={handlePaste}
           autoFocus
-          className="w-full rounded-lg border-2 border-gray-300 p-3 focus:border-blue-500 focus:outline-none"
+          rows={3}
+          className="w-full resize-none rounded-lg border-2 border-gray-300 p-3 focus:border-blue-500 focus:outline-none"
           placeholder="Start typing here..."
           disabled={isCompleted}
           aria-label="Typing input field"
