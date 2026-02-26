@@ -96,18 +96,6 @@ export function TypingTest({
           </div>
         </div>
 
-        {/* Completion Guidance */}
-        <div className="mb-4 h-[40px]">
-          {!isActuallyComplete && userInput.length > 0 && (
-            <div className="rounded bg-blue-50 p-3 text-sm text-blue-800">
-              Keep typing! You need{' '}
-              {textSample.content.length - userInput.length} more character
-              {textSample.content.length - userInput.length === 1 ? '' : 's'} to
-              finish.
-            </div>
-          )}
-        </div>
-
         {/* Text Display */}
         <div className="mb-4 rounded-lg border-2 border-gray-300 bg-white p-4 font-mono text-lg leading-relaxed">
           {textSample.content.split('').map((char, index) => {
@@ -141,6 +129,18 @@ export function TypingTest({
           disabled={isCompleted}
           aria-label="Typing input field"
         />
+
+        {/* Completion Guidance */}
+        <div className="mt-4 h-[40px]">
+          {!isActuallyComplete && userInput.length > 0 && (
+            <div className="rounded bg-blue-50 p-3 text-sm text-blue-800">
+              Keep typing! You need{' '}
+              {textSample.content.length - userInput.length} more character
+              {textSample.content.length - userInput.length === 1 ? '' : 's'} to
+              finish.
+            </div>
+          )}
+        </div>
       </div>
     </div>
   );
