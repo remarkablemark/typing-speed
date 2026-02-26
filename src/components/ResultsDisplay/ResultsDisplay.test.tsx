@@ -135,12 +135,34 @@ describe('ResultsDisplay', () => {
   });
 
   it('shows timestamp information', () => {
-    const resultWithTimestamp = createMockTestResult({
-      timestamp: new Date('2026-02-24T14:30:00Z').getTime(),
-    });
-    render(<ResultsDisplay {...defaultProps} result={resultWithTimestamp} />);
+    // Mock timezone to ensure consistent test results across different environments
+    const originalTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    expect(screen.getByText(/9:30 AM/i)).toBeInTheDocument();
+    // Set a specific timezone (America/New_York) for consistent test behavior
+    Object.defineProperty(Intl, 'DateTimeFormat', {
+      value: () => ({
+        resolvedOptions: () => ({ timeZone: 'America/New_York' }),
+      }),
+      writable: true,
+    });
+
+    try {
+      const resultWithTimestamp = createMockTestResult({
+        timestamp: new Date('2026-02-24T14:30:00Z').getTime(),
+      });
+      render(<ResultsDisplay {...defaultProps} result={resultWithTimestamp} />);
+
+      // In America/New_York timezone, 14:30 UTC = 9:30 AM EST
+      expect(screen.getByText(/9:30 AM/i)).toBeInTheDocument();
+    } finally {
+      // Restore original timezone
+      Object.defineProperty(Intl, 'DateTimeFormat', {
+        value: () => ({
+          resolvedOptions: () => ({ timeZone: originalTimezone }),
+        }),
+        writable: true,
+      });
+    }
   });
 
   it('provides semantic structure for assistive technology', () => {

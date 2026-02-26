@@ -30,16 +30,11 @@ describe('TestHistory', () => {
 
   beforeEach(() => {
     vi.clearAllMocks();
+  });
 
-    // Mock timezone to ensure consistent timestamp formatting across all environments
-    // Set timezone to Eastern Standard Time (UTC-5) to match original test expectations
-    Object.defineProperty(Intl.DateTimeFormat.prototype, 'resolvedOptions', {
-      value: () => ({
-        locale: 'en-US',
-        timeZone: 'America/New_York',
-      }),
-      writable: true,
-    });
+  afterEach(() => {
+    // Restore any mocked properties after each test
+    vi.restoreAllMocks();
   });
 
   it('renders empty state when no results', () => {
@@ -174,25 +169,46 @@ describe('TestHistory', () => {
   });
 
   it('displays timestamp for each result', () => {
-    const results = [
-      createMockTestResult({
-        id: 'test-1',
-        timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
-      }),
-      createMockTestResult({
-        id: 'test-2',
-        timestamp: new Date('2026-02-24T14:30:00Z').getTime(),
-      }),
-    ];
+    // Mock timezone to ensure consistent test results across different environments
+    const originalTimezone = Intl.DateTimeFormat().resolvedOptions().timeZone;
 
-    render(<TestHistory {...defaultProps} results={results} />);
+    // Set a specific timezone (America/New_York) for consistent test behavior
+    Object.defineProperty(Intl, 'DateTimeFormat', {
+      value: () => ({
+        resolvedOptions: () => ({ timeZone: 'America/New_York' }),
+      }),
+      writable: true,
+    });
 
-    expect(screen.getByTestId('result-test-1')).toHaveTextContent(
-      'Feb 24, 2026 at 7:00 AM',
-    );
-    expect(screen.getByTestId('result-test-2')).toHaveTextContent(
-      'Feb 24, 2026 at 9:30 AM',
-    );
+    try {
+      const results = [
+        createMockTestResult({
+          id: 'test-1',
+          timestamp: new Date('2026-02-24T12:00:00Z').getTime(),
+        }),
+        createMockTestResult({
+          id: 'test-2',
+          timestamp: new Date('2026-02-24T14:30:00Z').getTime(),
+        }),
+      ];
+
+      render(<TestHistory {...defaultProps} results={results} />);
+
+      expect(screen.getByTestId('result-test-1')).toHaveTextContent(
+        'Feb 24, 2026 at 7:00 AM',
+      );
+      expect(screen.getByTestId('result-test-2')).toHaveTextContent(
+        'Feb 24, 2026 at 9:30 AM',
+      );
+    } finally {
+      // Restore original timezone
+      Object.defineProperty(Intl, 'DateTimeFormat', {
+        value: () => ({
+          resolvedOptions: () => ({ timeZone: originalTimezone }),
+        }),
+        writable: true,
+      });
+    }
   });
 
   it('shows expandable details for each result', () => {
