@@ -9,8 +9,8 @@ import {
 
 describe('textSamples', () => {
   describe('textSamples array', () => {
-    it('should contain 30 text samples (10 for each difficulty)', () => {
-      expect(textSamples).toHaveLength(30);
+    it('should contain 60 text samples (20 for each difficulty)', () => {
+      expect(textSamples).toHaveLength(60);
     });
 
     it('should have proper structure for each sample', () => {
@@ -65,25 +65,25 @@ describe('textSamples', () => {
   });
 
   describe('getTextSamplesByDifficulty', () => {
-    it('should return 10 easy samples', () => {
+    it('should return 20 easy samples', () => {
       const easySamples = getTextSamplesByDifficulty('easy');
-      expect(easySamples).toHaveLength(10);
+      expect(easySamples).toHaveLength(20);
       easySamples.forEach((sample) => {
         expect(sample.difficulty).toBe('easy');
       });
     });
 
-    it('should return 10 medium samples', () => {
+    it('should return 20 medium samples', () => {
       const mediumSamples = getTextSamplesByDifficulty('medium');
-      expect(mediumSamples).toHaveLength(10);
+      expect(mediumSamples).toHaveLength(20);
       mediumSamples.forEach((sample) => {
         expect(sample.difficulty).toBe('medium');
       });
     });
 
-    it('should return 10 hard samples', () => {
+    it('should return 20 hard samples', () => {
       const hardSamples = getTextSamplesByDifficulty('hard');
-      expect(hardSamples).toHaveLength(10);
+      expect(hardSamples).toHaveLength(20);
       hardSamples.forEach((sample) => {
         expect(sample.difficulty).toBe('hard');
       });

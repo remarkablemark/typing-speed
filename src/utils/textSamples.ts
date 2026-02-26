@@ -20,6 +20,16 @@ const easyTexts: string[] = [
   'Books are a great way to learn new things.',
   'Water is essential for all living things.',
   'Kindness costs nothing but means everything.',
+  'Actions speak louder than words.',
+  'A picture is worth a thousand words.',
+  'Better late than never.',
+  'Honesty is the best policy.',
+  'Look before you leap.',
+  'The pen is mightier than the sword.',
+  'You cannot judge a book by its cover.',
+  'Where there is a will, there is a way.',
+  'Two heads are better than one.',
+  'Rome was not built in a day.',
 ];
 
 /**
@@ -37,6 +47,16 @@ const mediumTexts: string[] = [
   'Artistic expression allows humans to convey emotions and ideas that words alone cannot capture.',
   'Economic systems evolve over time to meet the changing needs of societies and individuals.',
   'Health and wellness depend on balance between physical activity, nutrition, and mental well-being.',
+  'The development of sustainable energy sources is crucial for the long-term survival of our planet and ecosystems.',
+  'Learning a second language can improve cognitive flexibility and delay the onset of age-related mental decline.',
+  'The industrial revolution brought about massive changes in agriculture, manufacturing, mining, and transport.',
+  'Regular exercise and a balanced diet are fundamental components of maintaining good physical and mental health.',
+  'Space exploration has led to numerous technological advancements that benefit our daily lives on Earth.',
+  'Effective communication requires not only speaking clearly but also listening actively to others.',
+  'The global economy is highly interconnected, meaning events in one country can affect markets worldwide.',
+  'Protecting biodiversity is essential for maintaining the delicate balance of ecosystems around the world.',
+  'Critical thinking skills are necessary for evaluating the vast amount of information available on the internet.',
+  'Historical events often shape the cultural identity and social structures of modern nations.',
 ];
 
 /**
@@ -54,6 +74,16 @@ const hardTexts: string[] = [
   'The anthropocene epoch reflects humanity unprecedented impact on Earth geology and ecosystems through industrial activities.',
   'Computational linguistics combines computer science, cognitive psychology, and linguistics to understand language processing.',
   'Renewable energy technologies continue to advance, offering promising alternatives to fossil fuel dependency and climate change mitigation.',
+  'The intricate relationship between macroeconomic indicators and fiscal policy determines the trajectory of national and global economic growth.',
+  'Neuroplasticity demonstrates the remarkable ability of the human brain to reorganize its neural pathways in response to new experiences and learning.',
+  'The theoretical framework of string theory attempts to reconcile general relativity with quantum mechanics by modeling particles as one-dimensional strings.',
+  'Epidemiological studies provide vital insights into the distribution, determinants, and dynamic patterns of health and disease conditions in defined populations.',
+  'The complex socio-political dynamics of international relations often require nuanced diplomatic strategies to resolve enduring conflicts and disputes.',
+  'Metabolic pathways involve a highly coordinated series of biochemical reactions that convert substrates into necessary cellular products.',
+  'The architectural design of modern skyscrapers must account for aerodynamic forces, structural integrity, and sustainable energy utilization.',
+  'Cognitive behavioral therapy posits that maladaptive thinking patterns can be systematically identified, challenged, and restructured to improve mental health.',
+  'The evolution of democratic institutions reflects a continuous struggle to balance individual liberties with collective societal responsibilities.',
+  'Advancements in nanotechnology hold the potential to revolutionize targeted drug delivery systems and minimally invasive medical procedures.',
 ];
 
 /**
