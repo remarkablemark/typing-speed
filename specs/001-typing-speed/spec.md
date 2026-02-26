@@ -32,7 +32,7 @@ User wants to measure their typing speed by typing directly into an interactive 
 **Acceptance Scenarios**:
 
 1. **Given** the user is on the typing test page, **When** they start typing directly into the text display, **Then** a timer begins, characters are color-coded in real-time (green for correct, red for incorrect), and WPM is calculated
-2. **Given** the user completes the text sample by typing all characters correctly, **When** they finish typing, **Then** their final WPM and accuracy percentage are displayed in a results view
+2. **Given** the user completes the text sample by typing all characters, **When** they finish typing, **Then** their final WPM and accuracy percentage are displayed in a results view
 3. **Given** the user makes typing errors, **When** they continue typing, **Then** errors are highlighted in red, correct characters in green, and accuracy is calculated correctly
 4. **Given** the user types incorrect characters, **When** they use backspace, **Then** characters are removed and the cursor position updates accordingly
 
@@ -100,6 +100,7 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 - **FR-011**: System MUST accept direct keyboard input into the text display without requiring a separate textarea field
 - **FR-012**: System MUST ignore non-character keys (Enter, Tab, Arrow keys, Escape) to prevent interference with typing flow
 - **FR-013**: System MUST provide visual completion guidance below the text display when user has started typing but not completed the test
+- **FR-014**: System MUST complete the test when the target text length is reached, regardless of typing accuracy, to provide meaningful accuracy measurements
 
 ### Key Entities _(include if feature involves data)_
 

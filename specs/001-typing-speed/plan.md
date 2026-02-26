@@ -147,6 +147,7 @@ index.html                           # Main HTML entry point
 - **Direct Keyboard Handling**: Component captures keyboard events directly on the text display div, eliminating the need for separate textarea
 - **Non-character Key Filtering**: System ignores navigation keys (Enter, Tab, Arrow keys, Escape) to maintain typing flow
 - **Completion Guidance**: Visual feedback appears below the text display to guide users toward test completion
+- **Length-based Completion**: Test completes when target text length is reached, allowing for meaningful accuracy measurements (less than 100% when errors occur)
 
 **Data Entities**:
 
