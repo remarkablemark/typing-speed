@@ -97,8 +97,8 @@ export function useTypingTest(
       setState((prev) => {
         const newState = { ...prev, userInput: input };
 
-        // Check if test is complete
-        if (input === textSample.content && prev.startTime) {
+        // Check if test is complete (reached target length)
+        if (input.length >= textSample.content.length && prev.startTime) {
           const endTime = new Date();
           const timeElapsedMs = endTime.getTime() - prev.startTime.getTime();
 

@@ -61,12 +61,13 @@ export function TypingTest({
     event.preventDefault();
   };
 
-  const progress = Math.round(
-    (userInput.length / textSample.content.length) * 100,
+  const progress = Math.min(
+    Math.round((userInput.length / textSample.content.length) * 100),
+    100,
   );
 
-  // Calculate actual completion based on exact match
-  const isActuallyComplete = userInput === textSample.content;
+  // Calculate actual completion based on reaching target length
+  const isActuallyComplete = userInput.length >= textSample.content.length;
 
   return (
     <div className="mx-auto w-full max-w-4xl p-6">
@@ -167,7 +168,8 @@ export function TypingTest({
           {!isActuallyComplete && userInput.length > 0 && (
             <div className="rounded bg-blue-50 p-3 text-sm text-blue-800 dark:bg-blue-900/20 dark:text-blue-300">
               Keep typing! You need{' '}
-              {textSample.content.length - userInput.length} more character
+              {String(textSample.content.length - userInput.length)} more
+              character
               {textSample.content.length - userInput.length === 1 ? '' : 's'} to
               finish.
             </div>

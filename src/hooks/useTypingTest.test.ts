@@ -134,10 +134,12 @@ describe('useTypingTest', () => {
       result.current.handleInput(wrongText);
     });
 
-    // Should not complete since content doesn't match
-    expect(result.current.isCompleted).toBe(false);
-    expect(result.current.isActive).toBe(true);
+    // Should complete since length is reached (new behavior)
+    expect(result.current.isCompleted).toBe(true);
+    expect(result.current.isActive).toBe(false);
     expect(result.current.userInput).toBe(wrongText);
+    // Accuracy should be less than 100% since content doesn't match
+    expect(result.current.currentAccuracy).toBeLessThan(100);
   });
 
   it('handles time elapsed calculation', () => {
