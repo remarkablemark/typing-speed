@@ -112,7 +112,7 @@ export function TypingTestApp(): React.ReactNode {
                   onClick={() => {
                     handleDifficultyChange(difficulty);
                   }}
-                  className={`rounded-lg border-2 p-4 transition-colors ${
+                  className={`cursor-pointer rounded-lg border-2 p-4 transition-colors ${
                     currentDifficulty === difficulty
                       ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
                       : 'border-gray-300 bg-white hover:border-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500'
@@ -148,7 +148,7 @@ export function TypingTestApp(): React.ReactNode {
           <button
             type="button"
             onClick={handleStartTest}
-            className="rounded-md bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+            className="cursor-pointer rounded-md bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700"
           >
             Start Test
           </button>

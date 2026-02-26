@@ -214,7 +214,7 @@ export const TestHistory = ({
               <button
                 onClick={onClearHistory}
                 disabled={results.length === 0}
-                className="rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-300"
+                className="cursor-pointer rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-300"
                 aria-label="Clear all test history"
               >
                 Clear History
@@ -234,7 +234,7 @@ export const TestHistory = ({
                         onClick={() => {
                           onSelectResult(result);
                         }}
-                        className="group w-full text-left"
+                        className="group w-full cursor-pointer text-left"
                         data-testid={`result-${result.id}`}
                         aria-label={`View test result from ${formatDate(result.timestamp)}`}
                       >
@@ -264,7 +264,7 @@ export const TestHistory = ({
                         onClick={() => {
                           toggleExpanded(result.id);
                         }}
-                        className="rounded p-2 text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
+                        className="cursor-pointer rounded p-2 text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
                         aria-expanded={expandedItems.has(result.id)}
                         aria-label={`Expand details for test from ${formatDate(result.timestamp)}`}
                       >

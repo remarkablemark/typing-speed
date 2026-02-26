@@ -110,14 +110,14 @@ export const ResultsDisplay = ({
         <div className="flex flex-col justify-center gap-4 sm:flex-row">
           <button
             onClick={onRestart}
-            className="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
+            className="cursor-pointer rounded-lg bg-blue-600 px-6 py-3 font-medium text-white transition-colors hover:bg-blue-700 focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:outline-none"
             aria-label="Start a new typing test"
           >
             Try Again
           </button>
           <button
             onClick={onViewHistory}
-            className="rounded-lg bg-gray-200 px-6 py-3 font-medium text-gray-800 transition-colors hover:bg-gray-300 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
+            className="cursor-pointer rounded-lg bg-gray-200 px-6 py-3 font-medium text-gray-800 transition-colors hover:bg-gray-300 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:bg-gray-700 dark:text-gray-200 dark:hover:bg-gray-600"
             aria-label="View your test history"
           >
             View History
@@ -131,7 +131,7 @@ export const ResultsDisplay = ({
           onClick={() => {
             setIsExpanded(!isExpanded);
           }}
-          className="w-full rounded text-left text-sm text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
+          className="w-full cursor-pointer rounded text-left text-sm text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
           aria-expanded={isExpanded}
           aria-controls="test-details"
         >
