@@ -94,13 +94,15 @@ export function TypingTestApp(): React.ReactNode {
 
   return (
     <div className="mx-auto max-w-4xl p-6">
-      <div className="rounded-lg bg-white p-8 shadow-lg">
-        <h2 className="mb-6 text-center text-3xl font-bold">
+      <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-gray-800 dark:shadow-xl">
+        <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
           Typing Speed Test
         </h2>
 
         <div className="mb-8">
-          <h3 className="mb-4 text-lg font-semibold">Select Difficulty</h3>
+          <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+            Select Difficulty
+          </h3>
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
             {(['easy', 'medium', 'hard'] as DifficultyLevel[]).map(
               (difficulty) => (
@@ -112,12 +114,14 @@ export function TypingTestApp(): React.ReactNode {
                   }}
                   className={`rounded-lg border-2 p-4 transition-colors ${
                     currentDifficulty === difficulty
-                      ? 'border-blue-500 bg-blue-50'
-                      : 'border-gray-300 bg-white hover:border-gray-400'
+                      ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
+                      : 'border-gray-300 bg-white hover:border-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500'
                   }`}
                 >
-                  <div className="font-semibold capitalize">{difficulty}</div>
-                  <div className="text-sm text-gray-600">
+                  <div className="font-semibold text-gray-900 capitalize dark:text-white">
+                    {difficulty}
+                  </div>
+                  <div className="text-sm text-gray-600 dark:text-gray-300">
                     {difficulty === 'easy' && 'Simple words and phrases'}
                     {difficulty === 'medium' && 'Common sentences'}
                     {difficulty === 'hard' && 'Complex text and punctuation'}
@@ -129,9 +133,11 @@ export function TypingTestApp(): React.ReactNode {
         </div>
 
         <div className="mb-8">
-          <h3 className="mb-4 text-lg font-semibold">Preview Text</h3>
+          <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+            Preview Text
+          </h3>
           <div
-            className="truncate rounded-lg border-2 border-gray-300 bg-gray-50 p-4 font-mono"
+            className="truncate rounded-lg border-2 border-gray-300 bg-gray-50 p-4 font-mono text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
             data-testid="text-preview"
           >
             {textSample.content}
