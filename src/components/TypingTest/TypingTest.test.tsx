@@ -159,7 +159,7 @@ describe('TypingTest', () => {
       <TypingTest
         textSample={mockTextSample}
         onComplete={mockOnComplete}
-        difficulty="easy"
+        difficulty="medium"
       />,
     );
 
@@ -168,9 +168,9 @@ describe('TypingTest', () => {
     // Attempt to paste
     const preventDefaultMock = vi.fn();
     const pasteEvent = new Event('paste', { bubbles: true });
-    Object.defineProperty(pasteEvent, 'preventDefault', {
-      value: preventDefaultMock,
-    });
+
+    // Mock preventDefault on the event
+    pasteEvent.preventDefault = preventDefaultMock;
 
     fireEvent(textInput, pasteEvent);
 

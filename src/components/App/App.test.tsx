@@ -108,19 +108,27 @@ describe('App', () => {
 
   it('reloads page when header title is clicked', async () => {
     const mockReload = vi.fn();
+    const originalLocation = window.location;
     Object.defineProperty(window, 'location', {
       value: { reload: mockReload },
       writable: true,
     });
 
-    render(<App />);
+    try {
+      render(<App />);
 
-    const headerButton = screen.getByRole('button', {
-      name: 'Typing Speed Test',
-    });
-    await userEvent.click(headerButton);
+      const headerButton = screen.getByRole('button', {
+        name: 'Typing Speed Test',
+      });
+      await userEvent.click(headerButton);
 
-    expect(mockReload).toHaveBeenCalled();
+      expect(mockReload).toHaveBeenCalled();
+    } finally {
+      Object.defineProperty(window, 'location', {
+        value: originalLocation,
+        writable: true,
+      });
+    }
   });
 
   describe('ErrorBoundary', () => {
@@ -160,21 +168,31 @@ describe('App', () => {
 
     it('reloads page when reload button is clicked', async () => {
       const mockReload = vi.fn();
+      const originalLocation = window.location;
       Object.defineProperty(window, 'location', {
         value: { reload: mockReload },
         writable: true,
       });
 
-      render(
-        <App>
-          <ThrowErrorComponent />
-        </App>,
-      );
+      try {
+        render(
+          <App>
+            <ThrowErrorComponent />
+          </App>,
+        );
 
-      const reloadButton = screen.getByRole('button', { name: 'Reload Page' });
-      await userEvent.click(reloadButton);
+        const reloadButton = screen.getByRole('button', {
+          name: 'Reload Page',
+        });
+        await userEvent.click(reloadButton);
 
-      expect(mockReload).toHaveBeenCalled();
+        expect(mockReload).toHaveBeenCalled();
+      } finally {
+        Object.defineProperty(window, 'location', {
+          value: originalLocation,
+          writable: true,
+        });
+      }
     });
 
     it('resets error state when try again button is clicked', async () => {
