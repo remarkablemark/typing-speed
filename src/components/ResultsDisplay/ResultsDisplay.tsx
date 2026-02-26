@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { getTextSampleById } from 'src/utils/textSamples';
 
 import type { ResultsDisplayProps } from './ResultsDisplay.types';
 
@@ -8,6 +9,9 @@ export const ResultsDisplay = ({
   onViewHistory,
 }: ResultsDisplayProps) => {
   const [isExpanded, setIsExpanded] = useState(false);
+
+  // Get the text sample to access character count
+  const textSample = getTextSampleById(result.textSampleId);
 
   const formatTime = (seconds: number): string => {
     const minutes = Math.floor(seconds / 60);
@@ -174,7 +178,7 @@ export const ResultsDisplay = ({
                   Characters Typed:
                 </dt>
                 <dd className="text-gray-800 dark:text-gray-200">
-                  {result.wpm * 5 * Math.round(result.timeElapsed / 60)}
+                  {textSample?.characterCount ?? 0}
                 </dd>
               </div>
               <div>
