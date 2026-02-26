@@ -102,8 +102,8 @@ export function TypingTestApp(): React.ReactNode {
   }
 
   return (
-    <div className="mx-auto max-w-4xl p-6">
-      <div className="rounded-lg bg-white p-8 shadow-lg dark:bg-gray-800 dark:shadow-xl">
+    <div className="mx-auto max-w-4xl p-4 sm:p-6">
+      <div className="rounded-lg bg-white p-4 shadow-lg sm:p-8 dark:bg-gray-800 dark:shadow-xl">
         <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
           Typing Speed Test
         </h2>

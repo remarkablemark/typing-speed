@@ -49,7 +49,7 @@ export const ResultsDisplay = ({
 
   return (
     <div
-      className="mx-auto max-w-4xl rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800"
+      className="mx-auto max-w-4xl rounded-lg bg-white p-4 shadow-lg sm:p-6 dark:bg-gray-800"
       role="region"
       aria-label="Test results"
     >

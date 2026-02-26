@@ -70,15 +70,15 @@ export function TypingTest({
   const isActuallyComplete = userInput.length >= textSample.content.length;
 
   return (
-    <div className="mx-auto w-full max-w-4xl p-6">
+    <div className="mx-auto w-full max-w-4xl p-4 sm:p-6">
       <div className="mb-6">
         <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
           Typing Test
         </h2>
 
         {/* Stats Display */}
-        <div className="mx-auto mb-4 grid w-full max-w-3xl grid-cols-4 gap-4">
-          <div className="flex w-40 rounded bg-gray-100 p-3 dark:bg-gray-700">
+        <div className="mx-auto mb-4 grid w-full max-w-3xl grid-cols-2 gap-3 sm:grid-cols-4 sm:gap-4">
+          <div className="flex rounded bg-gray-100 p-3 dark:bg-gray-700">
             <span className="font-semibold text-gray-900 dark:text-white">
               WPM:
             </span>
@@ -88,7 +88,7 @@ export function TypingTest({
               </span>
             </div>
           </div>
-          <div className="flex w-40 rounded bg-gray-100 p-3 dark:bg-gray-700">
+          <div className="flex rounded bg-gray-100 p-3 dark:bg-gray-700">
             <span className="font-semibold text-gray-900 dark:text-white">
               Accuracy:
             </span>
@@ -98,7 +98,7 @@ export function TypingTest({
               </span>
             </div>
           </div>
-          <div className="flex w-40 rounded bg-gray-100 p-3 dark:bg-gray-700">
+          <div className="flex rounded bg-gray-100 p-3 dark:bg-gray-700">
             <span className="font-semibold text-gray-900 dark:text-white">
               Time:
             </span>
@@ -108,7 +108,7 @@ export function TypingTest({
               </span>
             </div>
           </div>
-          <div className="flex w-40 rounded bg-gray-100 p-3 dark:bg-gray-700">
+          <div className="flex rounded bg-gray-100 p-3 dark:bg-gray-700">
             <span className="font-semibold text-gray-900 dark:text-white">
               Progress:
             </span>
