@@ -172,7 +172,12 @@ describe('ResultsDisplay', () => {
     const zeroWPMResult = createMockTestResult({ wpm: 0 });
     render(<ResultsDisplay {...defaultProps} result={zeroWPMResult} />);
 
-    expect(screen.getByText('0')).toBeInTheDocument();
+    // Find the WPM display by looking for the large text container
+    const wpmContainer = screen
+      .getByText('0')
+      .closest('div.text-6xl, div.text-3xl');
+    expect(wpmContainer).toBeInTheDocument();
+    expect(wpmContainer).toHaveTextContent('0');
   });
 
   it('handles edge case of zero accuracy', () => {
@@ -225,10 +230,8 @@ describe('ResultsDisplay', () => {
     expect(screen.queryByText(/text sample id/i)).not.toBeInTheDocument();
     expect(screen.queryByText('sample-1')).not.toBeInTheDocument();
 
-    // Click expand button
-    const expandButton = screen.getByRole('button', {
-      name: /show test details/i,
-    });
+    // Click expand button (summary element)
+    const expandButton = screen.getByText(/show test details/i);
     fireEvent.click(expandButton);
 
     // Now expanded - details should be visible
@@ -256,9 +259,7 @@ describe('ResultsDisplay', () => {
     expect(screen.getByText(/\d{1,2}:\d{2} [AP]M/)).toBeInTheDocument();
 
     // Expand details to trigger the toLocaleDateString code path
-    const expandButton = screen.getByRole('button', {
-      name: /show test details/i,
-    });
+    const expandButton = screen.getByText(/show test details/i);
     fireEvent.click(expandButton);
 
     expect(screen.getByText(/completion date/i)).toBeInTheDocument();

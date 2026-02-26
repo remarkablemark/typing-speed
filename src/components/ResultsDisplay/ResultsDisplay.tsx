@@ -8,7 +8,7 @@ export const ResultsDisplay = ({
   onRestart,
   onViewHistory,
 }: ResultsDisplayProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isDetailsOpen, setIsDetailsOpen] = useState(false);
 
   // Get the text sample to access character count
   const textSample = getTextSampleById(result.textSampleId);
@@ -130,23 +130,22 @@ export const ResultsDisplay = ({
       </div>
 
       {/* Expandable Details */}
-      <div className="border-t border-gray-200 pt-6 dark:border-gray-700">
-        <button
-          onClick={() => {
-            setIsExpanded(!isExpanded);
+      <details
+        className="border-t border-gray-200 pt-6 dark:border-gray-700"
+        open={isDetailsOpen}
+      >
+        <summary
+          className="w-full cursor-pointer list-none rounded text-left text-sm text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
+          onClick={(e) => {
+            e.preventDefault();
+            setIsDetailsOpen(!isDetailsOpen);
           }}
-          className="w-full cursor-pointer rounded text-left text-sm text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
-          aria-expanded={isExpanded}
-          aria-controls="test-details"
         >
-          {isExpanded ? 'Hide' : 'Show'} Test Details
-        </button>
+          Show Test Details
+        </summary>
 
-        {isExpanded && (
-          <div
-            id="test-details"
-            className="mt-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-900"
-          >
+        {isDetailsOpen && (
+          <div className="mt-4 rounded-lg bg-gray-50 p-4 dark:bg-gray-900">
             <h3 className="mb-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
               Detailed Results
             </h3>
@@ -203,7 +202,7 @@ export const ResultsDisplay = ({
             </dl>
           </div>
         )}
-      </div>
+      </details>
     </div>
   );
 };
