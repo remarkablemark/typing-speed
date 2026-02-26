@@ -1,7 +1,5 @@
 export type {
-  AntiCheatResult,
   DifficultyLevel,
-  SessionData,
   TestResult,
   TextSample,
   TypingMetrics,

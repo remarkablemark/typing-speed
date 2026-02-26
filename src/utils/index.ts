@@ -35,21 +35,6 @@ export {
   validateWPMResult,
 } from './inputValidator';
 
-// Anti-cheat utilities
-export {
-  checkBotPatterns,
-  checkCopyPaste,
-  checkPageVisibility,
-  checkUnrealisticSpeed,
-  cleanupAntiCheatListeners,
-  comprehensiveAntiCheatCheck,
-  handleVisibilityChange,
-  initializeAntiCheat,
-  recordKeystroke,
-  setupAntiCheatListeners,
-  validateInputSequence,
-} from './antiCheat';
-
 // Session storage utilities
 export {
   clearCurrentTest,

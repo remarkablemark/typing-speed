@@ -32,11 +32,6 @@ export interface TestResult {
   textSampleId: string;
 }
 
-export interface SessionData {
-  testHistory: TestResult[];
-  currentTest?: TypingTest;
-}
-
 export interface TypingMetrics {
   wpm: number;
   accuracy: number;
@@ -48,10 +43,4 @@ export interface TypingMetrics {
 export interface ValidationResult {
   isValid: boolean;
   error?: string;
-}
-
-export interface AntiCheatResult {
-  isCheating: boolean;
-  reason?: string;
-  detectedAt: Date;
 }
