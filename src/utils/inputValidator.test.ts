@@ -84,8 +84,7 @@ describe('inputValidator', () => {
       expect(isValidKeyboardEvent(createMockEvent('\x00'))).toBe(false);
     });
 
-    it('should test navigation keys array coverage', () => {
-      // This test specifically ensures the navigationKeys array is fully covered
+    it('allows navigation keys', () => {
       const navKeys = [
         'Tab',
         'Enter',
@@ -299,12 +298,11 @@ describe('inputValidator', () => {
       expect(validateAccuracyResult(100).isValid).toBe(true);
     });
 
-    it('should return invalid for infinite accuracy', () => {
+    it('rejects infinite accuracy values', () => {
       expect(validateAccuracyResult(Infinity).isValid).toBe(false);
       expect(validateAccuracyResult(-Infinity).isValid).toBe(false);
       expect(validateAccuracyResult(NaN).isValid).toBe(false);
 
-      // Specifically test the Infinity case to ensure line 231 is covered
       const infinityResult = validateAccuracyResult(Infinity);
       expect(infinityResult.isValid).toBe(false);
       expect(infinityResult.error).toBe('Accuracy must be a finite number');

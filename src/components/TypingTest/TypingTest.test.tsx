@@ -342,7 +342,7 @@ describe('TypingTest', () => {
       fireEvent.keyDown(textInput, { key: char });
     }
 
-    // Should call onComplete with result (this covers line 29 - the null check)
+    // Should call onComplete with result
     expect(mockOnComplete).toHaveBeenCalledWith(
       expect.objectContaining({
         wpm: expect.any(Number) as number,

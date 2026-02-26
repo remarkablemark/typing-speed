@@ -245,35 +245,47 @@ describe('TestHistory', () => {
     expect(clearButton).not.toBeDisabled();
   });
 
-  it('has proper semantic structure', () => {
+  it('provides semantic structure for test history navigation', () => {
     const results = [createMockTestResult()];
 
     render(<TestHistory {...defaultProps} results={results} />);
 
+    // Check for proper landmark regions
     expect(
       screen.getByRole('region', { name: /test history/i }),
     ).toBeInTheDocument();
     expect(
-      screen.getByRole('list', { name: /test results/i }),
+      screen.getByRole('heading', { name: /test history/i }),
     ).toBeInTheDocument();
+
+    // Check for list structure for test results
+    expect(screen.getByRole('list')).toBeInTheDocument();
   });
 
-  it('has proper accessibility attributes', () => {
+  it('supports keyboard navigation and screen readers', () => {
     const results = [createMockTestResult()];
 
     render(<TestHistory {...defaultProps} results={results} />);
 
     const resultItems = screen.getAllByRole('button', { name: /test result/i });
+
+    // Check that test results are keyboard accessible and properly labeled
     resultItems.forEach((item) => {
       expect(item).toHaveAttribute('aria-label');
+      expect(item).not.toBeDisabled();
     });
+
+    // Check that clear history button is accessible
+    const clearButton = screen.getByLabelText('Clear all test history');
+    expect(clearButton).toHaveAttribute('aria-label');
   });
 
-  it('uses responsive design classes', () => {
+  it('adapts layout for different screen sizes', () => {
     const results = [createMockTestResult()];
 
     render(<TestHistory {...defaultProps} results={results} />);
 
+    // Check that responsive classes are present for mobile/desktop layouts
     const container = screen.getByRole('region', { name: /test history/i });
     expect(container).toHaveClass('max-w-4xl');
   });

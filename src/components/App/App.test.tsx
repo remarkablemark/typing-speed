@@ -56,20 +56,18 @@ describe('App', () => {
     ).not.toBeInTheDocument();
   });
 
-  it('has proper semantic structure', () => {
+  it('provides proper semantic structure for screen readers', () => {
     render(<App />);
 
-    // Check for semantic elements
+    // Check for semantic landmarks that help navigation
     expect(screen.getByRole('banner')).toBeInTheDocument(); // header
-    expect(screen.getByRole('main')).toBeInTheDocument(); // main
-    // Note: footer was removed, so we don't check for contentinfo role
-  });
+    expect(screen.getByRole('main')).toBeInTheDocument(); // main content
 
-  it('has responsive design classes', () => {
-    render(<App />);
-
-    const header = screen.getByRole('banner');
-    expect(header).toHaveClass('bg-white', 'dark:bg-gray-800', 'shadow-sm');
+    // Check for proper heading hierarchy
+    const headings = screen.getAllByRole('heading');
+    expect(headings).toHaveLength(2); // Should have h1 and h2
+    expect(headings[0]).toHaveTextContent('Typing Speed Test');
+    expect(headings[1]).toHaveTextContent('Welcome to Typing Speed Test');
   });
 
   it('handles error boundary correctly', () => {
@@ -78,12 +76,26 @@ describe('App', () => {
     expect(() => render(<App />)).not.toThrow();
   });
 
-  it('has proper accessibility attributes', () => {
+  it('supports keyboard navigation and screen readers', () => {
     render(<App />);
 
-    // Check that the main content is properly structured
-    const main = screen.getByRole('main');
-    expect(main).toBeInTheDocument();
+    // Check that the main heading is properly identified
+    expect(
+      screen.getByRole('heading', { level: 1, name: /typing speed test/i }),
+    ).toBeInTheDocument();
+    expect(
+      screen.getByRole('heading', {
+        level: 2,
+        name: /welcome to typing speed test/i,
+      }),
+    ).toBeInTheDocument();
+  });
+
+  it('has responsive design classes', () => {
+    render(<App />);
+
+    const header = screen.getByRole('banner');
+    expect(header).toHaveClass('bg-white', 'dark:bg-gray-800', 'shadow-sm');
   });
 
   it('uses dark mode support', () => {

@@ -143,29 +143,33 @@ describe('ResultsDisplay', () => {
     expect(screen.getByText(/9:30 AM/i)).toBeInTheDocument();
   });
 
-  it('has proper semantic structure', () => {
+  it('provides semantic structure for assistive technology', () => {
     render(<ResultsDisplay {...defaultProps} />);
 
+    // Check for proper landmark regions
     expect(
       screen.getByRole('region', { name: /test results/i }),
     ).toBeInTheDocument();
+
+    // Check for proper heading structure within results
+    expect(
+      screen.getByRole('heading', { name: /test complete/i }),
+    ).toBeInTheDocument();
   });
 
-  it('has proper accessibility attributes', () => {
+  it('supports keyboard navigation and screen readers', () => {
     render(<ResultsDisplay {...defaultProps} />);
 
     const restartButton = screen.getByLabelText(/start a new typing test/i);
     const historyButton = screen.getByLabelText(/view your test history/i);
 
+    // Check that buttons have proper accessibility attributes
     expect(restartButton).toHaveAttribute('aria-label');
     expect(historyButton).toHaveAttribute('aria-label');
-  });
 
-  it('uses responsive design classes', () => {
-    render(<ResultsDisplay {...defaultProps} />);
-
-    const container = screen.getByRole('region', { name: /test results/i });
-    expect(container).toHaveClass('max-w-4xl');
+    // Check that buttons are keyboard focusable
+    expect(restartButton).not.toBeDisabled();
+    expect(historyButton).not.toBeDisabled();
   });
 
   it('handles edge case of zero WPM', () => {

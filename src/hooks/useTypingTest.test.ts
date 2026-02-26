@@ -115,7 +115,7 @@ describe('useTypingTest', () => {
       result.current.handleInput('partial');
     });
 
-    // Should return the new state with updated input (covers line 140)
+    // Should return the new state with updated input
     expect(result.current.userInput).toBe('partial');
     expect(result.current.isCompleted).toBe(false);
     expect(result.current.isActive).toBe(true);
