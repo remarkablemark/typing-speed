@@ -132,20 +132,20 @@ description: 'Task list template for feature implementation'
 
 ### Tests for User Story 3 (TDD - Write FIRST, ensure they FAIL) ⚠️
 
-- [ ] T048 [P] [US3] Component test for DifficultySelector in src/components/DifficultySelector/DifficultySelector.test.tsx
-- [ ] T049 [P] [US3] Utility test for text samples difficulty categorization in src/utils/textSamples.test.ts
+- [x] T048 [P] [US3] Component test for difficulty selection in src/components/TypingTestApp.test.tsx
+- [x] T049 [P] [US3] Utility test for text samples difficulty categorization in src/utils/textSamples.test.ts
 
-**VALIDATION STEP**: Run `npm test -- src/components/DifficultySelector/DifficultySelector.test.tsx src/utils/textSamples.test.ts` and confirm exit code 1 (tests FAIL) before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
+**VALIDATION STEP**: Run `npm test -- src/components/TypingTestApp.test.tsx src/utils/textSamples.test.ts` and confirm exit code 1 (tests FAIL) before proceeding to implementation tasks (TDD required by constitution - Test-First Development principle)
 
 ### Implementation for User Story 3
 
-- [ ] T050 [P] [US3] Create DifficultySelector types in src/components/DifficultySelector/DifficultySelector.types.ts
-- [ ] T051 [P] [US3] Implement DifficultySelector component in src/components/DifficultySelector/DifficultySelector.tsx (depends on T050)
-- [ ] T052 [P] [US3] Create barrel export for DifficultySelector in src/components/DifficultySelector/index.ts
-- [ ] T053 [US3] Integrate DifficultySelector with App component
-- [ ] T054 [US3] Update TypingTest to handle difficulty-based text samples
-- [ ] T055 [US3] Add accessibility attributes to DifficultySelector
-- [ ] T056 [US3] Add responsive design to DifficultySelector
+- [x] T050 [P] [US3] Add difficulty selection types to src/types/typing.types.ts
+- [x] T051 [P] [US3] Implement difficulty selection UI in src/components/TypingTestApp.tsx (depends on T050)
+- [x] T052 [P] [US3] Add difficulty state management to TypingTestApp component
+- [x] T053 [US3] Integrate difficulty selection with text sample selection
+- [x] T054 [US3] Update TypingTest to handle difficulty-based text samples
+- [x] T055 [US3] Add accessibility attributes to difficulty selection UI
+- [x] T056 [US3] Add responsive design to difficulty selection UI
 
 **Checkpoint**: All user stories should now be independently functional
 
