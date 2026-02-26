@@ -28,17 +28,17 @@ describe('TypingTest', () => {
       />,
     );
 
-    // Check that the text display container exists
-    const textDisplay = screen.getByRole('textbox').previousElementSibling;
+    // Check that the text display container exists (now it's the textbox itself)
+    const textDisplay = screen.getByRole('textbox');
     expect(textDisplay).toBeInTheDocument();
 
     // Check that all characters are rendered as spans
-    const spans = textDisplay?.querySelectorAll('span');
-    expect(spans?.length).toBe(mockTextSample.content.length);
+    const spans = textDisplay.querySelectorAll('span');
+    expect(spans.length).toBe(mockTextSample.content.length);
 
     // Check first and last characters
-    expect(spans?.[0]).toHaveTextContent('T');
-    expect(spans?.[spans.length - 1]).toHaveTextContent('.');
+    expect(spans[0]).toHaveTextContent('T');
+    expect(spans[spans.length - 1]).toHaveTextContent('.');
   });
 
   it('shows initial WPM and accuracy as 0', () => {
@@ -81,9 +81,8 @@ describe('TypingTest', () => {
 
     const textInput = screen.getByRole('textbox');
 
-    // Type first character
+    // Type first character using keyboard event
     fireEvent.keyDown(textInput, { key: 'T' });
-    fireEvent.change(textInput, { target: { value: 'T' } });
 
     // WPM should be calculated
     expect(screen.getByText(/WPM:/)).toBeInTheDocument();
@@ -100,12 +99,9 @@ describe('TypingTest', () => {
 
     const textInput = screen.getByRole('textbox');
 
-    // Type correct characters
+    // Type correct characters using keyboard events
     fireEvent.keyDown(textInput, { key: 'T' });
-    fireEvent.change(textInput, { target: { value: 'T' } });
-
     fireEvent.keyDown(textInput, { key: 'h' });
-    fireEvent.change(textInput, { target: { value: 'Th' } });
 
     // Accuracy should be calculated
     expect(screen.getByText(/Accuracy:/)).toBeInTheDocument();
@@ -122,9 +118,8 @@ describe('TypingTest', () => {
 
     const textInput = screen.getByRole('textbox');
 
-    // Type incorrect character
+    // Type incorrect character using keyboard event
     fireEvent.keyDown(textInput, { key: 'X' });
-    fireEvent.change(textInput, { target: { value: 'X' } });
 
     // Should show error highlighting
     expect(screen.getByText(/Accuracy:/)).toBeInTheDocument();
@@ -141,13 +136,10 @@ describe('TypingTest', () => {
 
     const textInput = screen.getByRole('textbox');
 
-    // Type the complete text
+    // Type the complete text using keyboard events
     const fullText = 'The quick brown fox jumps over the lazy dog.';
     for (const char of fullText) {
       fireEvent.keyDown(textInput, { key: char });
-      fireEvent.change(textInput, {
-        target: { value: fullText.slice(0, fullText.indexOf(char) + 1) },
-      });
     }
 
     // Should call onComplete with result
@@ -233,12 +225,9 @@ describe('TypingTest', () => {
 
     const textInput = screen.getByRole('textbox');
 
-    // Test backspace
+    // Test typing and backspace using keyboard events
     fireEvent.keyDown(textInput, { key: 'T' });
-    fireEvent.change(textInput, { target: { value: 'T' } });
-
     fireEvent.keyDown(textInput, { key: 'Backspace' });
-    fireEvent.change(textInput, { target: { value: '' } });
 
     // Should handle backspace correctly
     expect(screen.getByText(/WPM:/)).toBeInTheDocument();
@@ -303,9 +292,8 @@ describe('TypingTest', () => {
     const textInput = screen.getByRole('textbox');
 
     act(() => {
-      // Start typing to trigger timer
+      // Start typing to trigger timer using keyboard event
       fireEvent.keyDown(textInput, { key: 'T' });
-      fireEvent.change(textInput, { target: { value: 'T' } });
     });
 
     // Advance time by 100ms to trigger timer update
@@ -330,9 +318,8 @@ describe('TypingTest', () => {
 
     const textInput = screen.getByRole('textbox');
 
-    // Type some characters but don't start timer (no time elapsed)
+    // Type some character using keyboard event
     fireEvent.keyDown(textInput, { key: 'T' });
-    fireEvent.change(textInput, { target: { value: 'T' } });
 
     // WPM calculation should handle edge case
     expect(screen.getByText(/WPM:/)).toBeInTheDocument();
@@ -349,13 +336,10 @@ describe('TypingTest', () => {
 
     const textInput = screen.getByRole('textbox');
 
-    // Type the complete text to trigger completion
+    // Type the complete text to trigger completion using keyboard events
     const fullText = 'The quick brown fox jumps over the lazy dog.';
     for (const char of fullText) {
       fireEvent.keyDown(textInput, { key: char });
-      fireEvent.change(textInput, {
-        target: { value: fullText.slice(0, fullText.indexOf(char) + 1) },
-      });
     }
 
     // Should call onComplete with result (this covers line 29 - the null check)
@@ -379,14 +363,14 @@ describe('TypingTest', () => {
       />,
     );
 
-    const textDisplay = screen.getByRole('textbox').previousElementSibling;
+    const textDisplay = screen.getByRole('textbox');
 
     // Test that character spans are rendered with styling classes
-    const spans = textDisplay?.querySelectorAll('span');
-    expect(spans?.length).toBe(mockTextSample.content.length);
+    const spans = textDisplay.querySelectorAll('span');
+    expect(spans.length).toBe(mockTextSample.content.length);
 
     // Test that spans have styling classes (the first span has cursor indicator)
-    expect(spans?.[0]).toHaveClass('bg-blue-200', 'animate-pulse');
+    expect(spans[0]).toHaveClass('bg-blue-200', 'animate-pulse');
   });
 
   it('shows character comparison logic', () => {
@@ -398,14 +382,14 @@ describe('TypingTest', () => {
       />,
     );
 
-    const textDisplay = screen.getByRole('textbox').previousElementSibling;
+    const textDisplay = screen.getByRole('textbox');
 
     // Test that character comparison logic exists in the component
-    const spans = textDisplay?.querySelectorAll('span');
-    expect(spans?.length).toBe(mockTextSample.content.length);
+    const spans = textDisplay.querySelectorAll('span');
+    expect(spans.length).toBe(mockTextSample.content.length);
 
     // The comparison logic is in the component, we've covered the structure
-    expect(spans?.[0]).toHaveClass('bg-blue-200', 'animate-pulse');
+    expect(spans[0]).toHaveClass('bg-blue-200', 'animate-pulse');
   });
 
   it('shows cursor indicator at current position', () => {
@@ -417,11 +401,11 @@ describe('TypingTest', () => {
       />,
     );
 
-    const textDisplay = screen.getByRole('textbox').previousElementSibling;
+    const textDisplay = screen.getByRole('textbox');
 
     // Test that cursor indicator exists
-    const spans = textDisplay?.querySelectorAll('span');
-    expect(spans?.[0]).toHaveClass('bg-blue-200', 'animate-pulse');
+    const spans = textDisplay.querySelectorAll('span');
+    expect(spans[0]).toHaveClass('bg-blue-200', 'animate-pulse');
   });
 
   it('does not show completion guidance when no input is provided', () => {
@@ -435,5 +419,40 @@ describe('TypingTest', () => {
 
     // Should not show completion guidance when no input
     expect(screen.queryByText(/Keep typing!/)).not.toBeInTheDocument();
+  });
+
+  it('ignores non-character keys like Enter and Tab', () => {
+    render(
+      <TypingTest
+        textSample={mockTextSample}
+        onComplete={mockOnComplete}
+        difficulty="easy"
+      />,
+    );
+
+    const textInput = screen.getByRole('textbox');
+
+    // Test Enter key
+    fireEvent.keyDown(textInput, { key: 'Enter' });
+    // Should not affect input (no change in WPM display)
+    expect(screen.getByText(/WPM:/)).toBeInTheDocument();
+
+    // Test Tab key
+    fireEvent.keyDown(textInput, { key: 'Tab' });
+    // Should not affect input
+    expect(screen.getByText(/WPM:/)).toBeInTheDocument();
+
+    // Test Arrow keys
+    fireEvent.keyDown(textInput, { key: 'ArrowLeft' });
+    fireEvent.keyDown(textInput, { key: 'ArrowRight' });
+    fireEvent.keyDown(textInput, { key: 'ArrowUp' });
+    fireEvent.keyDown(textInput, { key: 'ArrowDown' });
+    // Should not affect input
+    expect(screen.getByText(/WPM:/)).toBeInTheDocument();
+
+    // Test Escape key
+    fireEvent.keyDown(textInput, { key: 'Escape' });
+    // Should not affect input
+    expect(screen.getByText(/WPM:/)).toBeInTheDocument();
   });
 });

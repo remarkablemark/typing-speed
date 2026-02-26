@@ -31,19 +31,33 @@ export function TypingTest({
     }
   }, [isCompleted, completeTest, onComplete]);
 
-  const handleChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
-    const newValue = event.target.value;
-    handleInput(newValue);
-  };
-
-  const handleKeyDown = (event: React.KeyboardEvent<HTMLTextAreaElement>) => {
+  const handleKeyDown = (event: React.KeyboardEvent<HTMLDivElement>) => {
     // Prevent paste shortcuts
     if (event.key === 'v' && (event.metaKey || event.ctrlKey)) {
       event.preventDefault();
+      return;
+    }
+
+    // Handle backspace
+    if (event.key === 'Backspace') {
+      event.preventDefault();
+      handleInput(userInput.slice(0, -1));
+      return;
+    }
+
+    // Handle regular character input
+    if (
+      event.key.length === 1 &&
+      !event.ctrlKey &&
+      !event.metaKey &&
+      !event.altKey
+    ) {
+      event.preventDefault();
+      handleInput(userInput + event.key);
     }
   };
 
-  const handlePaste = (event: React.ClipboardEvent) => {
+  const handlePaste = (event: React.ClipboardEvent<HTMLDivElement>) => {
     event.preventDefault();
   };
 
@@ -96,8 +110,21 @@ export function TypingTest({
           </div>
         </div>
 
-        {/* Text Display */}
-        <div className="mb-4 rounded-lg border-2 border-gray-300 bg-white p-4 font-mono text-lg leading-relaxed">
+        {/* Interactive Text Display */}
+        <div
+          className="mb-4 rounded-lg border-2 border-gray-300 bg-white p-4 font-mono text-lg leading-relaxed focus:border-blue-500 focus:outline-none"
+          role="textbox"
+          tabIndex={0}
+          aria-label="Typing input field"
+          ref={(element) => {
+            if (element && !isCompleted && element !== document.activeElement) {
+              element.focus();
+            }
+          }}
+          onKeyDown={handleKeyDown}
+          onPaste={handlePaste}
+          style={{ minHeight: '120px' }}
+        >
           {textSample.content.split('').map((char, index) => {
             const key = `${textSample.id}-${String(index)}`;
             let className = 'text-gray-600';
@@ -115,20 +142,6 @@ export function TypingTest({
             );
           })}
         </div>
-
-        {/* Input Field */}
-        <textarea
-          value={userInput}
-          onChange={handleChange}
-          onKeyDown={handleKeyDown}
-          onPaste={handlePaste}
-          autoFocus
-          rows={3}
-          className="w-full resize-none rounded-lg border-2 border-gray-300 p-4 font-mono text-lg leading-relaxed focus:border-blue-500 focus:outline-none"
-          placeholder="Start typing here..."
-          disabled={isCompleted}
-          aria-label="Typing input field"
-        />
 
         {/* Completion Guidance */}
         <div className="mt-4 h-[40px]">
