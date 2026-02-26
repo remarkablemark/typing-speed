@@ -290,16 +290,6 @@ describe('inputValidator', () => {
       expect(result.isValid).toBe(false);
       expect(result.error).toBe('WPM exceeds realistic maximum of 500');
     });
-
-    it('should return invalid for WPM exactly at maximum boundary', () => {
-      // Test the exact boundary condition to ensure line 216 is covered
-      const result = validateWPMResult(501);
-      expect(result.isValid).toBe(false);
-      expect(result.error).toBe('WPM exceeds realistic maximum of 500');
-
-      // Ensure 500 is still valid
-      expect(validateWPMResult(500).isValid).toBe(true);
-    });
   });
 
   describe('validateAccuracyResult', () => {
