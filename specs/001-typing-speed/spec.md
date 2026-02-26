@@ -23,17 +23,18 @@
 
 ### User Story 1 - Basic Typing Test (Priority: P1)
 
-User wants to measure their typing speed by typing a displayed text sample and seeing their words per minute (WPM) and accuracy.
+User wants to measure their typing speed by typing directly into an interactive text display that shows real-time feedback and calculates their words per minute (WPM) and accuracy.
 
-**Why this priority**: This is the core functionality that delivers immediate value to users wanting to test their typing speed.
+**Why this priority**: This is the core functionality that delivers immediate value to users wanting to test their typing speed with an intuitive, unified interface.
 
-**Independent Test**: Can be fully tested by loading the page, typing the provided text, and verifying that WPM and accuracy are calculated and displayed correctly.
+**Independent Test**: Can be fully tested by loading the page, typing directly into the highlighted text display, and verifying that WPM and accuracy are calculated and displayed correctly.
 
 **Acceptance Scenarios**:
 
-1. **Given** the user is on the typing test page, **When** they start typing, **Then** a timer begins and WPM is calculated in real-time
-2. **Given** the user completes the text sample, **When** they finish typing, **Then** their final WPM and accuracy percentage are displayed
-3. **Given** the user makes typing errors, **When** they continue typing, **Then** errors are highlighted and accuracy is calculated correctly
+1. **Given** the user is on the typing test page, **When** they start typing directly into the text display, **Then** a timer begins, characters are color-coded in real-time (green for correct, red for incorrect), and WPM is calculated
+2. **Given** the user completes the text sample by typing all characters correctly, **When** they finish typing, **Then** their final WPM and accuracy percentage are displayed in a results view
+3. **Given** the user makes typing errors, **When** they continue typing, **Then** errors are highlighted in red, correct characters in green, and accuracy is calculated correctly
+4. **Given** the user types incorrect characters, **When** they use backspace, **Then** characters are removed and the cursor position updates accordingly
 
 ---
 
@@ -86,16 +87,19 @@ User wants to choose from 3 difficulty levels (easy, medium, hard) for typing te
 
 ### Functional Requirements
 
-- **FR-001**: System MUST display public domain text samples organized by difficulty level
-- **FR-002**: System MUST measure typing speed in words per minute (WPM)
-- **FR-003**: System MUST calculate typing accuracy percentage
-- **FR-004**: System MUST provide real-time feedback during typing
-- **FR-005**: System MUST highlight typing errors as they occur
+- **FR-001**: System MUST display public domain text samples organized by difficulty level in an interactive, focusable text display
+- **FR-002**: System MUST measure typing speed in words per minute (WPM) with real-time calculation
+- **FR-003**: System MUST calculate typing accuracy percentage based on character-by-character comparison
+- **FR-004**: System MUST provide real-time visual feedback during typing with color-coded characters (green for correct, red for incorrect, blue cursor for current position)
+- **FR-005**: System MUST highlight typing errors as they occur and allow backspace correction
 - **FR-006**: System MUST store test results locally during the current browser session
 - **FR-007**: System MUST offer 3 difficulty levels (easy, medium, hard) with appropriate text complexity
 - **FR-008**: System MUST display final results with WPM, accuracy, and time taken via ResultsDisplay component
 - **FR-009**: System MUST provide a history view of past typing tests via TestHistory component
 - **FR-010**: System MUST handle user input validation and prevent cheating with specific thresholds: prevent copy-paste operations, flag speeds >200 WPM as invalid, pause timer on tab switching, and validate character sequences
+- **FR-011**: System MUST accept direct keyboard input into the text display without requiring a separate textarea field
+- **FR-012**: System MUST ignore non-character keys (Enter, Tab, Arrow keys, Escape) to prevent interference with typing flow
+- **FR-013**: System MUST provide visual completion guidance below the text display when user has started typing but not completed the test
 
 ### Key Entities _(include if feature involves data)_
 

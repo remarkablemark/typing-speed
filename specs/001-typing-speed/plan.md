@@ -134,11 +134,19 @@ index.html                           # Main HTML entry point
 
 **Core Components**:
 
-- **TypingTest**: Main typing interface with real-time WPM/accuracy feedback
+- **TypingTest**: Unified typing interface with direct keyboard input, real-time character color-coding, and WPM/accuracy feedback
 - **ResultsDisplay**: Shows final test results (WPM, accuracy, time)
 - **TestHistory**: Displays past test results from session storage
 - **DifficultySelector**: Allows selection of easy/medium/hard text samples
 - **App**: Main application container integrating all components
+
+**Key Implementation Details**:
+
+- **Unified Input Interface**: Users type directly into an interactive text display that serves as both the sample text viewer and input field
+- **Real-time Visual Feedback**: Characters are color-coded as users type (green for correct, red for incorrect, blue animated cursor for current position)
+- **Direct Keyboard Handling**: Component captures keyboard events directly on the text display div, eliminating the need for separate textarea
+- **Non-character Key Filtering**: System ignores navigation keys (Enter, Tab, Arrow keys, Escape) to maintain typing flow
+- **Completion Guidance**: Visual feedback appears below the text display to guide users toward test completion
 
 **Data Entities**:
 
