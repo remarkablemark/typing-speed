@@ -124,7 +124,7 @@ export function TypingTest({
           onPaste={handlePaste}
           autoFocus
           rows={3}
-          className="w-full resize-none rounded-lg border-2 border-gray-300 p-3 focus:border-blue-500 focus:outline-none"
+          className="w-full resize-none rounded-lg border-2 border-gray-300 p-4 font-mono text-lg leading-relaxed focus:border-blue-500 focus:outline-none"
           placeholder="Start typing here..."
           disabled={isCompleted}
           aria-label="Typing input field"
