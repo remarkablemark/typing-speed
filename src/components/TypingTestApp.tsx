@@ -131,10 +131,10 @@ export function TypingTestApp(): React.ReactNode {
         <div className="mb-8">
           <h3 className="mb-4 text-lg font-semibold">Preview Text</h3>
           <div
-            className="rounded-lg border-2 border-gray-300 bg-gray-50 p-4 font-mono"
+            className="truncate rounded-lg border-2 border-gray-300 bg-gray-50 p-4 font-mono"
             data-testid="text-preview"
           >
-            {textSample.content.slice(0, 100)}...
+            {textSample.content}
           </div>
         </div>
 

@@ -51,7 +51,8 @@ describe('TypingTestApp', () => {
     expect(screen.getByText('Preview Text')).toBeInTheDocument();
     const previewText = screen.getByTestId('text-preview');
     expect(previewText).toBeInTheDocument();
-    expect(previewText.textContent).toContain('...');
+    expect(previewText).toHaveClass('truncate');
+    expect(previewText.textContent.length).toBeGreaterThan(0);
   });
 
   it('changes difficulty when clicking difficulty buttons', () => {
