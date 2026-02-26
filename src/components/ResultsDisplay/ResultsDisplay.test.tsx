@@ -231,7 +231,7 @@ describe('ResultsDisplay', () => {
     expect(screen.queryByText('sample-1')).not.toBeInTheDocument();
 
     // Click expand button (summary element)
-    const expandButton = screen.getByText(/show test details/i);
+    const expandButton = screen.getByText(/[▶▼] show test details/i);
     fireEvent.click(expandButton);
 
     // Now expanded - details should be visible
@@ -259,7 +259,7 @@ describe('ResultsDisplay', () => {
     expect(screen.getByText(/\d{1,2}:\d{2} [AP]M/)).toBeInTheDocument();
 
     // Expand details to trigger the toLocaleDateString code path
-    const expandButton = screen.getByText(/show test details/i);
+    const expandButton = screen.getByText(/[▶▼] show test details/i);
     fireEvent.click(expandButton);
 
     expect(screen.getByText(/completion date/i)).toBeInTheDocument();

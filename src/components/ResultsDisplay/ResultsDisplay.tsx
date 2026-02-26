@@ -141,7 +141,7 @@ export const ResultsDisplay = ({
             setIsDetailsOpen(!isDetailsOpen);
           }}
         >
-          Show Test Details
+          {isDetailsOpen ? '▼' : '▶'} Show Test Details
         </summary>
 
         {isDetailsOpen && (
