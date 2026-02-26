@@ -85,7 +85,7 @@ export default function App({ children }: AppProps): React.ReactNode {
         <header className="bg-white shadow-sm dark:bg-gray-800">
           <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
             <div className="flex h-16 items-center justify-between">
-              <h1 className="text-xl font-semibold text-gray-900 dark:text-white">
+              <h1 className="flex-1 text-center text-xl font-semibold text-gray-900 sm:text-left dark:text-white">
                 <button
                   type="button"
                   onClick={() => {
@@ -96,7 +96,7 @@ export default function App({ children }: AppProps): React.ReactNode {
                   Typing Speed Test
                 </button>
               </h1>
-              <div className="flex items-center space-x-4">
+              <div className="hidden items-center space-x-4 sm:flex">
                 <span className="text-sm text-gray-500 dark:text-gray-400">
                   Test your typing speed and accuracy
                 </span>
