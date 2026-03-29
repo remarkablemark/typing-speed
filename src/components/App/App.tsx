@@ -29,7 +29,7 @@ class ErrorBoundary extends Component<AppProps, AppState> {
     if (this.state.hasError) {
       return (
         <div className="flex min-h-screen items-center justify-center bg-gray-50 dark:bg-gray-900">
-          <div className="w-full max-w-md rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800">
+          <div className="w-full max-w-md rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800">
             <div className="text-center">
               <h1 className="mb-4 text-2xl font-bold text-red-600 dark:text-red-400">
                 Something went wrong
@@ -60,7 +60,7 @@ class ErrorBoundary extends Component<AppProps, AppState> {
               </div>
               {import.meta.env.DEV && this.state.error && (
                 <details className="mt-6 text-left">
-                  <summary className="cursor-pointer text-sm font-medium text-gray-500 hover:text-gray-700">
+                  <summary className="cursor-pointer font-medium text-gray-500 hover:text-gray-700">
                     Error Details (Development Only)
                   </summary>
                   <pre className="mt-2 overflow-auto rounded bg-gray-100 p-2 text-xs dark:bg-gray-700">
@@ -83,29 +83,27 @@ export default function App({ children }: AppProps): React.ReactNode {
     <ErrorBoundary>
       <div className="min-h-screen bg-gray-50 dark:bg-gray-900">
         <header className="bg-white shadow-sm dark:bg-gray-800">
-          <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8">
-            <div className="flex h-16 items-center justify-between">
-              <h1 className="flex-1 text-center text-xl font-semibold text-gray-900 sm:text-left dark:text-white">
-                <button
-                  type="button"
-                  onClick={() => {
-                    window.location.reload();
-                  }}
-                  className="cursor-pointer transition-colors hover:text-blue-600 dark:hover:text-blue-400"
-                >
-                  Typing Speed Test
-                </button>
-              </h1>
-              <div className="hidden items-center space-x-4 sm:flex">
-                <span className="text-sm text-gray-500 dark:text-gray-400">
-                  Test your typing speed and accuracy
-                </span>
-              </div>
+          <div className="mx-auto flex h-16 max-w-4xl items-center justify-between px-4">
+            <h1 className="flex-1 text-center text-xl font-semibold text-gray-900 sm:text-left dark:text-white">
+              <button
+                type="button"
+                onClick={() => {
+                  window.location.reload();
+                }}
+                className="cursor-pointer transition-colors hover:text-blue-600 dark:hover:text-blue-400"
+              >
+                Typing Speed Test
+              </button>
+            </h1>
+            <div className="hidden items-center space-x-4 sm:flex">
+              <span className="text-gray-500 dark:text-gray-400">
+                Test your typing speed and accuracy
+              </span>
             </div>
           </div>
         </header>
 
-        <main className="mx-auto max-w-4xl">
+        <main className="mx-auto max-w-4xl p-4">
           {children ?? (
             <div className="text-center">
               <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">

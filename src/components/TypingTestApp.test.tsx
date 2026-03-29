@@ -78,10 +78,10 @@ describe('TypingTestApp', () => {
   it('shows correct difficulty descriptions', () => {
     render(<TypingTestApp />);
 
-    expect(screen.getByText('Simple words and phrases')).toBeInTheDocument();
-    expect(screen.getByText('Common sentences')).toBeInTheDocument();
+    expect(screen.getByText('Simple words and phrases.')).toBeInTheDocument();
+    expect(screen.getByText('Common sentences.')).toBeInTheDocument();
     expect(
-      screen.getByText('Complex text and punctuation'),
+      screen.getByText('Complex text and punctuation.'),
     ).toBeInTheDocument();
   });
 

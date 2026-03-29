@@ -292,16 +292,6 @@ describe('TestHistory', () => {
     expect(clearButton).toHaveAttribute('aria-label');
   });
 
-  it('adapts layout for different screen sizes', () => {
-    const results = [createMockTestResult()];
-
-    render(<TestHistory {...defaultProps} results={results} />);
-
-    // Check that responsive classes are present for mobile/desktop layouts
-    const container = screen.getByRole('region', { name: /test history/i });
-    expect(container).toHaveClass('max-w-4xl');
-  });
-
   it('handles edge case of zero WPM results', () => {
     const results = [createMockTestResult({ wpm: 0 })];
 

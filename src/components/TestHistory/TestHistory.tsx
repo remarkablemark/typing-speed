@@ -102,7 +102,7 @@ export const TestHistory = ({
 
   return (
     <div
-      className="mx-auto max-w-4xl rounded-lg bg-white p-6 shadow-lg dark:bg-gray-800"
+      className="rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
       role="region"
       aria-label="Test history"
     >
@@ -214,7 +214,7 @@ export const TestHistory = ({
               <button
                 onClick={onClearHistory}
                 disabled={results.length === 0}
-                className="cursor-pointer rounded-lg bg-red-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-300"
+                className="cursor-pointer rounded-lg bg-red-600 px-4 py-2 font-medium text-white transition-colors hover:bg-red-700 focus:ring-2 focus:ring-red-500 focus:ring-offset-2 focus:outline-none disabled:cursor-not-allowed disabled:bg-gray-300"
                 aria-label="Clear all test history"
               >
                 Clear History
@@ -244,7 +244,7 @@ export const TestHistory = ({
                           >
                             {result.wpm}
                           </div>
-                          <div className="text-sm text-gray-600 dark:text-gray-400">
+                          <div className="text-gray-600 dark:text-gray-400">
                             WPM • {result.accuracy}% •{' '}
                             {formatTime(result.timeElapsed)} •{' '}
                             <span className="capitalize">
@@ -289,10 +289,10 @@ export const TestHistory = ({
 
                   {expandedItems.has(result.id) && (
                     <div className="mt-4 border-t border-gray-200 pt-4 dark:border-gray-700">
-                      <h4 className="mb-3 text-sm font-semibold text-gray-800 dark:text-gray-200">
+                      <h4 className="mb-3 font-semibold text-gray-800 dark:text-gray-200">
                         Test Details
                       </h4>
-                      <dl className="grid grid-cols-1 gap-3 text-sm sm:grid-cols-2">
+                      <dl className="grid grid-cols-1 gap-3 sm:grid-cols-2">
                         <div>
                           <dt className="text-gray-600 dark:text-gray-400">
                             Test ID:

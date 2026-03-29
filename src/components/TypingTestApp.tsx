@@ -102,66 +102,64 @@ export function TypingTestApp(): React.ReactNode {
   }
 
   return (
-    <div className="mx-auto max-w-4xl p-4 sm:p-6">
-      <div className="rounded-lg bg-white p-4 shadow-lg sm:p-8 dark:bg-gray-800 dark:shadow-xl">
-        <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
-          Typing Speed Test
-        </h2>
+    <div className="rounded-lg bg-white p-4 shadow-lg sm:p-8 dark:bg-gray-800 dark:shadow-xl">
+      <h2 className="mb-6 text-center text-3xl font-bold text-gray-900 dark:text-white">
+        Typing Speed Test
+      </h2>
 
-        <div className="mb-8">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-            Select Difficulty
-          </h3>
-          <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
-            {(['easy', 'medium', 'hard'] as DifficultyLevel[]).map(
-              (difficulty) => (
-                <button
-                  key={difficulty}
-                  type="button"
-                  onClick={() => {
-                    handleDifficultyChange(difficulty);
-                  }}
-                  className={`cursor-pointer rounded-lg border-2 p-4 transition-colors ${
-                    currentDifficulty === difficulty
-                      ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
-                      : 'border-gray-300 bg-white hover:border-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500'
-                  }`}
-                >
-                  <div className="font-semibold text-gray-900 capitalize dark:text-white">
-                    {difficulty}
-                  </div>
-                  <div className="text-sm text-gray-600 dark:text-gray-300">
-                    {difficulty === 'easy' && 'Simple words and phrases'}
-                    {difficulty === 'medium' && 'Common sentences'}
-                    {difficulty === 'hard' && 'Complex text and punctuation'}
-                  </div>
-                </button>
-              ),
-            )}
-          </div>
+      <div className="mb-8">
+        <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+          Select Difficulty
+        </h3>
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-3">
+          {(['easy', 'medium', 'hard'] as DifficultyLevel[]).map(
+            (difficulty) => (
+              <button
+                key={difficulty}
+                type="button"
+                onClick={() => {
+                  handleDifficultyChange(difficulty);
+                }}
+                className={`cursor-pointer rounded-lg border-2 p-4 transition-colors ${
+                  currentDifficulty === difficulty
+                    ? 'border-blue-500 bg-blue-50 dark:border-blue-400 dark:bg-blue-900/20'
+                    : 'border-gray-300 bg-white hover:border-gray-400 dark:border-gray-600 dark:bg-gray-700 dark:hover:border-gray-500'
+                }`}
+              >
+                <div className="font-semibold text-gray-900 capitalize dark:text-white">
+                  {difficulty}
+                </div>
+                <div className="text-gray-600 dark:text-gray-300">
+                  {difficulty === 'easy' && 'Simple words and phrases.'}
+                  {difficulty === 'medium' && 'Common sentences.'}
+                  {difficulty === 'hard' && 'Complex text and punctuation.'}
+                </div>
+              </button>
+            ),
+          )}
         </div>
+      </div>
 
-        <div className="mb-8">
-          <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
-            Preview Text
-          </h3>
-          <div
-            className="truncate rounded-lg border-2 border-gray-300 bg-gray-50 p-4 font-mono text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
-            data-testid="text-preview"
-          >
-            {currentTextSample.content}
-          </div>
+      <div className="mb-8">
+        <h3 className="mb-4 text-lg font-semibold text-gray-900 dark:text-white">
+          Preview Text
+        </h3>
+        <div
+          className="truncate rounded-lg border-2 border-gray-300 bg-gray-50 p-4 font-mono text-gray-700 dark:border-gray-600 dark:bg-gray-700 dark:text-gray-200"
+          data-testid="text-preview"
+        >
+          {currentTextSample.content}
         </div>
+      </div>
 
-        <div className="text-center">
-          <button
-            type="button"
-            onClick={handleStartTest}
-            className="cursor-pointer rounded-md bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700"
-          >
-            Start Test
-          </button>
-        </div>
+      <div className="text-center">
+        <button
+          type="button"
+          onClick={handleStartTest}
+          className="cursor-pointer rounded-md bg-blue-600 px-8 py-3 font-medium text-white transition-colors hover:bg-blue-700"
+        >
+          Start Test
+        </button>
       </div>
     </div>
   );

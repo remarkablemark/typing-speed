@@ -49,7 +49,7 @@ export const ResultsDisplay = ({
 
   return (
     <div
-      className="mx-auto max-w-4xl rounded-lg bg-white p-4 shadow-lg sm:p-6 dark:bg-gray-800"
+      className="rounded-lg bg-white p-4 shadow-lg dark:bg-gray-800"
       role="region"
       aria-label="Test results"
     >
@@ -66,7 +66,7 @@ export const ResultsDisplay = ({
             {result.wpm}
           </div>
           <div className="text-xl text-gray-600 dark:text-gray-400">WPM</div>
-          <div className={`text-sm ${wpmPerformance.color} font-medium`}>
+          <div className={`${wpmPerformance.color} font-medium`}>
             {wpmPerformance.label}
           </div>
         </div>
@@ -78,9 +78,7 @@ export const ResultsDisplay = ({
             <div className={`text-3xl font-bold ${accuracyPerformance.color}`}>
               {result.accuracy}%
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Accuracy
-            </div>
+            <div className="text-gray-600 dark:text-gray-400">Accuracy</div>
             <div className={`text-xs ${accuracyPerformance.color} font-medium`}>
               {accuracyPerformance.label}
             </div>
@@ -91,7 +89,7 @@ export const ResultsDisplay = ({
             <div className="text-3xl font-bold text-gray-800 dark:text-gray-200">
               {formatTime(result.timeElapsed)}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">Time</div>
+            <div className="text-gray-600 dark:text-gray-400">Time</div>
           </div>
 
           {/* Difficulty */}
@@ -99,14 +97,12 @@ export const ResultsDisplay = ({
             <div className="text-3xl font-bold text-gray-800 capitalize dark:text-gray-200">
               {result.difficulty}
             </div>
-            <div className="text-sm text-gray-600 dark:text-gray-400">
-              Difficulty
-            </div>
+            <div className="text-gray-600 dark:text-gray-400">Difficulty</div>
           </div>
         </div>
 
         {/* Timestamp */}
-        <div className="mb-8 text-sm text-gray-500 dark:text-gray-400">
+        <div className="mb-8 text-gray-500 dark:text-gray-400">
           Completed at {formatTimestamp(result.timestamp)}
         </div>
 
@@ -135,7 +131,7 @@ export const ResultsDisplay = ({
         open={isDetailsOpen}
       >
         <summary
-          className="w-full cursor-pointer list-none rounded text-left text-sm text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
+          className="w-full cursor-pointer list-none rounded text-left text-gray-600 hover:text-gray-800 focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 focus:outline-none dark:text-gray-400 dark:hover:text-gray-200"
           onClick={(e) => {
             e.preventDefault();
             setIsDetailsOpen(!isDetailsOpen);
@@ -149,7 +145,7 @@ export const ResultsDisplay = ({
             <h3 className="mb-3 text-lg font-semibold text-gray-800 dark:text-gray-200">
               Detailed Results
             </h3>
-            <dl className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2">
+            <dl className="grid grid-cols-1 gap-4 sm:grid-cols-2">
               <div>
                 <dt className="text-gray-600 dark:text-gray-400">Test ID:</dt>
                 <dd className="font-mono text-gray-800 dark:text-gray-200">
