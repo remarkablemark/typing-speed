@@ -105,19 +105,17 @@ export default function App({ children }: AppProps): React.ReactNode {
           </div>
         </header>
 
-        <main className="mx-auto max-w-7xl py-6 sm:px-6 lg:px-8">
-          <div className="px-4 py-6 sm:px-0">
-            {children ?? (
-              <div className="text-center">
-                <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
-                  Welcome to Typing Speed Test
-                </h2>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Select a difficulty level to begin your typing test.
-                </p>
-              </div>
-            )}
-          </div>
+        <main className="mx-auto max-w-4xl">
+          {children ?? (
+            <div className="text-center">
+              <h2 className="mb-4 text-2xl font-bold text-gray-900 dark:text-white">
+                Welcome to Typing Speed Test
+              </h2>
+              <p className="text-gray-600 dark:text-gray-300">
+                Select a difficulty level to begin your typing test.
+              </p>
+            </div>
+          )}
         </main>
       </div>
     </ErrorBoundary>
