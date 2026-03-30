@@ -16,7 +16,7 @@ You're an expert engineer for this React app.
 - **Tech Stack:**
   - React 19 (UI library)
   - TypeScript 5 (strict mode)
-  - Vite 7 (build tool)
+  - Vite 8 (build tool)
   - Vitest 4 (testing framework)
   - Node.js 24
   - Tailwind CSS 4
